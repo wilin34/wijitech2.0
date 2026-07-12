@@ -72,6 +72,20 @@ header{
 @media(max-width:860px){.navlinks{display:none}}
 
 /* ───────── hero ───────── */
+  .map-container {
+  margin-top: 30px;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  overflow: hidden; /* Esto asegura que el mapa respete el borde redondeado */
+}
+
+/* Para que el mapa se vea bien en móviles */
+@media (max-width: 768px) {
+  .map-container iframe {
+    height: 300px;
+  }
+}
 .hero{padding:90px 0 70px;position:relative}
 .hero-tag{
   display:inline-flex;align-items:center;gap:8px;
@@ -666,19 +680,32 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
   </section>
 
   <!-- ───────── COBERTURA ───────── -->
-  <section id="cobertura">
-    <div class="eyebrow">/ zona de cobertura</div>
-    <h2>Atendemos a domicilio en estas zonas</h2>
-    <p class="section-sub">¿No ves tu sector? Escríbenos — muchas veces igual podemos cubrirlo.</p>
-    <div class="coverage">
-      <span>📍 Zona urbana</span>
-      <span>📍 Zona rural cercana</span>
-      <span>📍 Conjuntos residenciales</span>
-      <span>📍 Locales comerciales</span>
-      <span>📍 Oficinas pequeñas</span>
-      <span>📍 Fincas y veredas (punto a punto)</span>
-    </div>
+ <section id="cobertura">
+  <div class="eyebrow">/ zona de cobertura</div>
+  <h2>Atendemos a domicilio en estas zonas</h2>
+  <p class="section-sub">¿No ves tu sector? Escríbenos — muchas veces igual podemos cubrirlo.</p>
+  
+  <div class="coverage">
+    <span>📍 Zona urbana</span>
+    <span>📍 Zona rural cercana</span>
+    <span>📍 Conjuntos residenciales</span>
+    <span>📍 Locales comerciales</span>
+    <span>📍 Oficinas pequeñas</span>
+    <span>📍 Fincas y veredas (punto a punto)</span>
+  </div>
 
+  <!-- Aquí empieza el mapa -->
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31846.85244589259!2d-73.91971716613845!3d4.343340801861759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9c0000000000%3A0x0!2zNC4zNDMzNDA4LCAtNzMuODk4NjY1Ng!5e0!3m2!1ses!2sco!4v1720815000000!5m2!1ses!2sco" 
+      width="100%" 
+      height="450" 
+      style="border:0; border-radius: 15px;" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
     <div class="speedtest-panel">
       <div style="text-align:center">
         <div class="speedtest-dial" id="sd-dial">
