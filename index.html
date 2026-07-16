@@ -969,6 +969,10 @@ function getShopProducts(){
 
 async function saveShopProducts(list){
   _shopProductsCache = list;
+  if(!window.fbShopSetDoc || !window.fbShopDb){
+    console.warn('Firebase todavía no está listo; el cambio se ve solo en este navegador hasta que cargue.');
+    return;
+  }
   try{
     await window.fbShopSetDoc(window.fbShopDoc(window.fbShopDb, 'shop', SHOP_STORAGE_KEY), { products: list });
   }catch(e){
@@ -980,19 +984,34 @@ async function saveShopProducts(list){
 // Escucha cambios en tiempo real: si otro dispositivo/admin agrega o quita
 // un producto, este navegador actualiza la grilla automáticamente, sin
 // necesidad de recargar la página.
-window.fbShopOnSnapshot(window.fbShopDoc(window.fbShopDb, 'shop', SHOP_STORAGE_KEY), (docSnap)=>{
-  if(docSnap.exists() && Array.isArray(docSnap.data().products)){
-    _shopProductsCache = docSnap.data().products;
-  } else if(!_shopLoadedFromFirestore){
-    // Primera vez que se usa esta tienda: no hay documento todavía,
-    // así que sembramos Firestore con el catálogo de ejemplo.
-    saveShopProducts([...SHOP_DEFAULT_PRODUCTS]);
-  }
-  _shopLoadedFromFirestore = true;
-  // Si la tienda o el panel de admin están abiertos, refresca la vista.
-  if(document.getElementById('shop-overlay')?.style.display === 'block') renderShopGrid();
-  if(document.getElementById('shop-admin-unlocked')?.style.display === 'block') renderShopAdminList();
-}, (err)=>{ console.warn('Error escuchando el catálogo en Firestore', err); });
+//
+// IMPORTANTE: Firebase se inicializa en un <script type="module"> en el
+// <head>, y los scripts de tipo módulo siempre se difieren (se ejecutan
+// DESPUÉS de que el resto del HTML termine de parsear) — incluso si
+// aparecen antes en el archivo. Este script normal (sin type="module")
+// en cambio se ejecuta de inmediato, apenas el navegador llega aquí. Si
+// llamáramos a window.fbShopOnSnapshot directamente en este punto,
+// todavía no existiría (undefined), lanzaría un error, y ese error
+// interrumpiría el resto de este bloque de código — rompiendo la tienda
+// completa (openShop, renderShopGrid, etc. nunca llegarían a definirse
+// del todo). Por eso esta función se define pero no se llama aquí mismo:
+// se invoca al final del archivo, con una pequeña espera activa que
+// reintenta hasta que Firebase ya esté listo.
+function attachShopRealtimeListener(){
+  window.fbShopOnSnapshot(window.fbShopDoc(window.fbShopDb, 'shop', SHOP_STORAGE_KEY), (docSnap)=>{
+    if(docSnap.exists() && Array.isArray(docSnap.data().products)){
+      _shopProductsCache = docSnap.data().products;
+    } else if(!_shopLoadedFromFirestore){
+      // Primera vez que se usa esta tienda: no hay documento todavía,
+      // así que sembramos Firestore con el catálogo de ejemplo.
+      saveShopProducts([...SHOP_DEFAULT_PRODUCTS]);
+    }
+    _shopLoadedFromFirestore = true;
+    // Si la tienda o el panel de admin están abiertos, refresca la vista.
+    if(document.getElementById('shop-overlay')?.style.display === 'block') renderShopGrid();
+    if(document.getElementById('shop-admin-unlocked')?.style.display === 'block') renderShopAdminList();
+  }, (err)=>{ console.warn('Error escuchando el catálogo en Firestore', err); });
+}
 
 const SHOP_CAT_LABEL = {camaras:'Cámaras', computadores:'Computadores', repuestos:'Repuestos', redes:'Redes / Router', accesorios:'Accesorios'};
 
@@ -1206,6 +1225,21 @@ function resetShopCatalog(){
   renderShopAdminList();
   renderShopGrid();
 }
+
+// Espera activa (con backoff simple) hasta que el <script type="module">
+// del <head> haya terminado de inicializar Firebase, y solo entonces
+// conecta el listener en tiempo real. Así no importa cuál de los dos
+// scripts termine de cargar primero.
+function waitForShopFirebase(attempt){
+  attempt = attempt || 0;
+  if(window.fbShopOnSnapshot && window.fbShopDb){
+    attachShopRealtimeListener();
+    return;
+  }
+  if(attempt > 100){ console.warn('Firebase no cargó a tiempo para la tienda; el catálogo seguirá funcionando solo con los datos de ejemplo hasta recargar.'); return; }
+  setTimeout(()=>waitForShopFirebase(attempt+1), 50);
+}
+waitForShopFirebase();
 </script>
 <script>
 // ═══════════════════════════════════════════════════════════════
