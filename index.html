@@ -934,32 +934,47 @@ showTab('inicio');
 const SHOP_ADMIN_PASS = 'wijitech2026';
 const SHOP_STORAGE_KEY = 'wijitech_shop_products';
 
-const SHOP_DEFAULT_PRODUCTS =  {
-  camaras: [
-    {
-      id: 1,
-      name: 'Cámara IP WiFi 2MP interior',
-      desc: 'Visión nocturna, audio bidireccional.',
-      price: 95000,
-      image: 'images/camara-wifi-interior.jpg' // Ruta a tu imagen
-    },
-    {
-      id: 2,
-      name: 'Cámara IP 4MP exterior',
-      desc: 'Resistente al agua (IP66), detección de movimiento.',
-      price: 160000,
-      image: 'images/camara-exterior.jpg'
-    }
-  ],
-  computadores: [
-    {
-      id: 5,
-      name: 'PC de escritorio básico',
-      desc: 'Intel/AMD, 8GB RAM, SSD 256GB.',
-      price: 950000,
-      image: 'images/pc-oficina.jpg'
-    }
-  ]
+ const SHOP_DEFAULT_PRODUCTS = [
+
+  {id:1, cat:'camaras', emoji:'📷', name:'Cámara IP WiFi 2MP interior', desc:'Visión nocturna, audio bidireccional, app móvil, grabación en la nube o tarjeta SD.', price:'95.000'},
+
+  {id:2, cat:'camaras', emoji:'🎥', name:'Cámara IP 4MP exterior con visión nocturna', desc:'Resistente al agua (IP66), detección de movimiento, ideal para fachadas y patios.', price:'160.000'},
+
+  {id:3, cat:'camaras', emoji:'📼', name:'Kit 4 cámaras análogas + DVR', desc:'Incluye DVR de 4 canales, 4 cámaras, cableado y fuente. Ideal para locales pequeños.', price:'480.000'},
+
+  {id:4, cat:'camaras', emoji:'💾', name:'Disco duro para DVR/NVR 1TB', desc:'Disco de vigilancia de larga duración, optimizado para grabación 24/7.', price:'165.000'},
+
+  {id:5, cat:'computadores', emoji:'🖥️', name:'PC de escritorio básico (oficina/estudio)', desc:'Intel/AMD, 8GB RAM, SSD 256GB. Ideal para tareas, ofimática y navegación.', price:'950.000'},
+
+  {id:6, cat:'computadores', emoji:'💻', name:'Portátil reacondicionado (i5, 8GB, SSD)', desc:'Equipo revisado y garantizado, listo para trabajo y estudio. Disponibilidad limitada.', price:'1.100.000'},
+
+  {id:7, cat:'computadores', emoji:'🖨️', name:'Impresora multifuncional inyección de tinta', desc:'Imprime, escanea y copia. Conexión WiFi para varios equipos.', price:'420.000'},
+
+  {id:8, cat:'repuestos', emoji:'🧠', name:'Memoria RAM 8GB DDR4', desc:'Compatible con la mayoría de portátiles y de escritorio recientes. Instalación incluida.', price:'130.000'},
+
+  {id:9, cat:'repuestos', emoji:'💽', name:'SSD 480GB', desc:'Acelera cualquier equipo lento. Incluye clonación de tu disco actual sin perder datos.', price:'155.000'},
+
+  {id:10, cat:'repuestos', emoji:'🔋', name:'Fuente de poder 500W', desc:'Para PC de escritorio, certificada, protección contra sobrecargas.', price:'110.000'},
+
+  {id:11, cat:'repuestos', emoji:'🌀', name:'Cooler / ventilador para CPU', desc:'Reemplazo de ventiladores ruidosos o dañados, mejora la temperatura del equipo.', price:'45.000'},
+
+  {id:12, cat:'redes', emoji:'📡', name:'Router WiFi doble banda AC1200', desc:'Cobertura para casa u oficina pequeña, configuración incluida.', price:'130.000'},
+
+  {id:13, cat:'redes', emoji:'📶', name:'Repetidor / extensor de WiFi', desc:'Elimina zonas muertas de señal en tu casa o negocio.', price:'75.000'},
+
+  {id:14, cat:'redes', emoji:'📡', name:'Antena direccional para enlace punto a punto', desc:'Para conectar internet o red local entre edificios o predios sin cableado físico.', price:'280.000'},
+
+  {id:15, cat:'redes', emoji:'🔌', name:'Switch de red 8 puertos', desc:'Para ampliar puntos de red en oficinas o redes domésticas más grandes.', price:'90.000'},
+
+  {id:16, cat:'accesorios', emoji:'⌨️', name:'Combo teclado + mouse inalámbrico', desc:'Conexión USB inalámbrica, ideal para escritorio u oficina.', price:'65.000'},
+
+  {id:17, cat:'accesorios', emoji:'🔌', name:'Regulador de voltaje / supresor de picos', desc:'Protege tus equipos de variaciones eléctricas y descargas.', price:'70.000'},
+
+  {id:18, cat:'accesorios', emoji:'🔋', name:'UPS / batería de respaldo 600VA', desc:'Mantiene tu PC o router encendido unos minutos durante un corte de luz.', price:'185.000'},
+
+  {id:19, cat:'accesorios', emoji:'🎙️', name:'Webcam HD con micrófono', desc:'Ideal para videollamadas, clases virtuales y trabajo remoto.', price:'95.000'},
+
+]; 
   // Puedes seguir añadiendo más categorías aquí fácilmente
 };
 // El catálogo vive en memoria (_shopProductsCache) y en Firestore, en el
