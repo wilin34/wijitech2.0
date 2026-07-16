@@ -355,6 +355,15 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
   #wa-float{bottom:18px;right:18px}
   #wa-float a{width:50px;height:50px;font-size:23px}
 }
+
+/* ───────── Pestañas del panel principal ─────────
+   Cada sección principal (Inicio, Servicios, Tienda, Cursos, Cobertura,
+   Contacto) es ahora su propia "ventana": solo la pestaña activa se
+   muestra, en vez de que todo aparezca apilado en una sola pantalla. */
+.page-section{display:none}
+.page-section.active{display:block;animation:pageFadeIn .25s ease}
+@keyframes pageFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.navlinks a.active{color:var(--white);border-bottom:2px solid var(--orange)}
 </style>
 </head>
 <body>
@@ -365,11 +374,12 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
   <div class="nav">
     <div class="brand"><span class="dot"></span>WIJITECH<small>servicios técnicos</small></div>
     <div class="navlinks">
-      <a href="#servicios">Servicios</a>
-      <a href="#" onclick="openShop();return false;">Tienda</a>
-      <a href="#cursos">Cursos &amp; Bachillerato</a>
-      <a href="#cobertura">Cobertura</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#" id="navtab-inicio" onclick="showTab('inicio');return false;">Inicio</a>
+      <a href="#" id="navtab-servicios" onclick="showTab('servicios');return false;">Servicios</a>
+      <a href="#" id="navtab-tienda" onclick="showTab('tienda-teaser');return false;">Tienda</a>
+      <a href="#" id="navtab-cursos" onclick="showTab('cursos');return false;">Cursos &amp; Bachillerato</a>
+      <a href="#" id="navtab-cobertura" onclick="showTab('cobertura');return false;">Cobertura</a>
+      <a href="#" id="navtab-contacto" onclick="showTab('contacto');return false;">Contacto</a>
     </div>
     <a class="nav-cta" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">▸ Agendar visita</a>
   </div>
@@ -377,27 +387,27 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
 
 <main class="wrap">
 
-  <!-- ───────── HERO ───────── -->
-  <section class="hero">
+  <!-- ───────── HERO / INICIO ───────── -->
+  <section class="hero page-section active" id="inicio">
     <div class="hero-tag"><span class="led"></span>DISPONIBLE PARA SERVICIO A DOMICILIO HOY</div>
     <h1>Soporte técnico que <span class="accent">llega a tu puerta</span>
     <p class="hero-sub">Mantenimiento de computadores e impresoras, instalación de cámaras de seguridad, redes punto a punto y soporte técnico — todo en un solo técnico, en tu casa o negocio.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">📲 Escribir por WhatsApp</a>
-      <a class="btn btn-ghost" href="#servicios">Ver servicios ↓</a>
+      <a class="btn btn-ghost" href="#" onclick="showTab('servicios');return false;">Ver servicios ↓</a>
     </div>
 
     <div class="readout">
-      <div><div class="num">24h</div><div class="label">tiempo de respuesta</div></div>
-      <div><div class="num">100%</div><div class="label">visita a domicilio</div></div>
-      <div><div class="num">6</div><div class="label">cursos técnicos</div></div>
+      <div><div class="num">✓</div><div class="label">tiempo de respuesta</div></div>
+      <div><div class="num">✓</div><div class="label">visita a domicilio</div></div>
+      <div><div class="num">✓</div><div class="label">cursos técnicos</div></div>
     </div>
   </section>
 
   <!-- ───────── SERVICIOS ───────── -->
-  <section id="servicios">
+  <section id="servicios" class="page-section">
     <div class="eyebrow">/ orden de servicio</div>
-    <h2>Servicios que brindamos</h2>
+    <h2>Lo que reparamos e instalamos</h2>
     <p class="section-sub">Cada visita incluye diagnóstico, mano de obra y garantía sobre el trabajo realizado. Tú eliges el horario.</p>
 
     <div class="services-grid">
@@ -646,7 +656,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
   </section>
 
   <!-- ───────── TIENDA (vitrina — la tienda real abre como ventana aparte) ───────── -->
-  <section id="tienda-teaser">
+  <section id="tienda-teaser" class="page-section">
     <div class="edu-panel" style="background:linear-gradient(135deg, rgba(61,220,132,.08), rgba(255,106,26,.06))">
       <div>
         <div class="eyebrow">/ tienda wijitech</div>
@@ -672,7 +682,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
   </section>
 
   <!-- ───────── CURSOS / WIJIEDU ───────── -->
-  <section id="cursos">
+  <section id="cursos" class="page-section">
     <div class="edu-panel">
       <div>
         <div class="eyebrow">/ formación técnica</div>
@@ -698,7 +708,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
   </section>
 
   <!-- ───────── COBERTURA ───────── -->
-  <section id="cobertura">
+  <section id="cobertura" class="page-section">
     <div class="eyebrow">/ zona de cobertura</div>
     <h2>Atendemos a domicilio en estas zonas</h2>
     <p class="section-sub">¿No ves tu sector? Escríbenos — muchas veces igual podemos cubrirlo.</p>
@@ -734,17 +744,16 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
     </div>
   </section>
 
-  <div class="trust">
-    <div class="trust-row">
-      <div><b>Diagnóstico claro</b><br>antes de cualquier cobro</div>
-      <div><b>Garantía</b><br>sobre cada servicio realizado</div>
-      <div><b>Pago al finalizar</b><br>sin adelantos para visitar</div>
-      <div><b>Respuesta rápida</b><br>por WhatsApp, todos los días</div>
-    </div>
-  </div>
-
   <!-- ───────── CTA FINAL ───────── -->
-  <section class="cta-final" id="contacto">
+  <section class="cta-final page-section" id="contacto">
+    <div class="trust">
+      <div class="trust-row">
+        <div><b>Diagnóstico claro</b><br>antes de cualquier cobro</div>
+        <div><b>Garantía</b><br>sobre cada servicio realizado</div>
+        <div><b>Pago al finalizar</b><br>sin adelantos para visitar</div>
+        <div><b>Respuesta rápida</b><br>por WhatsApp, todos los días</div>
+      </div>
+    </div>
     <div class="eyebrow" style="justify-content:center;display:flex">/ contacto directo</div>
     <h2>¿Tu equipo, cámara o red necesita atención?</h2>
     <p class="section-sub">Cuéntanos qué pasa y coordinamos la visita el mismo día o el que mejor te quede.</p>
@@ -885,10 +894,41 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
 
 <script>
 // ═══════════════════════════════════════════════════════════════
-// TIENDA WIJITECH — catálogo basado en datos (localStorage), no en
+// PESTAÑAS DEL PANEL PRINCIPAL — cada sección (Inicio, Servicios,
+// Tienda, Cursos, Cobertura, Contacto) es su propia "ventana": solo
+// una está visible a la vez, en vez de mostrar todo apilado desde el
+// primer scroll. La tienda y WijiEdu siguen abriéndose además como
+// overlays de pantalla completa aparte (openShop / openWijiEdu).
+// ═══════════════════════════════════════════════════════════════
+const MAIN_TABS = ['inicio','servicios','tienda-teaser','cursos','cobertura','contacto'];
+const TAB_NAV_IDS = {
+  'inicio':'navtab-inicio', 'servicios':'navtab-servicios', 'tienda-teaser':'navtab-tienda',
+  'cursos':'navtab-cursos', 'cobertura':'navtab-cobertura', 'contacto':'navtab-contacto'
+};
+
+function showTab(tabId){
+  if(!MAIN_TABS.includes(tabId)) tabId='inicio';
+  MAIN_TABS.forEach(id=>{
+    const sec = document.getElementById(id);
+    if(sec) sec.classList.toggle('active', id===tabId);
+  });
+  Object.entries(TAB_NAV_IDS).forEach(([id, navId])=>{
+    const navEl = document.getElementById(navId);
+    if(navEl) navEl.classList.toggle('active', id===tabId);
+  });
+  window.scrollTo(0,0);
+}
+
+// Arranca siempre en "Inicio" al cargar la página.
+showTab('inicio');
+</script>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// TIENDA WIJITECH — catálogo basado en datos (Firestore), no en
 // tarjetas fijas en el HTML. Esto es lo que permite agregar/quitar
 // productos desde el panel de gestión sin tocar código: todo el
-// catálogo vive en una sola clave de localStorage como JSON, y la
+// catálogo vive en un documento de Firestore como JSON, y la
 // grilla simplemente se vuelve a dibujar cada vez que cambia.
 // ═══════════════════════════════════════════════════════════════
 const SHOP_ADMIN_PASS = 'wijitech2026';
