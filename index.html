@@ -57,6 +57,42 @@ body{
   overflow-x:hidden;
 }
 ::selection{background:var(--orange);color:#0B0F14}
+  .course-card{
+    border-radius:18px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.course-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(255,106,26,.25);
+}
+
+.course-banner{
+    height:180px;
+    background:linear-gradient(135deg,#ff6a1a,#ffb347);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:90px;
+    margin:-26px -24px 25px -24px;
+}
+
+.course-card h4{
+    margin-top:20px;
+    margin-bottom:12px;
+    color:#FF6A1A;
+}
+
+.course-card hr{
+    border:none;
+    border-top:1px solid #2c2c2c;
+    margin:20px 0;
+}
+
+.course-card table td{
+    padding:8px;
+}
 
 /* ───────── grid texture background ───────── */
 .grid-bg{
@@ -689,19 +725,114 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
 <p class="section-sub">Elige el programa de tu interés y matricúlate en línea.</p>
 <div class="services-grid">
 
-<div class="ot-card"><span class="ot-icon">💻</span><h3>Técnico Laboral en Sistemas</h3><p>Aprende mantenimiento, redes, software y soporte técnico.</p>
-<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div>
-<div class="ot-card"><span class="ot-icon">🤖</span><h3>Técnico Laboral en Inteligencia Artificial</h3><p>Uso de IA, automatización y herramientas modernas.</p>
-<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div>
-<div class="ot-card"><span class="ot-icon">📊</span><h3>Técnico Laboral en Contabilidad</h3><p>Contabilidad, nómina y software contable.</p>
-<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div>
-<div class="ot-card"><span class="ot-icon">🌐</span><h3>Técnico Laboral en Inglés</h3><p>Inglés comunicativo para estudio y trabajo.</p>
-<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div>
-<div class="ot-card"><span class="ot-icon">💼</span><h3>Técnico Laboral en Asistencia Administrativa</h3><p>Gestión documental y procesos administrativos.</p>
-<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div>
-<div class="ot-card"><span class="ot-icon">🎓</span><h3>Bachillerato por Ciclos</h3><p>Finaliza tu bachillerato de 6° a 11°.</p>
-<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div></div></div></section>
+<div class="ot-card course-card">
 
+    <div class="course-banner">
+        💻
+    </div>
+
+    <div class="ot-code">
+        CÓDIGO: TLS-001
+        <span class="status">● Matrículas Abiertas</span>
+    </div>
+
+    <h3>Técnico Laboral en Sistemas</h3>
+
+    <p>
+        Conviértete en un profesional capaz de instalar, configurar, mantener
+        y reparar computadores, redes y sistemas operativos.
+        Aprende con clases teóricas y prácticas utilizando herramientas
+        empleadas en empresas del sector tecnológico.
+    </p>
+
+    <div class="ot-tags">
+        <span>📚 1.200 Horas</span>
+        <span>🗓️ 12 Meses</span>
+        <span>🌐 Virtual</span>
+        <span>🎓 Certificado</span>
+    </div>
+
+    <hr>
+
+    <h4>¿Qué aprenderás?</h4>
+
+    <ul class="ot-menu-list">
+        <li>✅ Mantenimiento preventivo y correctivo.</li>
+        <li>✅ Ensamble y desensamble de computadores.</li>
+        <li>✅ Redes LAN y WiFi.</li>
+        <li>✅ Cableado estructurado.</li>
+        <li>✅ Windows y Linux.</li>
+        <li>✅ Seguridad informática.</li>
+        <li>✅ Office Profesional.</li>
+        <li>✅ Soporte remoto.</li>
+        <li>✅ Virtualización.</li>
+        <li>✅ Atención al cliente.</li>
+    </ul>
+
+    <hr>
+
+    <h4>Perfil Ocupacional</h4>
+
+    <p>
+        Al finalizar podrás trabajar como auxiliar de sistemas,
+        técnico de soporte, instalador de redes, mantenimiento de
+        computadores o iniciar tu propio negocio de soporte técnico.
+    </p>
+
+    <hr>
+
+    <h4>Incluye</h4>
+
+    <div class="ot-tags">
+        <span>📖 Material Digital</span>
+        <span>🎥 Clases en Vivo</span>
+        <span>👨‍🏫 Tutor Permanente</span>
+        <span>📱 Plataforma Virtual</span>
+        <span>📝 Evaluaciones</span>
+        <span>📜 Certificado</span>
+    </div>
+
+    <hr>
+
+    <h4>Información</h4>
+
+    <table style="width:100%;margin-top:15px;color:white;font-size:14px;">
+        <tr>
+            <td><strong>Inicio:</strong></td>
+            <td>Inscripciones Permanentes</td>
+        </tr>
+
+        <tr>
+            <td><strong>Modalidad:</strong></td>
+            <td>100% Virtual</td>
+        </tr>
+
+        <tr>
+            <td><strong>Horario:</strong></td>
+            <td>Flexible</td>
+        </tr>
+
+        <tr>
+            <td><strong>Prácticas:</strong></td>
+            <td>Sí</td>
+        </tr>
+
+        <tr>
+            <td><strong>Certificación:</strong></td>
+            <td>Sí</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <a class="btn btn-primary"
+       href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor"
+       target="_blank"
+       style="width:100%;justify-content:center;font-size:17px;">
+       🎓 MATRICULARME AHORA
+    </a>
+
+</div>
   <!-- ───────── COBERTURA ───────── -->
   <section id="cobertura" class="page-section">
     <div class="eyebrow">/ zona de cobertura</div>
