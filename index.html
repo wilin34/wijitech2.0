@@ -140,19 +140,7 @@ h1 .accent{color:var(--orange)}
 .readout .num{font-family:var(--mono);font-size:26px;font-weight:800;color:var(--orange)}
 .readout .label{font-size:11.5px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
 @media(max-width:760px){.readout{grid-template-columns:1fr 1fr}.readout div{border-bottom:1px solid var(--line)}}
-<main class="wrap">
-    
-    <!-- Aquí es donde pones el id="seccion-cursos" -->
-    <section id="seccion-cursos" class="page-section">
-        <div class="eyebrow">/ catálogo educativo</div>
-        <h2>Cursos Disponibles</h2>
-        
-        <div class="services-grid" id="cursos-disponibles">
-            <!-- Tu JavaScript llenará esto -->
-        </div>
-    </section>
 
-</main>
 /* ───────── section shared ───────── */
 section{padding:80px 0}
 .eyebrow{
@@ -693,21 +681,6 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
       </div>
     </div>
   </section>
-<!-- Sección de Cursos -->
-<section id="seccion-cursos" class="page-section">
-    <h2>Cursos Disponibles</h2>
-    <div class="services-grid" id="cursos-disponibles">
-        <!-- El JS inyectará el contenido aquí -->
-    </div>
-</section>
-
-<!-- Sección de Técnicos -->
-<section id="seccion-tecnicos" class="page-section">
-    <h2>Programas Técnicos</h2>
-    <div class="services-grid" id="tecnicos-disponibles">
-        <!-- Puedes añadir contenido o inyectarlo vía JS -->
-    </div>
-</section>
 
 <!-- Sección de Bachillerato -->
 <section id="seccion-bachillerato" class="page-section">
@@ -1475,6 +1448,71 @@ function closeWijiEdu(){
   document.getElementById('wijiedu-overlay').style.display = 'none';
   document.body.style.overflow = '';
 }
+  const cursos = [
+{
+    nombre:"Mantenimiento de Computadores",
+    duracion:"40 horas",
+    modalidad:"Virtual",
+    descripcion:"Aprende desde cero.",
+    formulario:"https://forms.gle/xxxxx"
+},
+{
+    nombre:"Instalación de Cámaras",
+    duracion:"30 horas",
+    modalidad:"Presencial",
+    descripcion:"CCTV y DVR.",
+    formulario:"https://forms.gle/xxxxx"
+},
+{
+    nombre:"Redes e Internet",
+    duracion:"25 horas",
+    modalidad:"Virtual",
+    descripcion:"Cableado y routers.",
+    formulario:"https://forms.gle/xxxxx"
+}
+];
+
+function mostrarCursos(){
+
+const contenedor=document.getElementById("contenedorCursos");
+
+contenedor.innerHTML="";
+
+cursos.forEach(curso=>{
+
+contenedor.innerHTML+=`
+
+<div class="ot-card">
+
+<div class="ot-code">
+Curso
+</div>
+
+<h3>${curso.nombre}</h3>
+
+<p>${curso.descripcion}</p>
+
+<p><strong>Duración:</strong> ${curso.duracion}</p>
+
+<p><strong>Modalidad:</strong> ${curso.modalidad}</p>
+
+<a href="${curso.formulario}"
+target="_blank"
+class="btn btn-primary">
+
+Matricularme
+
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+mostrarCursos();
 </script>
 
 </body>
