@@ -1415,18 +1415,26 @@ function setDialState(stage, num){
 // Measures round-trip latency with several small no-cache requests and
 // returns the median — more representative than a single ping, which
 // can randomly spike.
-async function measurePing(){
-  const samples = [];
-  for(let i=0;i<5;i++){
-    const t0 = performance.now();
-    try{
-      await fetch(`${CF_DOWN_URL}?bytes=0&i=${Date.now()}_${i}`, {cache:'no-store'});
-      samples.push(performance.now()-t0);
-    }catch(e){ /* one failed ping shouldn't kill the whole test */ }
+async function measureDownload(bytes) {
+  const url = `https://speed.cloudflare.com/__down?bytes=${bytes}&nocache=${Math.random()}`;
+
+  const t0 = performance.now();
+
+  const res = await fetch(url, {
+    method: "GET",
+    cache: "no-store",
+    mode: "cors"
+  });
+
+  if (!res.ok) {
+    throw new Error("Error en descarga: " + res.status);
   }
-  if(!samples.length) return null;
-  samples.sort((a,b)=>a-b);
-  return samples[Math.floor(samples.length/2)];
+
+  const buffer = await res.arrayBuffer();
+
+  const seconds = (performance.now() - t0) / 1000;
+
+  return (buffer.byteLength * 8) / seconds / 1000000;
 }
 
 // Downloads a real file of the given size and returns Mbps based on
@@ -1438,26 +1446,60 @@ async function measurePing(){
 // on very fast connections (where server time is a bigger fraction of
 // the total) the reported Mbps may run slightly low. Using larger
 // transfer sizes (handled in runSpeedTest below) keeps that effect small.
-async function measureDownload(bytes){
-  const t0 = performance.now();
-  const res = await fetch(`${CF_DOWN_URL}?bytes=${bytes}&i=${Date.now()}`, {cache:'no-store'});
-  const buf = await res.arrayBuffer();
-  const seconds = (performance.now()-t0)/1000;
-  const mbps = (buf.byteLength*8)/seconds/1e6;
-  return mbps;
-}
+async function measureUpload(bytes) {
 
+  const data = crypto.getRandomValues(new Uint8Array(bytes));
+
+  const t0 = performance.now();
+
+  const res = await fetch("https://speed.cloudflare.com/__up", {
+    method: "POST",
+    body: data,
+    mode: "cors",
+    cache: "no-store"
+  });
+
+  if (!res.ok) {
+    throw new Error("Error en subida: " + res.status);
+  }
+
+  const seconds = (performance.now() - t0) / 1000;
+
+  return (bytes * 8) / seconds / 1000000;
+}
 // Uploads a real generated payload of the given size via POST and
 // returns Mbps the same way. Same server-time caveat as measureDownload.
-async function measureUpload(bytes){
-  const data = new Uint8Array(bytes);
-  const t0 = performance.now();
-  await fetch(CF_UP_URL, {method:'POST', body:data, cache:'no-store'});
-  const seconds = (performance.now()-t0)/1000;
-  const mbps = (bytes*8)/seconds/1e6;
-  return mbps;
-}
+async function measurePing() {
 
+  const tiempos = [];
+
+  for (let i = 0; i < 5; i++) {
+
+    const t0 = performance.now();
+
+    try {
+
+      const r = await fetch(
+        `https://speed.cloudflare.com/cdn-cgi/trace?${Math.random()}`,
+        {
+          cache: "no-store",
+          mode: "cors"
+        }
+      );
+
+      if (r.ok) {
+        tiempos.push(performance.now() - t0);
+      }
+
+    } catch {}
+  }
+
+  if (!tiempos.length) return null;
+
+  tiempos.sort((a,b)=>a-b);
+
+  return tiempos[Math.floor(tiempos.length/2)];
+}
 async function runSpeedTest(){
   const btn = document.getElementById('sd-btn');
   const dial = document.getElementById('sd-dial');
