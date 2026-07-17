@@ -377,8 +377,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
       <a href="#" id="navtab-inicio" onclick="showTab('inicio');return false;">Inicio</a>
       <a href="#" id="navtab-servicios" onclick="showTab('servicios');return false;">Servicios</a>
       <a href="#" id="navtab-tienda" onclick="showTab('tienda-teaser');return false;">Tienda</a>
-      <a href="#" id="navtab-cursos" onclick="showTab('cursos');return false;">Plataforma educativa</a>
-      <a href="#" id="navtab-cursos-nuevo" onclick="showTab('seccion-cursos');return false;" class="btn-menu">Cursos</a>
+      <a href="#" id="navtab-cursos" onclick="showTab('cursos');return false;">Cursos &amp; Bachillerato</a>
       <a href="#" id="navtab-cobertura" onclick="showTab('cobertura');return false;">Cobertura</a>
       <a href="#" id="navtab-contacto" onclick="showTab('contacto');return false;">Contacto</a>
     </div>
@@ -404,21 +403,6 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
       <div><div class="num">✓</div><div class="label">cursos técnicos</div></div>
     </div>
   </section>
-  <section id="seccion-cursos" class="page-section" style="display:none;">
-
-    <div class="container">
-
-        <div class="eyebrow">/ Formación</div>
-
-        <h2>Cursos Disponibles</h2>
-
-        <p>Capacítate con WijiTech.</p>
-
-        <div id="contenedorCursos" class="services-grid"></div>
-
-    </div>
-
-</section>
 
   <!-- ───────── SERVICIOS ───────── -->
   <section id="servicios" class="page-section">
@@ -697,42 +681,26 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
     </div>
   </section>
 
-<!-- Sección de Bachillerato -->
-<section id="seccion-bachillerato" class="page-section">
-    <h2>Bachillerato Acelerado</h2>
-    <div class="services-grid" id="bachillerato-info">
-        <div class="ot-card">
-            <h3>Bachillerato en convenio con Colegio Vida Nueva</h3>
-            <p>Programa académico acelerado diseñado para culminar tus estudios satisfactoriamente.</p>
-            <a href="TU_LINK_FORMULARIO" target="_blank" class="btn-matricular">Matricúlate aquí</a>
-        </div>
-    </div>
-</section>
-  <!-- ───────── CURSOS / WIJIEDU ───────── -->
-  <section id="cursos" class="page-section">
-    <div class="edu-panel">
-      <div>
-        <div class="eyebrow">/ formación técnica</div>
-        <h2>Aprende el oficio. Valida tu bachillerato.</h2>
-        <p class="section-sub" style="margin-top:14px">Además del servicio técnico, dictamos cursos técnicos en línea y acompañamos la validación de bachillerato de 6° a 11°, todo dentro de nuestra plataforma educativa WijiEdu.</p>
-        <div class="edu-list">
-          <div><b>→</b> Cursos técnicos: Sistemas, Inversiones, Contabilidad, Inglés, Videojuegos e Inteligencia Artificial.</div>
-          <div><b>→</b> Validación de bachillerato por grado (6° a 11°), con materias, docente asignado y entrega de trabajos en línea.</div>
-          <div><b>→</b> Clases en vivo por Google Meet, calificaciones y certificación de avance.</div>
-        </div>
-        <div class="hero-actions" style="margin-top:30px">
-          <button class="btn btn-primary" onclick="openWijiEdu()">🎓 Entrar a WijiEdu →</button>
-          <a class="btn btn-ghost" href="https://wa.me/573118184977?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos%20o%20validaci%C3%B3n%20de%20bachillerato" target="_blank">Preguntar por WhatsApp</a>
-        </div>
-      </div>
-      <div class="edu-card">
-        <div class="tag-row"><span>🎓 6° – 11°</span><span>💻 6 cursos</span><span>📤 En línea</span></div>
-        <h3>Plataforma WijiEdu</h3>
-        <p>Administradores, docentes y estudiantes tienen su propio acceso. Sube trabajos, revisa calificaciones, asiste a clases en vivo y haz seguimiento a tu proceso de validación desde cualquier dispositivo.</p>
-        <button class="btn btn-primary" onclick="openWijiEdu()" style="width:100%;justify-content:center">Ir a la plataforma</button>
-      </div>
-    </div>
-  </section>
+  
+<section id="cursos" class="page-section">
+<div class="wrap">
+<div class="eyebrow">/ oferta académica</div>
+<h2>Cursos Técnicos y Bachillerato</h2>
+<p class="section-sub">Elige el programa de tu interés y matricúlate en línea.</p>
+<div class="services-grid">
+
+<div class="ot-card"><span class="ot-icon">💻</span><h3>Técnico Laboral en Sistemas</h3><p>Aprende mantenimiento, redes, software y soporte técnico.</p>
+<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div>
+<div class="ot-card"><span class="ot-icon">🤖</span><h3>Técnico Laboral en Inteligencia Artificial</h3><p>Uso de IA, automatización y herramientas modernas.</p>
+<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div>
+<div class="ot-card"><span class="ot-icon">📊</span><h3>Técnico Laboral en Contabilidad</h3><p>Contabilidad, nómina y software contable.</p>
+<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div>
+<div class="ot-card"><span class="ot-icon">🌐</span><h3>Técnico Laboral en Inglés</h3><p>Inglés comunicativo para estudio y trabajo.</p>
+<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div>
+<div class="ot-card"><span class="ot-icon">💼</span><h3>Técnico Laboral en Asistencia Administrativa</h3><p>Gestión documental y procesos administrativos.</p>
+<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div>
+<div class="ot-card"><span class="ot-icon">🎓</span><h3>Bachillerato por Ciclos</h3><p>Finaliza tu bachillerato de 6° a 11°.</p>
+<a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfzMgutoVvt350lfcXZDvk_g8N0Rggi3vS5vJhA_jIf9yo35g/viewform?usp=publish-editor" target="_blank">Matricularme</a></div></div></div></section>
 
   <!-- ───────── COBERTURA ───────── -->
   <section id="cobertura" class="page-section">
@@ -805,23 +773,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
   </a>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     WijiEdu, embebida en este mismo archivo.
-     Por qué un iframe (y no pegar su HTML/CSS/JS directamente aquí):
-     WijiEdu usa sus propias clases globales (.btn, .card, #sidebar...)
-     que son nombres comunes y CHOCARÍAN con los estilos de esta misma
-     página (WijiTech también tiene .btn, .card, etc.), rompiendo el
-     diseño de ambas. Un iframe aísla completamente su CSS y JS, así
-     que las dos partes conviven sin interferirse, dentro de un único
-     archivo .html — no se necesita ningún segundo archivo aparte.
-     ═══════════════════════════════════════════════════════════════ -->
-<div id="wijiedu-overlay" style="display:none;position:fixed;inset:0;z-index:200;background:#0A1628">
-  <button id="wijiedu-close" onclick="closeWijiEdu()" aria-label="Cerrar plataforma" style="position:fixed;top:14px;right:14px;z-index:201;width:38px;height:38px;border-radius:9px;border:1px solid #243356;background:#162040;color:#E2E8F0;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button>
-  <iframe id="wijiedu-frame" style="width:100%;height:100%;border:none" title="WijiEdu — Plataforma Educativa"></iframe>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     Tienda WijiTech — ventana propia, separada de la landing y de
+<!-- Tienda WijiTech — ventana propia, separada de la landing y de
      WijiEdu. A diferencia de WijiEdu (que es un archivo externo
      completo y necesita iframe para aislar su CSS), la tienda es
      HTML/CSS/JS nativo de esta misma página: reutiliza las mismas
@@ -927,15 +879,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
 // primer scroll. La tienda y WijiEdu siguen abriéndose además como
 // overlays de pantalla completa aparte (openShop / openWijiEdu).
 // ═══════════════════════════════════════════════════════════════
-const MAIN_TABS = [
-'inicio',
-'servicios',
-'tienda-teaser',
-'cursos',
-'seccion-cursos',
-'cobertura',
-'contacto'
-];
+const MAIN_TABS = ['inicio','servicios','tienda-teaser','cursos','cobertura','contacto'];
 const TAB_NAV_IDS = {
   'inicio':'navtab-inicio', 'servicios':'navtab-servicios', 'tienda-teaser':'navtab-tienda',
   'cursos':'navtab-cursos', 'cobertura':'navtab-cobertura', 'contacto':'navtab-contacto'
@@ -1471,71 +1415,6 @@ function closeWijiEdu(){
   document.getElementById('wijiedu-overlay').style.display = 'none';
   document.body.style.overflow = '';
 }
-  const cursos = [
-{
-    nombre:"Mantenimiento de Computadores",
-    duracion:"40 horas",
-    modalidad:"Virtual",
-    descripcion:"Aprende desde cero.",
-    formulario:"https://forms.gle/xxxxx"
-},
-{
-    nombre:"Instalación de Cámaras",
-    duracion:"30 horas",
-    modalidad:"Presencial",
-    descripcion:"CCTV y DVR.",
-    formulario:"https://forms.gle/xxxxx"
-},
-{
-    nombre:"Redes e Internet",
-    duracion:"25 horas",
-    modalidad:"Virtual",
-    descripcion:"Cableado y routers.",
-    formulario:"https://forms.gle/xxxxx"
-}
-];
-
-function mostrarCursos(){
-
-const contenedor=document.getElementById("contenedorCursos");
-
-contenedor.innerHTML="";
-
-cursos.forEach(curso=>{
-
-contenedor.innerHTML+=`
-
-<div class="ot-card">
-
-<div class="ot-code">
-Curso
-</div>
-
-<h3>${curso.nombre}</h3>
-
-<p>${curso.descripcion}</p>
-
-<p><strong>Duración:</strong> ${curso.duracion}</p>
-
-<p><strong>Modalidad:</strong> ${curso.modalidad}</p>
-
-<a href="${curso.formulario}"
-target="_blank"
-class="btn btn-primary">
-
-Matricularme
-
-</a>
-
-</div>
-
-`;
-
-});
-
-}
-
-mostrarCursos();
 </script>
 
 </body>
