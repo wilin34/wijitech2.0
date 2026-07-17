@@ -140,7 +140,19 @@ h1 .accent{color:var(--orange)}
 .readout .num{font-family:var(--mono);font-size:26px;font-weight:800;color:var(--orange)}
 .readout .label{font-size:11.5px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
 @media(max-width:760px){.readout{grid-template-columns:1fr 1fr}.readout div{border-bottom:1px solid var(--line)}}
+<main class="wrap">
+    
+    <!-- Aquí es donde pones el id="seccion-cursos" -->
+    <section id="seccion-cursos" class="page-section">
+        <div class="eyebrow">/ catálogo educativo</div>
+        <h2>Cursos Disponibles</h2>
+        
+        <div class="services-grid" id="cursos-disponibles">
+            <!-- Tu JavaScript llenará esto -->
+        </div>
+    </section>
 
+</main>
 /* ───────── section shared ───────── */
 section{padding:80px 0}
 .eyebrow{
@@ -378,7 +390,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
       <a href="#" id="navtab-servicios" onclick="showTab('servicios');return false;">Servicios</a>
       <a href="#" id="navtab-tienda" onclick="showTab('tienda-teaser');return false;">Tienda</a>
       <a href="#" id="navtab-cursos" onclick="showTab('cursos');return false;">Plataforma educativa</a>
-      <a href="#seccion-cursos" class="btn-nav">Cursos</a>
+      <a href="#" id="navtab-cursos-nuevo" onclick="showTab('seccion-cursos');return false;" class="btn-menu">Cursos</a>
       <a href="#" id="navtab-cobertura" onclick="showTab('cobertura');return false;">Cobertura</a>
       <a href="#" id="navtab-contacto" onclick="showTab('contacto');return false;">Contacto</a>
     </div>
@@ -681,12 +693,33 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(
       </div>
     </div>
   </section>
-  <nav class="nav-principal">
-    <a href="#seccion-cursos" class="btn-menu">Cursos</a>
-    <a href="#seccion-tecnicos" class="btn-menu">Técnicos</a>
-    <a href="#seccion-bachillerato" class="btn-menu">Bachillerato</a>
-</nav>
+<!-- Sección de Cursos -->
+<section id="seccion-cursos" class="page-section">
+    <h2>Cursos Disponibles</h2>
+    <div class="services-grid" id="cursos-disponibles">
+        <!-- El JS inyectará el contenido aquí -->
+    </div>
+</section>
 
+<!-- Sección de Técnicos -->
+<section id="seccion-tecnicos" class="page-section">
+    <h2>Programas Técnicos</h2>
+    <div class="services-grid" id="tecnicos-disponibles">
+        <!-- Puedes añadir contenido o inyectarlo vía JS -->
+    </div>
+</section>
+
+<!-- Sección de Bachillerato -->
+<section id="seccion-bachillerato" class="page-section">
+    <h2>Bachillerato Acelerado</h2>
+    <div class="services-grid" id="bachillerato-info">
+        <div class="ot-card">
+            <h3>Bachillerato en convenio con Colegio Vida Nueva</h3>
+            <p>Programa académico acelerado diseñado para culminar tus estudios satisfactoriamente.</p>
+            <a href="TU_LINK_FORMULARIO" target="_blank" class="btn-matricular">Matricúlate aquí</a>
+        </div>
+    </div>
+</section>
   <!-- ───────── CURSOS / WIJIEDU ───────── -->
   <section id="cursos" class="page-section">
     <div class="edu-panel">
