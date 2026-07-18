@@ -836,8 +836,66 @@ function toggleOtMenu(cardId){
 const SHOP_STORAGE_KEY = 'wijitech_shop_products';
 
 const SHOP_DEFAULT_PRODUCTS = [
-  {id:1, cat:'camaras', emoji:'📷', name:'Cámara IP WiFi 2MP interior', desc:'Visión nocturna, audio bidireccional, app móvil, grabación en la nube o tarjeta SD.', price:'95.000'},
-  ];
+  
+  // ============================================================
+  // 📷 CÁMARAS DE SEGURIDAD
+  // ============================================================
+  {id:1, cat:'camaras', emoji:'📷', name:'Cámara IP WiFi 2MP Interior', desc:'Visión nocturna infrarroja, audio bidireccional, app móvil, grabación en tarjeta SD o nube. Ideal para monitoreo de interiores.', price:'95.000'},
+  {id:2, cat:'camaras', emoji:'🎥', name:'Cámara IP 4MP Exterior con Visión Nocturna', desc:'Resistente al agua IP66, detección de movimiento, visión nocturna hasta 30m. Ideal para fachadas y patios.', price:'160.000'},
+  {id:3, cat:'camaras', emoji:'📼', name:'Kit 4 Cámaras Análogas + DVR 4 Canales', desc:'Incluye DVR de 4 canales, 4 cámaras, cableado BNC, fuentes de poder. Ideal para locales pequeños y hogares.', price:'480.000'},
+  {id:4, cat:'camaras', emoji:'💾', name:'Disco Duro para DVR/NVR 1TB', desc:'Disco de vigilancia de larga duración, optimizado para grabación 24/7, compatible con la mayoría de DVRs.', price:'165.000'},
+  {id:5, cat:'camaras', emoji:'📡', name:'Cámara IP WiFi Exterior 2MP con Foco LED', desc:'Detección de movimiento con iluminación LED, sirena integrada, visión nocturna a color. App para ver desde cualquier lugar.', price:'220.000'},
+  {id:6, cat:'camaras', emoji:'🔭', name:'Cámara Zoom Óptico 30X PTZ', desc:'Cámara domo con control de movimiento (pan/tilt/zoom), ideal para vigilancia de grandes áreas como parqueaderos y bodegas.', price:'450.000'},
+  {id:7, cat:'camaras', emoji:'📹', name:'Cámara IP WiFi 5MP Ultra HD', desc:'Resolución 5MP, visión nocturna a color, detección de personas, audio bidireccional, almacenamiento en la nube.', price:'280.000'},
+  {id:8, cat:'camaras', emoji:'🔌', name:'Fuente de Poder 12V 2A para Cámaras', desc:'Fuente de poder para cámaras análogas e IP, protección contra sobrecargas, ideal para reemplazos.', price:'35.000'},
+
+  // ============================================================
+  // 🖥️ COMPUTADORES Y PORTÁTILES
+  // ============================================================
+  {id:9, cat:'computadores', emoji:'🖥️', name:'PC de Escritorio Básico (Oficina/Estudio)', desc:'Procesador Intel/AMD, 8GB RAM, SSD 256GB, Windows 10/11. Ideal para tareas de oficina, navegación y estudio.', price:'950.000'},
+  {id:10, cat:'computadores', emoji:'💻', name:'Portátil Reacondicionado i5 8GB SSD 256GB', desc:'Equipo revisado y garantizado (garantía 3 meses). Ideal para trabajo, estudio y programación. Disponibilidad limitada.', price:'1.100.000'},
+  {id:11, cat:'computadores', emoji:'🖨️', name:'Impresora Multifuncional Inyección de Tinta WiFi', desc:'Imprime, escanea y copia. Conexión WiFi, alimentación continua de tinta para ahorrar en consumibles.', price:'420.000'},
+  {id:12, cat:'computadores', emoji:'🖥️', name:'PC Gamer Básico (Ryzen 5 + GTX 1650)', desc:'AMD Ryzen 5, 16GB RAM, SSD 480GB, GTX 1650 4GB. Ideal para juegos ligeros, edición y diseño.', price:'1.850.000'},
+  {id:13, cat:'computadores', emoji:'💻', name:'Portátil Gamer MSI / ASUS (i7, RTX 3060)', desc:'Procesador i7, 16GB RAM, SSD 1TB, RTX 3060 6GB. Ideal para gamers y creadores de contenido.', price:'3.500.000'},
+  {id:14, cat:'computadores', emoji:'🖥️', name:'All-in-One 24" Touchscreen', desc:'PC todo en uno con pantalla táctil 24", procesador i5, 8GB RAM, SSD 256GB. Ideal para oficinas modernas.', price:'1.650.000'},
+  {id:15, cat:'computadores', emoji:'🖨️', name:'Impresora Láser Monocromática WiFi', desc:'Impresión láser en blanco y negro, alta velocidad, conectividad WiFi y Ethernet. Ideal para oficinas.', price:'380.000'},
+
+  // ============================================================
+  // 🔧 REPUESTOS Y COMPONENTES
+  // ============================================================
+  {id:16, cat:'repuestos', emoji:'🧠', name:'Memoria RAM 8GB DDR4 2666MHz', desc:'Compatible con la mayoría de portátiles y PCs de escritorio recientes. Instalación incluida en servicio técnico.', price:'130.000'},
+  {id:17, cat:'repuestos', emoji:'💽', name:'SSD 480GB SATA III', desc:'Acelera cualquier equipo lento. Incluye clonación de tu disco actual sin perder datos (servicio técnico).', price:'155.000'},
+  {id:18, cat:'repuestos', emoji:'🔋', name:'Fuente de Poder 500W 80 PLUS', desc:'Fuente de poder para PC de escritorio, certificada 80 PLUS, protección contra sobrecargas y cortocircuitos.', price:'110.000'},
+  {id:19, cat:'repuestos', emoji:'🌀', name:'Cooler / Ventilador para CPU', desc:'Reemplazo de ventiladores ruidosos o dañados, mejora la temperatura del equipo. Compatible con Intel y AMD.', price:'45.000'},
+  {id:20, cat:'repuestos', emoji:'🖥️', name:'Tarjeta de Video GTX 1650 4GB', desc:'Ideal para gaming ligero y edición de video. Mejora el rendimiento gráfico de cualquier PC.', price:'420.000'},
+  {id:21, cat:'repuestos', emoji:'🔌', name:'Cable HDMI 2.0 2 Metros', desc:'Cable HDMI de alta velocidad, soporte 4K HDR, ideal para conectar PC, TV o proyectores.', price:'18.000'},
+  {id:22, cat:'repuestos', emoji:'🖱️', name:'Mouse Ergonómico Inalámbrico', desc:'Mouse inalámbrico con diseño ergonómico, sensor óptico de alta precisión, batería de larga duración.', price:'42.000'},
+  {id:23, cat:'repuestos', emoji:'⌨️', name:'Teclado Mecánico Gaming (RGB)', desc:'Teclado mecánico con switches azules, retroiluminación RGB, teclas anti-ghosting. Ideal para gamers.', price:'185.000'},
+
+  // ============================================================
+  // 📡 REDES Y ROUTERS
+  // ============================================================
+  {id:24, cat:'redes', emoji:'📡', name:'Router WiFi Doble Banda AC1200', desc:'Cobertura para casa u oficina pequeña, configuración incluida en servicio técnico. Compatible con todos los operadores.', price:'130.000'},
+  {id:25, cat:'redes', emoji:'📶', name:'Repetidor / Extensor de WiFi', desc:'Elimina zonas muertas de señal en tu casa o negocio. Fácil configuración vía WPS.', price:'75.000'},
+  {id:26, cat:'redes', emoji:'📡', name:'Antena Direccional para Enlace Punto a Punto', desc:'Para conectar internet o red local entre edificios o predios sin cableado físico. Incluye soportes de montaje.', price:'280.000'},
+  {id:27, cat:'redes', emoji:'🔌', name:'Switch de Red 8 Puertos Gigabit', desc:'Para ampliar puntos de red en oficinas o redes domésticas más grandes. Plug-and-play.', price:'90.000'},
+  {id:28, cat:'redes', emoji:'📦', name:'Router WiFi 6 (AX1800) Dual Band', desc:'Tecnología WiFi 6 de última generación, mayor velocidad y cobertura, ideal para múltiples dispositivos.', price:'220.000'},
+  {id:29, cat:'redes', emoji:'🔌', name:'Cable UTP Cat6 20 Metros', desc:'Cable de red categoría 6, soporte Gigabit Ethernet, ideal para conexiones de alta velocidad.', price:'32.000'},
+  {id:30, cat:'redes', emoji:'💻', name:'Adaptador USB WiFi AC600', desc:'Adaptador WiFi USB para PCs sin WiFi, soporte doble banda, ideal para equipos de escritorio.', price:'45.000'},
+
+  // ============================================================
+  // 🎧 ACCESORIOS Y PERIFÉRICOS
+  // ============================================================
+  {id:31, cat:'accesorios', emoji:'⌨️', name:'Combo Teclado + Mouse Inalámbrico', desc:'Conexión USB inalámbrica, ideal para escritorio u oficina. Incluye receptor USB único.', price:'65.000'},
+  {id:32, cat:'accesorios', emoji:'🔌', name:'Regulador de Voltaje / Supresor de Picos', desc:'Protege tus equipos de variaciones eléctricas y descargas. 4 tomas con protección.', price:'70.000'},
+  {id:33, cat:'accesorios', emoji:'🔋', name:'UPS / Batería de Respaldo 600VA', desc:'Mantiene tu PC o router encendido unos minutos durante un corte de luz. Protección contra picos.', price:'185.000'},
+  {id:34, cat:'accesorios', emoji:'🎙️', name:'Webcam HD con Micrófono Integrado', desc:'Cámara web 1080p con micrófono integrado, enfoque automático. Ideal para videollamadas y clases virtuales.', price:'95.000'},
+  {id:35, cat:'accesorios', emoji:'💿', name:'Disco Duro Externo 1TB USB 3.0', desc:'Almacenamiento portátil, compatible con PC y Mac, ideal para respaldos y transferencia de archivos.', price:'180.000'},
+  {id:36, cat:'accesorios', emoji:'🎧', name:'Audífonos Diadema con Micrófono', desc:'Audífonos con diadema ajustable, micrófono con cancelación de ruido, ideal para gaming y llamadas.', price:'72.000'},
+  {id:37, cat:'accesorios', emoji:'🖥️', name:'Soporte para Monitor Ajustable', desc:'Soporte de escritorio para monitor, ajuste de altura y ángulo, libera espacio en tu escritorio.', price:'55.000'},
+  {id:38, cat:'accesorios', emoji:'🔌', name:'Cargador Universal 65W USB-C', desc:'Cargador GaN 65W con puertos USB-C y USB-A, compatible con laptops y dispositivos móviles.', price:'98.000'},
+];
+
 
 function getShopProducts(){
   try{
