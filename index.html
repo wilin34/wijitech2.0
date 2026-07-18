@@ -878,42 +878,43 @@ target="_blank">
 </div>
   
   <!-- ───────── COBERTURA ───────── -->
-  <section id="cobertura" class="page-section">
-    <div class="eyebrow">/ zona de cobertura</div>
-    <h2>Atendemos a domicilio en estas zonas</h2>
-    <p class="section-sub">¿No ves tu sector? Escríbenos — muchas veces igual podemos cubrirlo.</p>
-    <div class="coverage">
-      <span>📍 Zona urbana</span>
-      <span>📍 Zona rural cercana</span>
-      <span>📍 Conjuntos residenciales</span>
-      <span>📍 Locales comerciales</span>
-      <span>📍 Oficinas pequeñas</span>
-      <span>📍 Fincas y veredas (punto a punto)</span>
-    </div>
+<!-- ───────── COBERTURA ───────── -->
+<section id="cobertura">
+  <div class="eyebrow">/ zona de cobertura</div>
+  <h2>Atendemos a domicilio en estas zonas</h2>
+  <p class="section-sub">¿No ves tu sector? Escríbenos — muchas veces igual podemos cubrirlo.</p>
+  <div class="coverage">
+    <span>📍 Zona urbana</span>
+    <span>📍 Zona rural cercana</span>
+    <span>📍 Conjuntos residenciales</span>
+    <span>📍 Locales comerciales</span>
+    <span>📍 Oficinas pequeñas</span>
+    <span>📍 Fincas y veredas (punto a punto)</span>
+  </div>
 
-    <div class="speedtest-panel">
-      <div style="text-align:center">
-        <div class="speedtest-dial" id="sd-dial">
-          <div class="sd-num" id="sd-num">--</div>
-          <div class="sd-unit">Mbps</div>
-          <div class="sd-stage" id="sd-stage">Listo para medir</div>
-        </div>
-        <button class="btn btn-primary" id="sd-btn" onclick="runSpeedTest()" style="margin-top:26px">▸ Iniciar test de velocidad</button>
+  <!-- ─── TEST DE VELOCIDAD ─── -->
+  <div class="speedtest-panel">
+    <div style="text-align:center">
+      <div class="speedtest-dial" id="sd-dial">
+        <div class="sd-num" id="sd-num">--</div>
+        <div class="sd-unit">Mbps</div>
+        <div class="sd-stage" id="sd-stage">Listo para medir</div>
       </div>
-      <div>
-        <div class="eyebrow">/ diagnóstico de red</div>
-        <h2 style="font-size:24px">¿Qué tan buena es tu conexión actual?</h2>
-        <p class="section-sub" style="margin-top:10px">Medimos tu velocidad real de bajada, subida y latencia ahora mismo — útil para saber si necesitas un enlace punto a punto, cambiar de plan o si el problema es tu router.</p>
-        <div class="speedtest-results">
-          <div><div class="sr-val is-down" id="sr-down">--</div><div class="sr-label">Bajada (Mbps)</div></div>
-          <div><div class="sr-val is-up" id="sr-up">--</div><div class="sr-label">Subida (Mbps)</div></div>
-          <div><div class="sr-val" id="sr-ping">--</div><div class="sr-label">Latencia (ms)</div></div>
-        </div>
-        <p class="speedtest-note">Medición real contra la red de Cloudflare, ejecutada en tu navegador en este momento — no es un valor genérico ni inventado. El resultado depende de tu conexión actual, no de la nuestra.</p>
-      </div>
+      <button class="btn btn-primary" id="sd-btn" onclick="runSpeedTest()" style="margin-top:26px">▸ Iniciar test de velocidad</button>
     </div>
-  </section>
-
+    <div>
+      <div class="eyebrow">/ diagnóstico de red</div>
+      <h2 style="font-size:24px">¿Qué tan buena es tu conexión actual?</h2>
+      <p class="section-sub" style="margin-top:10px">Medimos tu velocidad real de bajada, subida y latencia ahora mismo — útil para saber si necesitas un enlace punto a punto, cambiar de plan o si el problema es tu router.</p>
+      <div class="speedtest-results">
+        <div><div class="sr-val is-down" id="sr-down">--</div><div class="sr-label">Bajada (Mbps)</div></div>
+        <div><div class="sr-val is-up" id="sr-up">--</div><div class="sr-label">Subida (Mbps)</div></div>
+        <div><div class="sr-val" id="sr-ping">--</div><div class="sr-label">Latencia (ms)</div></div>
+      </div>
+      <p class="speedtest-note">Medición real contra la red de Cloudflare, ejecutada en tu navegador en este momento — no es un valor genérico ni inventado. El resultado depende de tu conexión actual, no de la nuestra.</p>
+    </div>
+  </div>
+</section>
   <!-- ───────── CTA FINAL ───────── -->
   <section class="cta-final page-section" id="contacto">
     <div class="trust">
