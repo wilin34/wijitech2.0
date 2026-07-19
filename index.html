@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 <title>WijiTech — Servicios Técnicos a Domicilio</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
@@ -26,6 +26,7 @@ body{
   color:var(--text);
   font-family:var(--sans);
   overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
 }
 ::selection{background:var(--orange);color:#0B0F14}
 
@@ -40,76 +41,230 @@ body{
 }
 
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
 
+/* ============================================================
+   HEADER - MENÚ HAMBURGUESA
+   ============================================================ */
 header{
   position:sticky;top:0;z-index:50;
-  background:rgba(11,15,20,.85);
+  background:rgba(11,15,20,.95);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
-.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1180px;margin:0 auto}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:800;font-size:18px;letter-spacing:.5px}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 16px;
+  max-width:1180px;
+  margin:0 auto;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--mono);
+  font-weight:800;
+  font-size:16px;
+  letter-spacing:.5px;
+}
 .brand .dot{
   width:9px;height:9px;border-radius:50%;background:var(--green);
   box-shadow:0 0 0 3px rgba(61,220,132,.18);
   animation:pulse 2.2s infinite;
 }
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.brand small{color:var(--muted);font-weight:500;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-left:2px}
-.navlinks{display:flex;gap:30px;font-size:14px;color:var(--muted)}
-.navlinks a:hover{color:var(--text)}
-.nav-cta{
-  display:flex;align-items:center;gap:8px;
-  background:var(--orange);color:#0B0F14;font-weight:700;font-size:13.5px;
-  padding:10px 18px;border-radius:7px;font-family:var(--mono);
-}
-.nav-cta:hover{background:#ff7e3a}
-@media(max-width:860px){.navlinks{display:none}}
+.brand small{color:var(--muted);font-weight:500;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-left:2px}
 
-.hero{padding:90px 0 70px;position:relative}
+/* Menú hamburguesa */
+.menu-toggle{
+  background:none;
+  border:none;
+  color:var(--text);
+  font-size:28px;
+  cursor:pointer;
+  padding:4px 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:color .2s;
+}
+.menu-toggle:hover{color:var(--orange)}
+
+.navlinks{
+  display:none;
+  flex-direction:column;
+  gap:4px;
+  padding:12px 0 8px;
+  border-top:1px solid var(--line);
+}
+.navlinks.open{display:flex}
+.navlinks a{
+  display:block;
+  padding:12px 16px;
+  font-size:15px;
+  color:var(--muted);
+  border-radius:8px;
+  transition:all .2s;
+  font-weight:500;
+}
+.navlinks a:hover,
+.navlinks a:active{
+  color:var(--text);
+  background:var(--panel);
+}
+.nav-cta-mobile{
+  display:block;
+  padding:12px 16px;
+  background:var(--orange);
+  color:#0B0F14;
+  font-weight:700;
+  font-size:14px;
+  border-radius:8px;
+  text-align:center;
+  margin-top:4px;
+  transition:background .2s;
+}
+.nav-cta-mobile:active{background:#ff7e3a}
+
+.nav-cta-desktop{
+  display:none;
+  align-items:center;
+  gap:8px;
+  background:var(--orange);
+  color:#0B0F14;
+  font-weight:700;
+  font-size:13.5px;
+  padding:10px 18px;
+  border-radius:7px;
+  font-family:var(--mono);
+  white-space:nowrap;
+}
+.nav-cta-desktop:hover{background:#ff7e3a}
+
+@media(min-width:860px){
+  .menu-toggle{display:none}
+  .navlinks{
+    display:flex !important;
+    flex-direction:row;
+    border-top:none;
+    padding:0;
+    gap:24px;
+  }
+  .navlinks a{padding:6px 0;font-size:14px}
+  .nav-cta-mobile{display:none}
+  .nav-cta-desktop{display:flex}
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:50px 0 40px;position:relative}
 .hero-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:12.5px;color:var(--green);
-  background:rgba(61,220,132,.08);border:1px solid rgba(61,220,132,.25);
-  padding:6px 13px;border-radius:20px;margin-bottom:26px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--green);
+  background:rgba(61,220,132,.08);
+  border:1px solid rgba(61,220,132,.25);
+  padding:5px 12px;
+  border-radius:20px;
+  margin-bottom:20px;
 }
 .hero-tag span.led{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
 h1{
-  font-family:var(--mono);font-weight:800;
-  font-size:clamp(34px,6vw,64px);line-height:1.05;letter-spacing:-1px;
+  font-family:var(--mono);
+  font-weight:800;
+  font-size:clamp(28px,6vw,56px);
+  line-height:1.05;
+  letter-spacing:-1px;
   max-width:880px;
 }
 h1 .accent{color:var(--orange)}
 .hero-sub{
-  margin-top:22px;max-width:560px;font-size:17px;line-height:1.65;color:var(--muted);
+  margin-top:16px;
+  max-width:560px;
+  font-size:15px;
+  line-height:1.6;
+  color:var(--muted);
 }
-.hero-actions{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.hero-actions{
+  display:flex;
+  gap:12px;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
+.hero-actions .btn{
+  flex:1;
+  min-width:140px;
+  justify-content:center;
+}
 .btn{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:14px 26px;border-radius:8px;font-weight:700;font-size:14.5px;
-  font-family:var(--sans);cursor:pointer;border:none;transition:transform .15s, background .15s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:14px 20px;
+  border-radius:10px;
+  font-weight:700;
+  font-size:14px;
+  font-family:var(--sans);
+  cursor:pointer;
+  border:none;
+  transition:transform .15s, background .15s;
+  -webkit-tap-highlight-color:transparent;
 }
-.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:scale(.97)}
 .btn-primary{background:var(--orange);color:#0B0F14}
 .btn-primary:hover{background:#ff7e3a}
 .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
 .btn-ghost:hover{border-color:var(--muted)}
 
 .readout{
-  margin-top:56px;
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
   background:var(--panel);
 }
-.readout div{padding:20px 18px;border-right:1px solid var(--line)}
+.readout div{padding:16px 14px;border-right:1px solid var(--line);text-align:center}
 .readout div:last-child{border-right:none}
-.readout .num{font-family:var(--mono);font-size:26px;font-weight:800;color:var(--orange)}
-.readout .label{font-size:11.5px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
-@media(max-width:760px){.readout{grid-template-columns:1fr 1fr}.readout div{border-bottom:1px solid var(--line)}}
+.readout .num{font-family:var(--mono);font-size:22px;font-weight:800;color:var(--orange)}
+.readout .label{font-size:10px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+
+/* Grid de servicios en el hero */
+.hero-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:24px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:16px;
+}
+.hero-grid-item{
+  text-align:center;
+  padding:8px 4px;
+}
+.hero-grid-item .icon{font-size:24px}
+.hero-grid-item .label{font-size:10px;color:var(--muted);margin-top:4px;font-weight:600}
+.hero-grid-item .sub{font-size:9px;color:var(--muted);opacity:.7}
+
+@media(max-width:480px){
+  .hero-grid{grid-template-columns:repeat(3,1fr);padding:10px;gap:6px}
+  .hero-grid-item .icon{font-size:20px}
+  .hero-grid-item .label{font-size:9px}
+  .hero-grid-item .sub{display:none}
+}
 
 /* ============================================================
-   OVERLAY / VENTANA MODAL
+   OVERLAY
    ============================================================ */
 .overlay{
   display:none;
@@ -124,7 +279,7 @@ h1 .accent{color:var(--orange)}
   position:sticky;
   top:0;
   z-index:5;
-  background:rgba(11,15,20,.92);
+  background:rgba(11,15,20,.95);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
@@ -132,68 +287,73 @@ h1 .accent{color:var(--orange)}
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:16px 28px;
+  padding:12px 16px;
   max-width:1180px;
   margin:0 auto;
 }
 .overlay-close{
-  width:38px;
-  height:38px;
-  border-radius:9px;
+  width:42px;
+  height:42px;
+  border-radius:10px;
   border:1px solid var(--line);
   background:var(--panel);
   color:var(--text);
-  font-size:18px;
+  font-size:20px;
   cursor:pointer;
   display:flex;
   align-items:center;
   justify-content:center;
+  transition:background .2s;
+  -webkit-tap-highlight-color:transparent;
 }
-.overlay-close:hover{background:var(--bg2)}
-.overlay-body{padding:40px 28px 80px;max-width:1180px;margin:0 auto}
+.overlay-close:active{background:var(--bg2)}
+.overlay-body{padding:24px 16px 80px;max-width:1180px;margin:0 auto}
 
 /* ============================================================
    SERVICIOS (overlay)
    ============================================================ */
 .services-grid{
-  margin-top:48px;
+  margin-top:30px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-  gap:18px;
+  grid-template-columns:1fr;
+  gap:14px;
 }
+@media(min-width:600px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+
 .ot-card{
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:10px;
-  padding:26px 24px;
+  padding:20px 18px;
   position:relative;
-  transition:border-color .2s, transform .2s;
+  transition:border-color .2s;
 }
 .ot-card.is-open{grid-column:1/-1}
-.ot-card.is-open .ot-menu-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;align-items:start}
-.ot-card:hover{border-color:var(--orange);transform:translateY(-3px)}
-.ot-card.is-open:hover{transform:none}
+.ot-card.is-open .ot-menu-inner{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:700px){.ot-card.is-open .ot-menu-inner{grid-template-columns:repeat(2,1fr)}}
+.ot-card:active{border-color:var(--orange)}
 .ot-code{
   font-family:var(--mono);
-  font-size:11.5px;
+  font-size:10px;
   color:var(--muted);
   letter-spacing:1px;
-  margin-bottom:14px;
+  margin-bottom:10px;
   display:flex;
   justify-content:space-between;
 }
 .ot-code .status{color:var(--green)}
-.ot-icon{font-size:30px;margin-bottom:14px;display:block}
-.ot-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
-.ot-card p{color:var(--muted);font-size:14px;line-height:1.6}
-.ot-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.ot-icon{font-size:28px;margin-bottom:10px;display:block}
+.ot-card h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.ot-card p{color:var(--muted);font-size:13px;line-height:1.5}
+.ot-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px}
 .ot-tags span{
   font-family:var(--mono);
-  font-size:10.5px;
+  font-size:9px;
   color:var(--text);
   background:var(--bg2);
   border:1px solid var(--line);
-  padding:4px 9px;
+  padding:3px 8px;
   border-radius:5px;
 }
 .ot-menu-toggle{
@@ -201,8 +361,8 @@ h1 .accent{color:var(--orange)}
   align-items:center;
   gap:7px;
   width:100%;
-  margin-top:18px;
-  padding-top:16px;
+  margin-top:14px;
+  padding-top:12px;
   border-top:1px solid var(--line);
   background:none;
   border-left:none;
@@ -210,10 +370,11 @@ h1 .accent{color:var(--orange)}
   border-bottom:none;
   color:var(--orange);
   font-family:var(--mono);
-  font-size:12px;
+  font-size:11px;
   font-weight:700;
   cursor:pointer;
   letter-spacing:.3px;
+  -webkit-tap-highlight-color:transparent;
 }
 .ot-menu-toggle .chev{transition:transform .25s;font-size:10px}
 .ot-card.is-open .ot-menu-toggle .chev{transform:rotate(180deg)}
@@ -222,172 +383,186 @@ h1 .accent{color:var(--orange)}
   overflow:hidden;
   transition:max-height .35s ease;
 }
-.ot-card.is-open .ot-menu{max-height:900px}
-.ot-menu-inner{padding-top:16px}
-.ot-menu-group{margin-bottom:14px}
+.ot-card.is-open .ot-menu{max-height:2000px}
+.ot-menu-inner{padding-top:14px}
+.ot-menu-group{margin-bottom:12px}
 .ot-menu-group:last-child{margin-bottom:0}
 .ot-menu-group-title{
   font-family:var(--mono);
-  font-size:10px;
+  font-size:9px;
   color:var(--green);
   text-transform:uppercase;
   letter-spacing:.8px;
-  margin-bottom:8px;
+  margin-bottom:6px;
   display:flex;
   align-items:center;
   gap:6px;
 }
 .ot-menu-group-title::before{content:'▸'}
-.ot-menu-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.ot-menu-list{list-style:none;display:flex;flex-direction:column;gap:5px}
 .ot-menu-list li{
-  font-size:13px;
+  font-size:12px;
   color:var(--text);
-  line-height:1.5;
+  line-height:1.4;
   display:flex;
-  gap:9px;
+  gap:8px;
   align-items:flex-start;
 }
 .ot-menu-list li::before{
   content:'';
-  width:5px;
-  height:5px;
+  width:4px;
+  height:4px;
   border-radius:50%;
   background:var(--orange);
-  margin-top:7px;
+  margin-top:6px;
   flex-shrink:0;
 }
 .ot-menu-list li b{color:var(--text);font-weight:600}
-.ot-menu-list li span.dim{color:var(--muted);font-size:12.5px}
+.ot-menu-list li span.dim{color:var(--muted);font-size:11px}
 
 .process{
-  margin-top:50px;
+  margin-top:36px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:1fr 1fr;
   gap:0;
   border:1px solid var(--line);
   border-radius:10px;
   overflow:hidden;
 }
 .proc-step{
-  padding:28px 24px;
+  padding:20px 16px;
   border-right:1px solid var(--line);
-  position:relative;
+  border-bottom:1px solid var(--line);
   background:var(--panel);
 }
-.proc-step:last-child{border-right:none}
-.proc-step .pn{font-family:var(--mono);color:var(--orange);font-size:13px;font-weight:700}
-.proc-step h4{margin-top:10px;font-size:15.5px;font-weight:700}
-.proc-step p{margin-top:8px;font-size:13.5px;color:var(--muted);line-height:1.55}
-@media(max-width:760px){.proc-step{border-right:none;border-bottom:1px solid var(--line)}}
+.proc-step:nth-child(2){border-right:none}
+.proc-step:nth-child(3){border-bottom:none}
+.proc-step:nth-child(4){border-right:none;border-bottom:none}
+.proc-step .pn{font-family:var(--mono);color:var(--orange);font-size:12px;font-weight:700}
+.proc-step h4{margin-top:6px;font-size:14px;font-weight:700}
+.proc-step p{margin-top:4px;font-size:12px;color:var(--muted);line-height:1.5}
+@media(max-width:500px){.proc-step{padding:14px 12px}.proc-step h4{font-size:13px}.proc-step p{font-size:11px}}
 
 /* ============================================================
    TIENDA (overlay)
    ============================================================ */
-.shop-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:40px;margin-bottom:32px}
+.shop-tabs{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:28px;
+  margin-bottom:24px;
+}
 .shop-tab{
   font-family:var(--mono);
-  font-size:12.5px;
+  font-size:11px;
   color:var(--muted);
   background:var(--panel);
   border:1px solid var(--line);
-  padding:9px 16px;
+  padding:8px 14px;
   border-radius:20px;
   cursor:pointer;
   transition:all .15s;
+  -webkit-tap-highlight-color:transparent;
 }
-.shop-tab:hover{color:var(--text);border-color:var(--muted)}
+.shop-tab:active{transform:scale(.96)}
 .shop-tab.active{background:var(--orange);color:#0B0F14;border-color:var(--orange);font-weight:700}
-.shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.shop-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+@media(max-width:480px){.shop-grid{grid-template-columns:1fr}}
 .shop-card{
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:10px;
   overflow:hidden;
-  transition:border-color .2s,transform .2s;
   display:flex;
   flex-direction:column;
 }
-.shop-card:hover{border-color:var(--orange);transform:translateY(-3px)}
+.shop-card:active{border-color:var(--orange)}
 .shop-card-img{
-  height:140px;
+  height:100px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:46px;
+  font-size:34px;
   background:var(--bg2);
   border-bottom:1px solid var(--line);
   overflow:hidden;
 }
 .shop-card-img img{width:100%;height:100%;object-fit:cover;display:block}
-.shop-card-body{padding:18px 20px;display:flex;flex-direction:column;flex:1}
-.shop-card-cat{font-family:var(--mono);font-size:10.5px;color:var(--green);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
-.shop-card h4{font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.3}
-.shop-card p{font-size:13px;color:var(--muted);line-height:1.55;flex:1;margin-bottom:14px}
-.shop-card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}
-.shop-price{font-family:var(--mono);font-weight:700;font-size:14.5px;color:var(--text)}
-.shop-price small{color:var(--muted);font-weight:400;font-size:11px;display:block;margin-top:1px}
+.shop-card-body{padding:14px 16px;display:flex;flex-direction:column;flex:1}
+.shop-card-cat{
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--green);
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  margin-bottom:4px;
+}
+.shop-card h4{font-size:14px;font-weight:700;margin-bottom:4px;line-height:1.3}
+.shop-card p{font-size:12px;color:var(--muted);line-height:1.5;flex:1;margin-bottom:10px}
+.shop-card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
+.shop-price{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--text)}
+.shop-price small{color:var(--muted);font-weight:400;font-size:10px;display:block;margin-top:1px}
 .shop-quote-btn{
   font-family:var(--sans);
-  font-size:12.5px;
+  font-size:11px;
   font-weight:700;
   color:#0B0F14;
   background:var(--orange);
   border:none;
-  padding:9px 14px;
+  padding:8px 12px;
   border-radius:7px;
   cursor:pointer;
   white-space:nowrap;
   transition:background .15s;
+  -webkit-tap-highlight-color:transparent;
 }
-.shop-quote-btn:hover{background:#ff7e3a}
-.shop-note{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+.shop-quote-btn:active{background:#ff7e3a}
+.shop-note{margin-top:20px;text-align:center;color:var(--muted);font-size:12px}
 
 /* ============================================================
    CURSOS (overlay)
    ============================================================ */
 .cursos-grid{
-  margin-top:48px;
+  margin-top:30px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
+  grid-template-columns:1fr;
+  gap:16px;
 }
+@media(min-width:600px){.cursos-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.cursos-grid{grid-template-columns:repeat(3,1fr)}}
+
 .curso-card{
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:12px;
-  padding:24px;
-  transition:border-color .2s, transform .2s;
+  padding:20px;
+  transition:border-color .2s;
   display:flex;
   flex-direction:column;
 }
-.curso-card:hover{border-color:var(--orange);transform:translateY(-3px)}
-.curso-card .curso-icon{font-size:40px;display:block;margin-bottom:12px}
-.curso-card h3{font-size:17px;font-weight:700;margin-bottom:4px}
-.curso-card .curso-meta{
-  font-size:12px;
-  color:var(--muted);
-  margin-bottom:10px;
-}
-.curso-card .curso-desc{
-  font-size:13.5px;
-  color:var(--text);
-  line-height:1.6;
-  margin-bottom:14px;
-  flex:1;
-}
-.curso-card .curso-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.curso-card:active{border-color:var(--orange)}
+.curso-card .curso-icon{font-size:34px;display:block;margin-bottom:10px}
+.curso-card h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.curso-card .curso-meta{font-size:11px;color:var(--muted);margin-bottom:8px}
+.curso-card .curso-desc{font-size:12.5px;color:var(--text);line-height:1.5;margin-bottom:12px;flex:1}
+.curso-card .curso-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
 .curso-card .curso-tags span{
   font-family:var(--mono);
-  font-size:10px;
+  font-size:9px;
   color:var(--text);
   background:var(--bg2);
   border:1px solid var(--line);
-  padding:3px 10px;
+  padding:2px 8px;
   border-radius:20px;
 }
 .curso-card .curso-btn{
   width:100%;
-  padding:10px;
+  padding:12px;
   border:none;
   border-radius:8px;
   font-family:var(--sans);
@@ -398,97 +573,94 @@ h1 .accent{color:var(--orange)}
   background:var(--orange);
   color:#0B0F14;
   text-align:center;
+  -webkit-tap-highlight-color:transparent;
 }
-.curso-card .curso-btn:hover{background:#ff7e3a;transform:translateY(-2px)}
-.curso-card .curso-btn.matriculado{
-  background:var(--green);
-  color:#0B0F14;
-  cursor:default;
-}
-.curso-card .curso-btn.matriculado:hover{transform:none;background:var(--green)}
+.curso-card .curso-btn:active{transform:scale(.97);background:#ff7e3a}
 
 .curso-detalle{
-  margin-top:50px;
+  margin-top:36px;
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:12px;
-  padding:30px;
+  padding:20px;
 }
 .curso-detalle .detalle-header{
   display:flex;
   align-items:center;
-  gap:16px;
-  margin-bottom:16px;
+  gap:14px;
+  margin-bottom:14px;
+  flex-wrap:wrap;
 }
-.curso-detalle .detalle-header .icon{font-size:44px}
-.curso-detalle .detalle-header .titulo{font-size:20px;font-weight:700}
+.curso-detalle .detalle-header .icon{font-size:38px}
+.curso-detalle .detalle-header .titulo{font-size:18px;font-weight:700}
 .curso-detalle .detalle-header .nivel{
   font-family:var(--mono);
-  font-size:11px;
+  font-size:10px;
   background:var(--bg2);
   border:1px solid var(--line);
-  padding:4px 12px;
+  padding:3px 10px;
   border-radius:20px;
   color:var(--green);
 }
 .curso-detalle .detalle-modulos{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;
-  margin-top:16px;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-top:14px;
 }
+@media(min-width:500px){.curso-detalle .detalle-modulos{grid-template-columns:repeat(2,1fr)}}
 .curso-detalle .modulo-item{
   background:var(--bg2);
   border:1px solid var(--line);
   border-radius:8px;
-  padding:14px 16px;
+  padding:12px 14px;
 }
-.curso-detalle .modulo-item .modulo-titulo{font-weight:600;font-size:13.5px;margin-bottom:4px}
-.curso-detalle .modulo-item .modulo-weeks{font-size:11px;color:var(--muted)}
+.curso-detalle .modulo-item .modulo-titulo{font-weight:600;font-size:13px;margin-bottom:3px}
+.curso-detalle .modulo-item .modulo-weeks{font-size:10px;color:var(--muted)}
 .curso-detalle .modulo-item .modulo-lecciones{
-  font-size:12px;
+  font-size:11.5px;
   color:var(--text);
   margin-top:6px;
-  padding-left:16px;
+  padding-left:14px;
 }
-.curso-detalle .modulo-item .modulo-lecciones li{line-height:1.5}
+.curso-detalle .modulo-item .modulo-lecciones li{line-height:1.4}
 
 /* ============================================================
    COBERTURA (overlay)
    ============================================================ */
 .coverage{
-  margin-top:48px;
+  margin-top:30px;
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:8px;
 }
 .coverage span{
   font-family:var(--mono);
-  font-size:13px;
+  font-size:12px;
   border:1px solid var(--line);
-  padding:9px 16px;
+  padding:8px 14px;
   border-radius:20px;
   color:var(--muted);
 }
 
 /* ============================================================
-   TEST DE VELOCIDAD (overlay)
+   TEST DE VELOCIDAD
    ============================================================ */
 .speedtest-panel{
-  margin-top:44px;
+  margin-top:32px;
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:14px;
-  padding:40px;
+  padding:24px 20px;
   display:grid;
-  grid-template-columns:1fr 1.1fr;
-  gap:40px;
+  grid-template-columns:1fr;
+  gap:28px;
   align-items:center;
 }
-@media(max-width:860px){.speedtest-panel{grid-template-columns:1fr;padding:28px 22px}}
+@media(min-width:700px){.speedtest-panel{grid-template-columns:1fr 1.1fr;padding:32px}}
 .speedtest-dial{
-  width:220px;
-  height:220px;
+  width:180px;
+  height:180px;
   border-radius:50%;
   border:3px solid var(--line);
   display:flex;
@@ -500,63 +672,155 @@ h1 .accent{color:var(--orange)}
   background:var(--bg2);
   transition:border-color .3s;
 }
+@media(min-width:500px){.speedtest-dial{width:200px;height:200px}}
 .speedtest-dial.is-testing{border-color:var(--orange);animation:dialspin 1.6s linear infinite}
 .speedtest-dial.is-done{border-color:var(--green)}
 @keyframes dialspin{0%{box-shadow:0 0 0 0 rgba(255,106,26,.4)}100%{box-shadow:0 0 0 14px rgba(255,106,26,0)}}
-.speedtest-dial .sd-num{font-family:var(--mono);font-size:38px;font-weight:800;color:var(--text);line-height:1}
-.speedtest-dial .sd-unit{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:4px}
-.speedtest-dial .sd-stage{font-family:var(--mono);font-size:10.5px;color:var(--orange);margin-top:8px;text-transform:uppercase;letter-spacing:.5px}
-.speedtest-results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
-.speedtest-results div{background:var(--bg2);border:1px solid var(--line);border-radius:9px;padding:14px;text-align:center}
-.speedtest-results .sr-val{font-family:var(--mono);font-size:19px;font-weight:800;color:var(--text)}
+.speedtest-dial .sd-num{font-family:var(--mono);font-size:32px;font-weight:800;color:var(--text);line-height:1}
+.speedtest-dial .sd-unit{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px}
+.speedtest-dial .sd-stage{font-family:var(--mono);font-size:9px;color:var(--orange);margin-top:6px;text-transform:uppercase;letter-spacing:.5px}
+.speedtest-results{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.speedtest-results div{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center}
+.speedtest-results .sr-val{font-family:var(--mono);font-size:17px;font-weight:800;color:var(--text)}
 .speedtest-results .sr-val.is-up{color:var(--orange)}
 .speedtest-results .sr-val.is-down{color:var(--green)}
-.speedtest-results .sr-label{font-size:10.5px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.4px}
-.speedtest-note{font-size:12px;color:var(--muted);margin-top:18px;line-height:1.6}
+.speedtest-results .sr-label{font-size:9px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
+.speedtest-note{font-size:11px;color:var(--muted);margin-top:14px;line-height:1.5}
 
 .trust{
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
-  padding:36px 0;
+  padding:24px 0;
 }
-.trust-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;font-family:var(--mono);font-size:13px;color:var(--muted)}
-.trust-row b{color:var(--text);font-size:15px}
+.trust-row{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+}
+.trust-row b{color:var(--text);font-size:13px}
 
 .cta-final{
   text-align:center;
-  padding:60px 0 40px;
+  padding:40px 0 20px;
 }
 .cta-final h2{margin:0 auto;max-width:680px}
-.cta-final .section-sub{margin:18px auto 0;text-align:center}
-.cta-final .hero-actions{justify-content:center;margin-top:34px}
+.cta-final .section-sub{margin:14px auto 0;text-align:center}
+.cta-final .hero-actions{justify-content:center;margin-top:24px}
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--orange);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+h2{
+  font-family:var(--mono);
+  font-size:clamp(22px,4vw,32px);
+  font-weight:800;
+  letter-spacing:-.5px;
+  max-width:600px;
+}
+.section-sub{
+  color:var(--muted);
+  font-size:14px;
+  max-width:560px;
+  margin-top:10px;
+  line-height:1.5;
+}
 
 footer{
   border-top:1px solid var(--line);
-  padding:38px 0;
-  font-size:13px;
+  padding:24px 0;
+  font-size:12px;
   color:var(--muted);
 }
-.foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+.foot-row{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:center;
+  text-align:center;
+}
 .foot-brand{font-family:var(--mono);color:var(--text);font-weight:700}
 
-#wa-float{position:fixed;bottom:24px;right:24px;z-index:60}
-#wa-float a{
-  width:58px;height:58px;border-radius:50%;background:#25D366;
-  display:flex;align-items:center;justify-content:center;font-size:28px;
-  box-shadow:0 8px 24px rgba(37,211,102,.4);position:relative;
+/* ============================================================
+   WHATSAPP FLOTANTE
+   ============================================================ */
+#wa-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:60;
 }
-#wa-float .pulse{position:absolute;inset:0;border-radius:50%;background:#25D366;opacity:.5;animation:wapulse 2.2s infinite}
+#wa-float a{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow:0 6px 20px rgba(37,211,102,.4);
+  position:relative;
+  transition:transform .2s;
+}
+#wa-float a:active{transform:scale(.92)}
+#wa-float .pulse{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:#25D366;
+  opacity:.5;
+  animation:wapulse 2.2s infinite;
+}
 @keyframes wapulse{0%{transform:scale(1);opacity:.5}70%{transform:scale(1.7);opacity:0}100%{transform:scale(1.7);opacity:0}}
 
-@media(max-width:600px){
-  .hero{padding:70px 0 50px}
-  .overlay-body{padding:24px 16px 60px}
-  .nav{padding:14px 18px}
-  .brand small{display:none}
-  .nav-cta{padding:9px 14px;font-size:12px;white-space:nowrap}
-  .readout{margin-top:40px;margin-bottom:24px}
-  #wa-float{bottom:18px;right:18px}
-  #wa-float a{width:50px;height:50px;font-size:23px}
+/* ============================================================
+   AJUSTES GENERALES MÓVILES
+   ============================================================ */
+@media(max-width:480px){
+  .brand{font-size:14px}
+  .brand small{font-size:9px}
+  .readout .num{font-size:18px}
+  .readout .label{font-size:9px}
+  .readout div{padding:12px 10px}
+  .hero{padding:30px 0 20px}
+  h1{font-size:clamp(24px,7vw,32px)}
+  .hero-sub{font-size:13px}
+  .btn{padding:12px 16px;font-size:13px;min-height:48px}
+  .overlay-body{padding:16px 12px 70px}
+  .overlay-header-inner{padding:10px 12px}
+  .overlay-close{width:38px;height:38px;font-size:17px}
+  .ot-card{padding:16px 14px}
+  .ot-card h3{font-size:15px}
+  .ot-card p{font-size:12px}
+  .curso-card{padding:16px}
+  .curso-card h3{font-size:15px}
+  .curso-detalle{padding:16px}
+  .speedtest-panel{padding:16px}
+  .speedtest-dial{width:150px;height:150px}
+  .speedtest-dial .sd-num{font-size:26px}
+  .trust-row{grid-template-columns:1fr 1fr;gap:10px;font-size:11px}
+  .trust-row b{font-size:12px}
+}
+
+@media(max-width:380px){
+  .hero-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-grid-item .sub{display:none}
+  .readout{grid-template-columns:1fr}
+  .readout div{border-right:none;border-bottom:1px solid var(--line)}
+  .readout div:last-child{border-bottom:none}
+  .process{grid-template-columns:1fr}
+  .proc-step{border-right:none}
+  .proc-step:nth-child(2){border-right:none}
+  .proc-step:nth-child(3){border-bottom:1px solid var(--line)}
+  .proc-step:nth-child(4){border-bottom:none}
 }
 </style>
 </head>
@@ -567,62 +831,40 @@ footer{
 <header>
   <div class="nav">
     <div class="brand"><span class="dot"></span>WIJITECH<small>servicios técnicos</small></div>
-    <div class="navlinks">
-      <a href="#" onclick="openOverlay('servicios');return false;">Servicios</a>
-      <a href="#" onclick="openOverlay('tienda');return false;">Tienda</a>
-      <a href="#" onclick="openOverlay('cursos');return false;">Cursos</a>
-      <a href="#" onclick="openOverlay('cobertura');return false;">Cobertura</a>
-      <a href="#" onclick="openOverlay('contacto');return false;">Contacto</a>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#" onclick="openOverlay('servicios');closeMenu();return false;">Servicios</a>
+      <a href="#" onclick="openOverlay('tienda');closeMenu();return false;">Tienda</a>
+      <a href="#" onclick="openOverlay('cursos');closeMenu();return false;">Cursos</a>
+      <a href="#" onclick="openOverlay('cobertura');closeMenu();return false;">Cobertura</a>
+      <a href="#" onclick="openOverlay('contacto');closeMenu();return false;">Contacto</a>
+      <a class="nav-cta-mobile" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">📲 Agendar visita</a>
     </div>
-    <a class="nav-cta" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">▸ Agendar visita</a>
+    <a class="nav-cta-desktop" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">▸ Agendar visita</a>
   </div>
 </header>
 
 <main class="wrap">
 
   <!-- ============================================================
-  HERO - SOLO INICIO
+  HERO
   ============================================================ -->
   <section class="hero">
     <div class="hero-tag"><span class="led"></span>DISPONIBLE PARA SERVICIO A DOMICILIO HOY</div>
-    <h1>Soporte técnico que <span class="accent">llega a tu puerta</span>
+    <h1>Soporte técnico que <span class="accent">llega a tu puerta</span>,<br>no al revés.</h1>
     <p class="hero-sub">Mantenimiento de computadores e impresoras, instalación de cámaras de seguridad, redes punto a punto y soporte técnico — todo en un solo técnico, en tu casa o negocio.</p>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:30px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px">
-      <div style="text-align:center">
-        <div style="font-size:28px">🖥️</div>
-        <div style="font-weight:700;font-size:13px;margin-top:6px">Computadores</div>
-        <div style="font-size:11px;color:var(--muted)">Mantenimiento y reparación</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:28px">🖨️</div>
-        <div style="font-weight:700;font-size:13px;margin-top:6px">Impresoras</div>
-        <div style="font-size:11px;color:var(--muted)">Láser e inyección de tinta</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:28px">📷</div>
-        <div style="font-weight:700;font-size:13px;margin-top:6px">Cámaras de Seguridad</div>
-        <div style="font-size:11px;color:var(--muted)">IP, WiFi y análogas</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:28px">📡</div>
-        <div style="font-weight:700;font-size:13px;margin-top:6px">Redes Punto a Punto</div>
-        <div style="font-size:11px;color:var(--muted)">Enlaces inalámbricos</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:28px">🛠️</div>
-        <div style="font-weight:700;font-size:13px;margin-top:6px">Soporte General</div>
-        <div style="font-size:11px;color:var(--muted)">Configuración y asesoría</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:28px">🎓</div>
-        <div style="font-weight:700;font-size:13px;margin-top:6px">Cursos Técnicos</div>
-        <div style="font-size:11px;color:var(--muted)">6 cursos especializados</div>
-      </div>
+    <div class="hero-grid">
+      <div class="hero-grid-item"><div class="icon">🖥️</div><div class="label">Computadores</div><div class="sub">Mantenimiento</div></div>
+      <div class="hero-grid-item"><div class="icon">🖨️</div><div class="label">Impresoras</div><div class="sub">Láser / Tinta</div></div>
+      <div class="hero-grid-item"><div class="icon">📷</div><div class="label">Cámaras</div><div class="sub">IP / WiFi</div></div>
+      <div class="hero-grid-item"><div class="icon">📡</div><div class="label">Redes</div><div class="sub">Punto a Punto</div></div>
+      <div class="hero-grid-item"><div class="icon">🛠️</div><div class="label">Soporte</div><div class="sub">General</div></div>
+      <div class="hero-grid-item"><div class="icon">🎓</div><div class="label">Cursos</div><div class="sub">Técnicos</div></div>
     </div>
 
     <div class="hero-actions">
-      <a class="btn btn-primary" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">📲 Escribir por WhatsApp</a>
+      <a class="btn btn-primary" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">📲 WhatsApp</a>
       <a class="btn btn-ghost" href="#" onclick="openOverlay('servicios');return false;">Ver servicios ↓</a>
     </div>
 
@@ -643,6 +885,7 @@ footer{
   </div>
 </footer>
 
+<!-- WhatsApp flotante -->
 <div id="wa-float">
   <a href="https://wa.me/573118184977?text=Hola%2C%20necesito%20ayuda" target="_blank" aria-label="WhatsApp">
     <span class="pulse"></span>💬
@@ -655,24 +898,24 @@ OVERLAY: SERVICIOS
 <div class="overlay" id="overlay-servicios">
   <div class="overlay-header">
     <div class="overlay-header-inner">
-      <div class="brand" style="font-size:16px"><span class="dot"></span>WIJITECH<small>servicios</small></div>
+      <div class="brand" style="font-size:15px"><span class="dot"></span>WIJITECH<small>servicios</small></div>
       <button class="overlay-close" onclick="closeOverlay('servicios')">✕</button>
     </div>
   </div>
   <div class="overlay-body">
     <div class="eyebrow">/ orden de servicio</div>
-    <h2>Lo que reparamos e instalamos </h2>
+    <h2>Lo que reparamos, instalamos y mantenemos</h2>
     <p class="section-sub">Cada visita incluye diagnóstico, mano de obra y garantía sobre el trabajo realizado. Tú eliges el horario.</p>
 
     <div class="services-grid" id="services-grid"></div>
 
-    <div class="eyebrow" style="margin-top:64px">/ proceso de atención</div>
+    <div class="eyebrow" style="margin-top:48px">/ proceso de atención</div>
     <h2>Así funciona una visita</h2>
     <div class="process">
-      <div class="proc-step"><div class="pn">01</div><h4>Escríbenos</h4><p>Cuéntanos el problema por WhatsApp y te decimos qué necesitas.</p></div>
-      <div class="proc-step"><div class="pn">02</div><h4>Agendamos</h4><p>Elegimos juntos día y hora — la visita es a tu domicilio o negocio.</p></div>
-      <div class="proc-step"><div class="pn">03</div><h4>Diagnóstico</h4><p>Revisamos el equipo o instalación y te damos un valor claro antes de empezar.</p></div>
-      <div class="proc-step"><div class="pn">04</div><h4>Servicio + garantía</h4><p>Hacemos el trabajo y queda con garantía sobre la reparación o instalación.</p></div>
+      <div class="proc-step"><div class="pn">01</div><h4>Escríbenos</h4><p>Cuéntanos el problema por WhatsApp.</p></div>
+      <div class="proc-step"><div class="pn">02</div><h4>Agendamos</h4><p>Elegimos día y hora — visita a domicilio.</p></div>
+      <div class="proc-step"><div class="pn">03</div><h4>Diagnóstico</h4><p>Revisamos y te damos un valor claro.</p></div>
+      <div class="proc-step"><div class="pn">04</div><h4>Servicio</h4><p>Trabajo con garantía incluida.</p></div>
     </div>
   </div>
 </div>
@@ -683,9 +926,9 @@ OVERLAY: TIENDA
 <div class="overlay" id="overlay-tienda">
   <div class="overlay-header">
     <div class="overlay-header-inner">
-      <div class="brand" style="font-size:16px"><span class="dot"></span>WIJITECH<small>tienda</small></div>
-      <div style="display:flex;gap:10px;align-items:center">
-        <button class="btn btn-ghost" style="padding:9px 14px;font-size:12.5px" onclick="openShopAdmin()">⚙️ Gestionar productos</button>
+      <div class="brand" style="font-size:15px"><span class="dot"></span>WIJITECH<small>tienda</small></div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-ghost" style="padding:8px 12px;font-size:11px" onclick="openShopAdmin()">⚙️</button>
         <button class="overlay-close" onclick="closeOverlay('tienda')">✕</button>
       </div>
     </div>
@@ -693,23 +936,20 @@ OVERLAY: TIENDA
   <div class="overlay-body">
     <div class="eyebrow">/ catálogo</div>
     <h2>Cámaras, computadores, repuestos y más</h2>
-    <p class="section-sub">Precios de referencia — cotiza el tuyo y te confirmamos disponibilidad y precio final por WhatsApp.</p>
+    <p class="section-sub">Precios de referencia — cotiza y te confirmamos disponibilidad.</p>
 
     <div class="shop-tabs" id="shop-tabs">
       <button class="shop-tab active" data-cat="todos" onclick="filterShop('todos', this)">Todos</button>
-      <button class="shop-tab" data-cat="camaras" onclick="filterShop('camaras', this)">📷 Cámaras</button>
-      <button class="shop-tab" data-cat="computadores" onclick="filterShop('computadores', this)">🖥️ Computadores</button>
-      <button class="shop-tab" data-cat="repuestos" onclick="filterShop('repuestos', this)">🔧 Repuestos</button>
-      <button class="shop-tab" data-cat="redes" onclick="filterShop('redes', this)">📡 Redes / Routers</button>
-      <button class="shop-tab" data-cat="accesorios" onclick="filterShop('accesorios', this)">🎧 Accesorios</button>
+      <button class="shop-tab" data-cat="camaras" onclick="filterShop('camaras', this)">📷</button>
+      <button class="shop-tab" data-cat="computadores" onclick="filterShop('computadores', this)">🖥️</button>
+      <button class="shop-tab" data-cat="repuestos" onclick="filterShop('repuestos', this)">🔧</button>
+      <button class="shop-tab" data-cat="redes" onclick="filterShop('redes', this)">📡</button>
+      <button class="shop-tab" data-cat="accesorios" onclick="filterShop('accesorios', this)">🎧</button>
     </div>
 
     <div class="shop-grid" id="shop-grid"></div>
-    <div id="shop-empty" style="display:none;text-align:center;padding:60px 20px;color:var(--muted)">
-      No hay productos en esta categoría todavía.
-    </div>
-
-    <p class="shop-note">💬 ¿No encuentras lo que buscas? Escríbenos por WhatsApp y te ayudamos a conseguirlo.</p>
+    <div id="shop-empty" style="display:none;text-align:center;padding:40px 20px;color:var(--muted)">No hay productos en esta categoría.</div>
+    <p class="shop-note">💬 ¿No encuentras lo que buscas? Escríbenos por WhatsApp.</p>
   </div>
 </div>
 
@@ -719,18 +959,17 @@ OVERLAY: CURSOS
 <div class="overlay" id="overlay-cursos">
   <div class="overlay-header">
     <div class="overlay-header-inner">
-      <div class="brand" style="font-size:16px"><span class="dot"></span>WIJITECH<small>cursos</small></div>
+      <div class="brand" style="font-size:15px"><span class="dot"></span>WIJITECH<small>cursos</small></div>
       <button class="overlay-close" onclick="closeOverlay('cursos')">✕</button>
     </div>
   </div>
   <div class="overlay-body">
     <div class="eyebrow">/ formación técnica</div>
     <h2>Cursos técnicos especializados</h2>
-    <p class="section-sub">Formación práctica en áreas de alta demanda. Todos los cursos incluyen certificación y acompañamiento personalizado. <strong>Duración: 40 horas cada curso.</strong></p>
+    <p class="section-sub">Formación práctica en áreas de alta demanda. <strong>Duración: 40 horas cada curso.</strong></p>
 
     <div class="cursos-grid" id="cursos-grid"></div>
 
-    <!-- Detalle del curso seleccionado -->
     <div class="curso-detalle" id="curso-detalle" style="display:none">
       <div class="detalle-header">
         <span class="icon" id="detalle-icon">📚</span>
@@ -739,20 +978,20 @@ OVERLAY: CURSOS
           <span class="nivel" id="detalle-nivel">Nivel</span>
         </div>
       </div>
-      <p id="detalle-desc" style="color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:16px"></p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px" id="detalle-tags"></div>
+      <p id="detalle-desc" style="color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:12px"></p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px" id="detalle-tags"></div>
       <div class="detalle-modulos" id="detalle-modulos"></div>
     </div>
   </div>
 </div>
 
 <!-- ============================================================
-OVERLAY: COBERTURA + TEST DE VELOCIDAD
+OVERLAY: COBERTURA
 ============================================================ -->
 <div class="overlay" id="overlay-cobertura">
   <div class="overlay-header">
     <div class="overlay-header-inner">
-      <div class="brand" style="font-size:16px"><span class="dot"></span>WIJITECH<small>cobertura</small></div>
+      <div class="brand" style="font-size:15px"><span class="dot"></span>WIJITECH<small>cobertura</small></div>
       <button class="overlay-close" onclick="closeOverlay('cobertura')">✕</button>
     </div>
   </div>
@@ -761,12 +1000,12 @@ OVERLAY: COBERTURA + TEST DE VELOCIDAD
     <h2>Atendemos a domicilio en estas zonas</h2>
     <p class="section-sub">¿No ves tu sector? Escríbenos — muchas veces igual podemos cubrirlo.</p>
     <div class="coverage">
-      <span>📍 Fosca</span>
-      <span>📍 Quetame</span>
-      <span>📍 Caqueza</span>
+      <span>📍 Zona urbana</span>
+      <span>📍 Zona rural cercana</span>
+      <span>📍 Conjuntos residenciales</span>
       <span>📍 Locales comerciales</span>
       <span>📍 Oficinas pequeñas</span>
-      <span>📍 Fincas y veredas (punto a punto)</span>
+      <span>📍 Fincas y veredas</span>
     </div>
 
     <div class="speedtest-panel">
@@ -776,18 +1015,18 @@ OVERLAY: COBERTURA + TEST DE VELOCIDAD
           <div class="sd-unit">Mbps</div>
           <div class="sd-stage" id="sd-stage">Listo para medir</div>
         </div>
-        <button class="btn btn-primary" id="sd-btn" onclick="runSpeedTest()" style="margin-top:26px">▸ Iniciar test de velocidad</button>
+        <button class="btn btn-primary" id="sd-btn" onclick="runSpeedTest()" style="margin-top:20px;min-width:160px">▸ Iniciar test</button>
       </div>
       <div>
         <div class="eyebrow">/ diagnóstico de red</div>
-        <h2 style="font-size:24px">¿Qué tan buena es tu conexión actual?</h2>
-        <p class="section-sub" style="margin-top:10px">Medimos tu velocidad real de bajada, subida y latencia ahora mismo — útil para saber si necesitas un enlace punto a punto, cambiar de plan o si el problema es tu router.</p>
+        <h2 style="font-size:20px">¿Qué tan buena es tu conexión?</h2>
+        <p class="section-sub" style="margin-top:8px;font-size:13px">Velocidad real de bajada, subida y latencia.</p>
         <div class="speedtest-results">
-          <div><div class="sr-val is-down" id="sr-down">--</div><div class="sr-label">Bajada (Mbps)</div></div>
-          <div><div class="sr-val is-up" id="sr-up">--</div><div class="sr-label">Subida (Mbps)</div></div>
-          <div><div class="sr-val" id="sr-ping">--</div><div class="sr-label">Latencia (ms)</div></div>
+          <div><div class="sr-val is-down" id="sr-down">--</div><div class="sr-label">Bajada</div></div>
+          <div><div class="sr-val is-up" id="sr-up">--</div><div class="sr-label">Subida</div></div>
+          <div><div class="sr-val" id="sr-ping">--</div><div class="sr-label">Latencia</div></div>
         </div>
-        <p class="speedtest-note">Medición real contra la red de Cloudflare, ejecutada en tu navegador en este momento — no es un valor genérico ni inventado. El resultado depende de tu conexión actual, no de la nuestra.</p>
+        <p class="speedtest-note">Medición real contra Cloudflare — el resultado depende de tu conexión actual.</p>
       </div>
     </div>
   </div>
@@ -799,7 +1038,7 @@ OVERLAY: CONTACTO
 <div class="overlay" id="overlay-contacto">
   <div class="overlay-header">
     <div class="overlay-header-inner">
-      <div class="brand" style="font-size:16px"><span class="dot"></span>WIJITECH<small>contacto</small></div>
+      <div class="brand" style="font-size:15px"><span class="dot"></span>WIJITECH<small>contacto</small></div>
       <button class="overlay-close" onclick="closeOverlay('contacto')">✕</button>
     </div>
   </div>
@@ -807,19 +1046,19 @@ OVERLAY: CONTACTO
     <div class="cta-final" style="padding:0">
       <div class="eyebrow" style="justify-content:center;display:flex">/ contacto directo</div>
       <h2>¿Tu equipo, cámara o red necesita atención?</h2>
-      <p class="section-sub">Cuéntanos qué pasa y coordinamos la visita el mismo día o el que mejor te quede.</p>
+      <p class="section-sub">Cuéntanos qué pasa y coordinamos la visita.</p>
 
-      <div class="trust" style="border:none;padding:20px 0">
+      <div class="trust" style="border:none;padding:16px 0">
         <div class="trust-row">
-          <div><b>Diagnóstico claro</b><br>antes de cualquier cobro</div>
-          <div><b>Garantía</b><br>sobre cada servicio realizado</div>
-          <div><b>Pago al finalizar</b><br>sin adelantos para visitar</div>
-          <div><b>Respuesta rápida</b><br>por WhatsApp, todos los días</div>
+          <div><b>Diagnóstico claro</b><br>antes de cobrar</div>
+          <div><b>Garantía</b><br>en cada servicio</div>
+          <div><b>Pago al finalizar</b><br>sin adelantos</div>
+          <div><b>Respuesta rápida</b><br>por WhatsApp</div>
         </div>
       </div>
 
-      <div class="hero-actions" style="justify-content:center;margin-top:20px">
-        <a class="btn btn-primary" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">📲 311 818 4977 — Escribir ahora</a>
+      <div class="hero-actions" style="justify-content:center;margin-top:16px">
+        <a class="btn btn-primary" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank" style="min-width:200px">📲 311 818 4977</a>
       </div>
     </div>
   </div>
@@ -828,60 +1067,78 @@ OVERLAY: CONTACTO
 <!-- ============================================================
 SHOP ADMIN
 ============================================================ -->
-<div id="shop-admin-overlay" style="display:none;position:fixed;inset:0;z-index:210;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:20px">
-  <div style="background:var(--panel);border:1px solid var(--line);border-radius:12px;max-width:640px;width:100%;max-height:85vh;overflow-y:auto;padding:28px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-      <h3 style="font-family:var(--mono);font-size:18px">⚙️ Gestionar productos</h3>
-      <button onclick="closeShopAdmin()" style="width:32px;height:32px;border-radius:8px;border:1px solid var(--line);background:var(--bg2);color:var(--text);cursor:pointer">✕</button>
+<div id="shop-admin-overlay" style="display:none;position:fixed;inset:0;z-index:210;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:16px">
+  <div style="background:var(--panel);border:1px solid var(--line);border-radius:12px;max-width:600px;width:100%;max-height:85vh;overflow-y:auto;padding:20px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <h3 style="font-family:var(--mono);font-size:16px">⚙️ Gestionar productos</h3>
+      <button onclick="closeShopAdmin()" style="width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--bg2);color:var(--text);cursor:pointer;font-size:16px">✕</button>
     </div>
 
     <div id="shop-admin-locked">
-      <p style="color:var(--muted);font-size:13.5px;margin-bottom:14px">Ingresa la clave de administrador para agregar o quitar productos del catálogo.</p>
-      <input type="password" id="shop-admin-pass" placeholder="Clave de administrador" style="width:100%;padding:11px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg2);color:var(--text);font-family:var(--sans);margin-bottom:12px" onkeydown="if(event.key==='Enter')checkShopAdminPass()">
+      <p style="color:var(--muted);font-size:12px;margin-bottom:12px">Ingresa la clave de administrador.</p>
+      <input type="password" id="shop-admin-pass" placeholder="Clave de administrador" style="width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg2);color:var(--text);font-family:var(--sans);margin-bottom:10px;font-size:14px" onkeydown="if(event.key==='Enter')checkShopAdminPass()">
       <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="checkShopAdminPass()">Entrar</button>
     </div>
 
     <div id="shop-admin-unlocked" style="display:none">
-      <div style="border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:20px;background:var(--bg2)">
-        <div style="font-family:var(--mono);font-size:11.5px;color:var(--green);margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px">+ Agregar producto nuevo</div>
+      <div style="border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:16px;background:var(--bg2)">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--green);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">+ Agregar producto</div>
 
-        <label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:6px">Foto del producto (opcional)</label>
-        <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
-          <div id="sa-img-preview" style="width:64px;height:64px;border-radius:8px;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:26px;overflow:hidden;flex-shrink:0">📦</div>
+        <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Foto (opcional)</label>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+          <div id="sa-img-preview" style="width:48px;height:48px;border-radius:8px;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden;flex-shrink:0">📦</div>
           <div style="flex:1">
             <input type="file" id="sa-image" accept="image/*" onchange="handleProductImageSelect(this)" style="display:none">
-            <button type="button" class="btn btn-ghost" style="font-size:12px;padding:8px 12px" onclick="document.getElementById('sa-image').click()">📷 Subir foto real</button>
-            <button type="button" id="sa-img-clear" onclick="clearProductImage()" style="display:none;background:none;border:none;color:var(--muted);font-size:11.5px;margin-left:8px;cursor:pointer;text-decoration:underline">quitar foto</button>
+            <button type="button" class="btn btn-ghost" style="font-size:11px;padding:6px 10px" onclick="document.getElementById('sa-image').click()">📷 Subir foto</button>
+            <button type="button" id="sa-img-clear" onclick="clearProductImage()" style="display:none;background:none;border:none;color:var(--muted);font-size:10px;margin-left:6px;cursor:pointer;text-decoration:underline">quitar</button>
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
-          <select id="sa-cat" style="padding:9px 10px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:13px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+          <select id="sa-cat" style="padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:12px">
             <option value="camaras">📷 Cámaras</option>
             <option value="computadores">🖥️ Computadores</option>
             <option value="repuestos">🔧 Repuestos</option>
             <option value="redes">📡 Redes / Routers</option>
             <option value="accesorios">🎧 Accesorios</option>
           </select>
-          <input id="sa-emoji" placeholder="Emoji si no subes foto (ej: 📷)" style="padding:9px 10px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:13px">
+          <input id="sa-emoji" placeholder="Emoji" style="padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:12px">
         </div>
-        <input id="sa-name" placeholder="Nombre del producto" style="width:100%;padding:9px 10px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:13px;margin-bottom:10px">
-        <textarea id="sa-desc" placeholder="Descripción corta" style="width:100%;padding:9px 10px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:13px;margin-bottom:10px;min-height:60px;resize:vertical;font-family:var(--sans)"></textarea>
-        <input id="sa-price" placeholder="Precio (ej: 95.000)" style="width:100%;padding:9px 10px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:13px;margin-bottom:12px">
-        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="adminAddProduct()">Agregar al catálogo</button>
+        <input id="sa-name" placeholder="Nombre del producto" style="width:100%;padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:12px;margin-bottom:8px">
+        <textarea id="sa-desc" placeholder="Descripción corta" style="width:100%;padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:12px;margin-bottom:8px;min-height:50px;resize:vertical;font-family:var(--sans)"></textarea>
+        <input id="sa-price" placeholder="Precio (ej: 95.000)" style="width:100%;padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:12px;margin-bottom:10px">
+        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="adminAddProduct()">Agregar</button>
       </div>
 
-      <div style="font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">Productos actuales (<span id="sa-count">0</span>)</div>
-      <div id="shop-admin-list" style="display:flex;flex-direction:column;gap:8px"></div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Productos (<span id="sa-count">0</span>)</div>
+      <div id="shop-admin-list" style="display:flex;flex-direction:column;gap:6px"></div>
 
-      <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:16px;color:var(--muted)" onclick="resetShopCatalog()">↺ Restaurar catálogo de ejemplo</button>
+      <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:12px;font-size:12px;color:var(--muted)" onclick="resetShopCatalog()">↺ Restaurar catálogo</button>
     </div>
   </div>
 </div>
 
 <script>
 // ============================================================
-// OVERLAY (abrir/cerrar)
+// MENÚ HAMBURGUESA
+// ============================================================
+function toggleMenu(){
+  document.getElementById('navlinks').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('navlinks').classList.remove('open');
+}
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', function(e){
+  const nav = document.getElementById('navlinks');
+  const toggle = document.querySelector('.menu-toggle');
+  if(nav.classList.contains('open') && !nav.contains(e.target) && !toggle.contains(e.target)){
+    closeMenu();
+  }
+});
+
+// ============================================================
+// OVERLAY
 // ============================================================
 function openOverlay(id){
   document.getElementById('overlay-' + id).classList.add('open');
@@ -907,35 +1164,9 @@ const SERVICES = [
     desc: 'Mantenimiento preventivo y correctivo, limpieza interna, cambio de pasta térmica, formateo, instalación de software y recuperación de archivos.',
     tags: ['Sobremesa', 'Portátiles', 'Diagnóstico'],
     groups: [
-      {
-        title: 'Mantenimiento preventivo',
-        items: [
-          '<b>Limpieza interna</b> con aire comprimido y herramientas antiestáticas <span class="dim">— polvo, ventiladores, disipadores</span>',
-          '<b>Cambio de pasta térmica</b> del procesador para bajar temperaturas',
-          '<b>Revisión de batería</b> en portátiles y estado de carga',
-          '<b>Actualización de drivers, firmware y sistema operativo</b>',
-          '<b>Limpieza de archivos temporales</b> y liberación de espacio en disco',
-          '<b>Diagnóstico de salud del disco duro / SSD</b>'
-        ]
-      },
-      {
-        title: 'Mantenimiento correctivo',
-        items: [
-          '<b>Formateo e instalación de sistema operativo</b> (Windows/Linux) con drivers',
-          '<b>Eliminación de virus y malware</b>, revisión post-limpieza',
-          '<b>Recuperación de archivos</b> tras borrado, falla o virus',
-          '<b>Reemplazo de componentes dañados</b> <span class="dim">— disco, RAM, fuente, ventilador, teclado</span>',
-          '<b>Reparación de fallas de encendido</b> y diagnóstico de tarjeta madre'
-        ]
-      },
-      {
-        title: 'Software y configuración',
-        items: [
-          'Instalación de programas de oficina, antivirus y utilidades',
-          'Configuración de respaldo (backup) automático',
-          'Optimización de inicio y rendimiento general'
-        ]
-      }
+      {title: 'Mantenimiento preventivo', items: ['<b>Limpieza interna</b> con aire comprimido', '<b>Cambio de pasta térmica</b> del procesador', '<b>Revisión de batería</b> en portátiles', '<b>Actualización de drivers</b> y sistema operativo', '<b>Limpieza de archivos temporales</b>', '<b>Diagnóstico de salud del disco</b>']},
+      {title: 'Mantenimiento correctivo', items: ['<b>Formateo e instalación</b> de sistema operativo', '<b>Eliminación de virus y malware</b>', '<b>Recuperación de archivos</b>', '<b>Reemplazo de componentes</b> dañados', '<b>Reparación de fallas</b> de encendido']},
+      {title: 'Software y configuración', items: ['Instalación de programas de oficina', 'Configuración de respaldo automático', 'Optimización de inicio y rendimiento']}
     ]
   },
   {
@@ -946,31 +1177,9 @@ const SERVICES = [
     desc: 'Mantenimiento de impresoras láser e inyección de tinta, limpieza de cabezales, cambio de tóner/tinta y configuración en red.',
     tags: ['Láser', 'Inyección', 'Multifuncional'],
     groups: [
-      {
-        title: 'Impresoras láser',
-        items: [
-          '<b>Limpieza de fusor, rodillos y unidad de tóner</b>',
-          '<b>Cambio de tóner</b> y limpieza de derrames internos',
-          '<b>Calibración de calidad de impresión</b> <span class="dim">— manchas, rayas, atascos de papel</span>'
-        ]
-      },
-      {
-        title: 'Impresoras de inyección de tinta',
-        items: [
-          '<b>Limpieza de cabezales</b> obstruidos o secos',
-          '<b>Cambio de cartuchos / sistema de tinta continua</b>',
-          '<b>Purgado de tinta</b> y prueba de inyectores'
-        ]
-      },
-      {
-        title: 'Configuración y red',
-        items: [
-          'Instalación de drivers en Windows/Mac',
-          '<b>Configuración de impresora en red WiFi</b> para varios equipos',
-          'Configuración de escáner e impresión multifuncional',
-          'Diagnóstico de errores de comunicación o atascos recurrentes'
-        ]
-      }
+      {title: 'Impresoras láser', items: ['<b>Limpieza de fusor y rodillos</b>', '<b>Cambio de tóner</b>', '<b>Calibración de calidad</b> de impresión']},
+      {title: 'Inyección de tinta', items: ['<b>Limpieza de cabezales</b> obstruidos', '<b>Cambio de cartuchos</b>', '<b>Purgado de tinta</b>']},
+      {title: 'Configuración y red', items: ['Instalación de drivers', '<b>Configuración WiFi</b> para varios equipos', 'Configuración de escáner', 'Diagnóstico de errores']}
     ]
   },
   {
@@ -978,36 +1187,12 @@ const SERVICES = [
     code: 'OT-03 · SEGURIDAD',
     icon: '📷',
     title: 'Cámaras IP / análogas',
-    desc: 'Instalación y mantenimiento de sistemas de videovigilancia IP, WiFi y análogas. Configuración de DVR/NVR y acceso remoto desde tu celular.',
+    desc: 'Instalación y mantenimiento de sistemas de videovigilancia IP, WiFi y análogas. Configuración de DVR/NVR y acceso remoto.',
     tags: ['IP', 'WiFi', 'Análogas', 'DVR'],
     groups: [
-      {
-        title: 'Instalación',
-        items: [
-          '<b>Estudio de puntos ciegos</b> y ubicación óptima de cámaras',
-          '<b>Cámaras análogas</b> con cableado coaxial hasta el DVR',
-          '<b>Cámaras IP/WiFi</b> con cableado de red o conexión inalámbrica',
-          'Fijación de soportes, canaletas y protección de cableado exterior',
-          '<b>Configuración de DVR/NVR</b> y disco de grabación'
-        ]
-      },
-      {
-        title: 'Acceso remoto y app móvil',
-        items: [
-          '<b>Configuración de visualización desde el celular</b> (app del fabricante)',
-          'Acceso remoto seguro fuera de tu red local',
-          'Configuración de alertas de movimiento'
-        ]
-      },
-      {
-        title: 'Mantenimiento',
-        items: [
-          'Limpieza de lentes y carcasas expuestas a la intemperie',
-          'Revisión de grabación, fechas y espacio en disco',
-          'Diagnóstico de cámaras desconectadas o con mala imagen',
-          'Cambio de fuentes de poder, conectores y disco de grabación'
-        ]
-      }
+      {title: 'Instalación', items: ['<b>Estudio de puntos ciegos</b>', '<b>Cámaras análogas</b> con cableado', '<b>Cámaras IP/WiFi</b>', 'Fijación de soportes', '<b>Configuración de DVR/NVR</b>']},
+      {title: 'Acceso remoto', items: ['<b>Visualización desde celular</b>', 'Acceso remoto seguro', 'Alertas de movimiento']},
+      {title: 'Mantenimiento', items: ['Limpieza de lentes', 'Revisión de grabación', 'Diagnóstico de cámaras', 'Cambio de fuentes de poder']}
     ]
   },
   {
@@ -1018,31 +1203,9 @@ const SERVICES = [
     desc: 'Enlaces inalámbricos punto a punto para llevar internet o red local entre edificios, fincas o locales sin cableado físico.',
     tags: ['Antenas', 'Largo alcance', 'WiFi'],
     groups: [
-      {
-        title: 'Estudio y diseño del enlace',
-        items: [
-          '<b>Verificación de línea de vista</b> entre los dos puntos a conectar',
-          'Cálculo de distancia y selección de antena adecuada',
-          'Recomendación de torre, mástil o punto de fijación'
-        ]
-      },
-      {
-        title: 'Instalación del enlace',
-        items: [
-          '<b>Montaje de antenas direccionales</b> en ambos extremos',
-          'Alineación y ajuste de señal para máxima estabilidad',
-          '<b>Configuración de red</b> para compartir internet o red local entre sedes',
-          'Protección contra descargas eléctricas (pararrayos/aterrizaje)'
-        ]
-      },
-      {
-        title: 'Casos de uso típicos',
-        items: [
-          'Llevar internet de la casa principal a una caseta, bodega o segunda vivienda',
-          'Conectar dos edificios o sedes de un mismo negocio',
-          'Internet para fincas y zonas rurales sin cableado físico'
-        ]
-      }
+      {title: 'Estudio y diseño', items: ['<b>Verificación de línea de vista</b>', 'Cálculo de distancia', 'Recomendación de torre/mástil']},
+      {title: 'Instalación', items: ['<b>Montaje de antenas direccionales</b>', 'Alineación y ajuste de señal', '<b>Configuración de red</b>', 'Protección contra descargas']},
+      {title: 'Casos de uso', items: ['Internet a caseta/bodega', 'Conectar dos edificios', 'Internet para fincas rurales']}
     ]
   },
   {
@@ -1053,31 +1216,9 @@ const SERVICES = [
     desc: 'Configuración de redes domésticas, eliminación de virus, respaldo de información y asesoría en compra de equipos.',
     tags: ['Redes', 'Seguridad', 'Asesoría'],
     groups: [
-      {
-        title: 'Redes domésticas y de oficina',
-        items: [
-          '<b>Configuración de router</b> y mejora de cobertura WiFi',
-          'Cambio de contraseñas y seguridad de la red',
-          'Diagnóstico de internet lento o intermitente',
-          'Configuración de impresoras y dispositivos compartidos en red'
-        ]
-      },
-      {
-        title: 'Seguridad y respaldo',
-        items: [
-          '<b>Eliminación de virus, malware y programas no deseados</b>',
-          '<b>Respaldo de información</b> a disco externo o nube',
-          'Instalación y configuración de antivirus'
-        ]
-      },
-      {
-        title: 'Asesoría',
-        items: [
-          'Recomendación de equipos según uso y presupuesto antes de comprar',
-          'Acompañamiento en compra de computador, impresora o cámaras',
-          'Asesoría telefónica para problemas puntuales'
-        ]
-      }
+      {title: 'Redes domésticas', items: ['<b>Configuración de router</b>', 'Cambio de contraseñas', 'Diagnóstico de internet lento', 'Configuración de impresoras compartidas']},
+      {title: 'Seguridad y respaldo', items: ['<b>Eliminación de virus</b>', '<b>Respaldo de información</b>', 'Instalación de antivirus']},
+      {title: 'Asesoría', items: ['Recomendación de equipos', 'Acompañamiento en compras', 'Asesoría telefónica']}
     ]
   },
   {
@@ -1088,30 +1229,9 @@ const SERVICES = [
     desc: 'Tendido de cable de red, ponchado de puntos, certificación básica y organización de racks para hogares y oficinas.',
     tags: ['UTP', 'Racks', 'Puntos de red'],
     groups: [
-      {
-        title: 'Tendido de cable',
-        items: [
-          '<b>Cableado UTP categoría 5e/6</b> por canaleta o cielo falso',
-          'Tendido ordenado entre oficinas, habitaciones o pisos',
-          'Etiquetado de cada punto para fácil identificación'
-        ]
-      },
-      {
-        title: 'Puntos de red',
-        items: [
-          '<b>Ponchado de conectores RJ45</b> y rosetas de pared',
-          'Pruebas de continuidad y velocidad por punto',
-          'Reparación de puntos de red existentes que fallan'
-        ]
-      },
-      {
-        title: 'Racks y organización',
-        items: [
-          '<b>Organización de rack/patch panel</b> con switches y router',
-          'Orden y etiquetado de cableado en racks existentes',
-          'Certificación básica de funcionamiento de cada punto'
-        ]
-      }
+      {title: 'Tendido de cable', items: ['<b>Cableado UTP Cat5e/6</b>', 'Tendido ordenado', 'Etiquetado de puntos']},
+      {title: 'Puntos de red', items: ['<b>Ponchado de conectores RJ45</b>', 'Pruebas de continuidad', 'Reparación de puntos fallados']},
+      {title: 'Racks y organización', items: ['<b>Organización de rack</b>', 'Orden y etiquetado', 'Certificación básica']}
     ]
   }
 ];
@@ -1125,15 +1245,13 @@ function renderServices(){
       <h3>${s.title}</h3>
       <p>${s.desc}</p>
       <div class="ot-tags">${s.tags.map(t => `<span>${t}</span>`).join('')}</div>
-      <button class="ot-menu-toggle" onclick="toggleServiceMenu('${s.id}')">Ver menú completo del servicio <span class="chev">▾</span></button>
+      <button class="ot-menu-toggle" onclick="toggleServiceMenu('${s.id}')">Ver menú completo <span class="chev">▾</span></button>
       <div class="ot-menu">
         <div class="ot-menu-inner">
           ${s.groups.map(g => `
             <div class="ot-menu-group">
               <div class="ot-menu-group-title">${g.title}</div>
-              <ul class="ot-menu-list">
-                ${g.items.map(item => `<li>${item}</li>`).join('')}
-              </ul>
+              <ul class="ot-menu-list">${g.items.map(item => `<li>${item}</li>`).join('')}</ul>
             </div>
           `).join('')}
         </div>
@@ -1147,19 +1265,16 @@ function toggleServiceMenu(id){
   if(!card) return;
   const wasOpen = card.classList.contains('is-open');
   document.querySelectorAll('.ot-card.is-open').forEach(c => c.classList.remove('is-open'));
-  document.querySelectorAll('.ot-menu-toggle').forEach(btn => {
-    btn.innerHTML = btn.innerHTML.replace('Ocultar menú del servicio', 'Ver menú completo del servicio');
-  });
   if(!wasOpen){
     card.classList.add('is-open');
     const btn = card.querySelector('.ot-menu-toggle');
-    btn.innerHTML = btn.innerHTML.replace('Ver menú completo del servicio', 'Ocultar menú del servicio');
+    btn.innerHTML = btn.innerHTML.replace('Ver menú completo', 'Ocultar menú');
     setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'center'}), 120);
   }
 }
 
 // ============================================================
-// CURSOS - AGREGAR MÁS CURSOS AQUÍ
+// CURSOS
 // ============================================================
 const FORMULARIO_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdYS5pkr1U-aF7SVhIUqjDVMaM_Ky_qvg2ogfilJKW2eFeGCg/viewform';
 
@@ -1170,61 +1285,105 @@ const CURSOS = [
     titulo: 'Técnico en Sistemas',
     nivel: 'Básico a Intermedio',
     duracion: '40 horas',
-    descripcion: 'Aprende los fundamentos de hardware, software, redes y mantenimiento de computadores. Ideal para quienes quieren iniciar en el mundo de la tecnología.',
-    tags: ['Hardware', 'Software', 'Redes', 'Mantenimiento'],
+    descripcion: 'Aprende los fundamentos de hardware, software, redes y mantenimiento de computadores.',
+    tags: ['Hardware', 'Software', 'Redes'],
     modulos: [
-      { titulo: 'Fundamentos de Hardware', semanas: 'Semanas 1-3', lecciones: ['Componentes del PC', 'Ensamblaje básico', 'Diagnóstico de fallas'] },
-      { titulo: 'Sistemas Operativos', semanas: 'Semanas 4-6', lecciones: ['Windows', 'Linux básico', 'Instalación y configuración'] },
-      { titulo: 'Redes y Conectividad', semanas: 'Semanas 7-9', lecciones: ['TCP/IP básico', 'Configuración de routers', 'Cableado estructurado'] },
-      { titulo: 'Mantenimiento y Soporte', semanas: 'Semanas 10-12', lecciones: ['Mantenimiento preventivo', 'Soporte técnico', 'Gestión de incidencias'] }
+      {titulo: 'Fundamentos de Hardware', semanas: 'Semanas 1-3', lecciones: ['Componentes del PC', 'Ensamblaje básico', 'Diagnóstico de fallas']},
+      {titulo: 'Sistemas Operativos', semanas: 'Semanas 4-6', lecciones: ['Windows', 'Linux básico', 'Instalación y configuración']},
+      {titulo: 'Redes y Conectividad', semanas: 'Semanas 7-9', lecciones: ['TCP/IP básico', 'Configuración de routers', 'Cableado estructurado']},
+      {titulo: 'Mantenimiento y Soporte', semanas: 'Semanas 10-12', lecciones: ['Mantenimiento preventivo', 'Soporte técnico', 'Gestión de incidencias']}
     ]
   },
   {
     id: 2,
     icon: '💰',
-    titulo: 'Inversiones y Finanzas Personales',
+    titulo: 'Inversiones y Finanzas',
     nivel: 'Intermedio',
     duracion: '40 horas',
-    descripcion: 'Domina los conceptos básicos de inversión, ahorro, presupuestos y planificación financiera para tomar decisiones inteligentes con tu dinero.',
-    tags: ['Finanzas', 'Inversiones', 'Ahorro', 'Presupuestos'],
+    descripcion: 'Domina los conceptos de inversión, ahorro, presupuestos y planificación financiera.',
+    tags: ['Finanzas', 'Inversiones', 'Ahorro'],
     modulos: [
-      { titulo: 'Fundamentos Financieros', semanas: 'Semanas 1-3', lecciones: ['Conceptos básicos', 'Presupuestos personales', 'Ahorro e inversión'] },
-      { titulo: 'Instrumentos de Inversión', semanas: 'Semanas 4-6', lecciones: ['Acciones', 'Bonos', 'ETF', 'Criptomonedas'] },
-      { titulo: 'Planificación Financiera', semanas: 'Semanas 7-8', lecciones: ['Plan de ahorro', 'Retiro', 'Seguros'] },
-      { titulo: 'Análisis de Inversiones', semanas: 'Semanas 9-10', lecciones: ['Análisis fundamental', 'Análisis técnico', 'Gestión de riesgos'] }
+      {titulo: 'Fundamentos Financieros', semanas: 'Semanas 1-3', lecciones: ['Conceptos básicos', 'Presupuestos personales', 'Ahorro e inversión']},
+      {titulo: 'Instrumentos de Inversión', semanas: 'Semanas 4-6', lecciones: ['Acciones', 'Bonos', 'ETF', 'Criptomonedas']},
+      {titulo: 'Planificación Financiera', semanas: 'Semanas 7-8', lecciones: ['Plan de ahorro', 'Retiro', 'Seguros']},
+      {titulo: 'Análisis de Inversiones', semanas: 'Semanas 9-10', lecciones: ['Análisis fundamental', 'Análisis técnico', 'Gestión de riesgos']}
     ]
   },
-
+  {
+    id: 3,
+    icon: '📊',
+    titulo: 'Contabilidad Básica',
+    nivel: 'Principiante',
+    duracion: '40 horas',
+    descripcion: 'Fundamentos de contabilidad, partida doble, estados financieros y registro de transacciones.',
+    tags: ['Contabilidad', 'Partida Doble', 'Estados Financieros'],
+    modulos: [
+      {titulo: 'Conceptos Básicos', semanas: 'Semanas 1-2', lecciones: ['La contabilidad', 'Partida doble', 'Cuentas básicas']},
+      {titulo: 'Registro de Transacciones', semanas: 'Semanas 3-4', lecciones: ['Libro diario', 'Libro mayor', 'Balance de comprobación']},
+      {titulo: 'Estados Financieros', semanas: 'Semanas 5-6', lecciones: ['Estado de resultados', 'Balance general', 'Flujo de efectivo']},
+      {titulo: 'Contabilidad para Negocios', semanas: 'Semanas 7-8', lecciones: ['Contabilidad de costos', 'IVA', 'Declaraciones fiscales']}
+    ]
+  },
+  {
+    id: 4,
+    icon: '🌎',
+    titulo: 'Inglés Técnico',
+    nivel: 'Intermedio',
+    duracion: '40 horas',
+    descripcion: 'Inglés con enfoque en vocabulario técnico, lectura de documentación y comunicación profesional.',
+    tags: ['Inglés', 'Técnico', 'Vocabulario'],
+    modulos: [
+      {titulo: 'Fundamentos', semanas: 'Semanas 1-3', lecciones: ['Vocabulario técnico', 'Lectura de documentación', 'Comprensión auditiva']},
+      {titulo: 'Comunicación Profesional', semanas: 'Semanas 4-6', lecciones: ['Correos profesionales', 'Presentaciones', 'Reuniones virtuales']},
+      {titulo: 'Gramática Aplicada', semanas: 'Semanas 7-9', lecciones: ['Tiempos verbales', 'Voz pasiva', 'Condicionales']},
+      {titulo: 'Preparación para Exámenes', semanas: 'Semanas 10-12', lecciones: ['IELTS', 'TOEFL', 'Práctica']}
+    ]
+  },
+  {
+    id: 5,
+    icon: '🎮',
+    titulo: 'Desarrollo de Videojuegos',
+    nivel: 'Básico a Intermedio',
+    duracion: '40 horas',
+    descripcion: 'Crea videojuegos desde cero con herramientas profesionales. Diseño, programación y publicación.',
+    tags: ['Videojuegos', 'Programación', 'Unity'],
+    modulos: [
+      {titulo: 'Introducción', semanas: 'Semanas 1-4', lecciones: ['Conceptos básicos', 'Motores de juegos', 'Diseño de juegos']},
+      {titulo: 'Programación', semanas: 'Semanas 5-8', lecciones: ['C# básico', 'Unity', 'Física y colisiones']},
+      {titulo: 'Arte y Animación', semanas: 'Semanas 9-12', lecciones: ['Diseño de personajes', 'Animación 2D', 'Sprites y texturas']},
+      {titulo: 'Publicación', semanas: 'Semanas 13-16', lecciones: ['Publicación en Steam', 'Monetización', 'Marketing']}
+    ]
+  },
   {
     id: 6,
     icon: '🤖',
-    titulo: 'Inteligencia Artificial Básica',
+    titulo: 'Inteligencia Artificial',
     nivel: 'Intermedio',
     duracion: '40 horas',
-    descripcion: 'Explora los fundamentos de IA, machine learning y deep learning con aplicaciones prácticas en visión por computadora, NLP y automatización.',
-    tags: ['IA', 'Machine Learning', 'Deep Learning', 'Python'],
+    descripcion: 'Fundamentos de IA, machine learning y deep learning con aplicaciones prácticas.',
+    tags: ['IA', 'Machine Learning', 'Python'],
     modulos: [
-      { titulo: 'Fundamentos de IA', semanas: 'Semanas 1-3', lecciones: ['Historia de la IA', 'Conceptos básicos', 'Ética en IA'] },
-      { titulo: 'Machine Learning', semanas: 'Semanas 4-7', lecciones: ['Regresión', 'Clasificación', 'Clustering'] },
-      { titulo: 'Deep Learning', semanas: 'Semanas 8-10', lecciones: ['Redes neuronales', 'CNN', 'RNN'] },
-      { titulo: 'Aplicaciones Prácticas', semanas: 'Semanas 11-14', lecciones: ['Visión por computadora', 'NLP', 'Automatización'] }
+      {titulo: 'Fundamentos de IA', semanas: 'Semanas 1-3', lecciones: ['Historia de la IA', 'Conceptos básicos', 'Ética en IA']},
+      {titulo: 'Machine Learning', semanas: 'Semanas 4-7', lecciones: ['Regresión', 'Clasificación', 'Clustering']},
+      {titulo: 'Deep Learning', semanas: 'Semanas 8-10', lecciones: ['Redes neuronales', 'CNN', 'RNN']},
+      {titulo: 'Aplicaciones Prácticas', semanas: 'Semanas 11-14', lecciones: ['Visión por computadora', 'NLP', 'Automatización']}
     ]
   },
   {
     id: 7,
     icon: '🎓',
-    titulo: 'Validación de Bachillerato (6° a 11°)',
+    titulo: 'Validación de Bachillerato',
     nivel: 'Todos los niveles',
     duracion: '40 horas por grado',
-    descripcion: 'Programa completo de validación de bachillerato desde 6° hasta 11°. Incluye todas las materias, docente asignado y seguimiento personalizado.',
-    tags: ['Bachillerato', 'Validación', 'Educación', 'Certificación'],
+    descripcion: 'Programa completo de validación de bachillerato desde 6° hasta 11°. Incluye todas las materias.',
+    tags: ['Bachillerato', 'Validación', 'Certificación'],
     modulos: [
-      { titulo: '6° Grado', semanas: 'Módulo 1', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Ciencias Sociales'] },
-      { titulo: '7° Grado', semanas: 'Módulo 2', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Ciencias Sociales'] },
-      { titulo: '8° Grado', semanas: 'Módulo 3', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Ciencias Sociales'] },
-      { titulo: '9° Grado', semanas: 'Módulo 4', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Ciencias Sociales'] },
-      { titulo: '10° Grado', semanas: 'Módulo 5', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Ciencias Sociales'] },
-      { titulo: '11° Grado', semanas: 'Módulo 6', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Ciencias Sociales'] }
+      {titulo: '6° Grado', semanas: 'Módulo 1', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']},
+      {titulo: '7° Grado', semanas: 'Módulo 2', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']},
+      {titulo: '8° Grado', semanas: 'Módulo 3', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']},
+      {titulo: '9° Grado', semanas: 'Módulo 4', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']},
+      {titulo: '10° Grado', semanas: 'Módulo 5', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']},
+      {titulo: '11° Grado', semanas: 'Módulo 6', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']}
     ]
   }
 ];
@@ -1245,33 +1404,27 @@ function renderCursos(){
 }
 
 function matricularCurso(titulo){
-  const url = FORMULARIO_URL + '?entry.123456789=' + encodeURIComponent(titulo);
-  window.open(url, '_blank');
+  window.open(FORMULARIO_URL + '?entry.123456789=' + encodeURIComponent(titulo), '_blank');
 }
 
 function mostrarDetalleCurso(id){
   const curso = CURSOS.find(c => c.id === id);
   if(!curso) return;
-  
   const detalle = document.getElementById('curso-detalle');
   document.getElementById('detalle-icon').textContent = curso.icon;
   document.getElementById('detalle-titulo').textContent = curso.titulo;
   document.getElementById('detalle-nivel').textContent = curso.nivel + ' · ' + curso.duracion;
   document.getElementById('detalle-desc').textContent = curso.descripcion;
   document.getElementById('detalle-tags').innerHTML = curso.tags.map(t => 
-    `<span style="font-family:var(--mono);font-size:10px;color:var(--text);background:var(--bg2);border:1px solid var(--line);padding:3px 10px;border-radius:20px">${t}</span>`
+    `<span style="font-family:var(--mono);font-size:9px;color:var(--text);background:var(--bg2);border:1px solid var(--line);padding:2px 8px;border-radius:20px">${t}</span>`
   ).join('');
-  
   document.getElementById('detalle-modulos').innerHTML = curso.modulos.map(m => `
     <div class="modulo-item">
       <div class="modulo-titulo">${m.titulo}</div>
       <div class="modulo-weeks">${m.semanas}</div>
-      <ul class="modulo-lecciones">
-        ${m.lecciones.map(l => `<li>${l}</li>`).join('')}
-      </ul>
+      <ul class="modulo-lecciones">${m.lecciones.map(l => `<li>${l}</li>`).join('')}</ul>
     </div>
   `).join('');
-  
   detalle.style.display = 'block';
   detalle.scrollIntoView({behavior:'smooth', block:'start'});
 }
@@ -1283,73 +1436,26 @@ const SHOP_ADMIN_PASS = 'wijitech2026';
 const SHOP_STORAGE_KEY = 'wijitech_shop_products';
 
 const SHOP_DEFAULT_PRODUCTS = [
-  // ============================================================
-  // 📷 CÁMARAS DE SEGURIDAD
-  // ============================================================
-  {id:1, cat:'camaras', emoji:'📷', name:'Cámara IP WiFi 2MP Interior', desc:'Visión nocturna infrarroja, audio bidireccional, app móvil, grabación en tarjeta SD o nube. Ideal para monitoreo de interiores.', price:'95.000'},
-  {id:2, cat:'camaras', emoji:'🎥', name:'Cámara IP 4MP Exterior con Visión Nocturna', desc:'Resistente al agua IP66, detección de movimiento, visión nocturna hasta 30m. Ideal para fachadas y patios.', price:'160.000'},
-  {id:3, cat:'camaras', emoji:'📼', name:'Kit 4 Cámaras Análogas + DVR 4 Canales', desc:'Incluye DVR de 4 canales, 4 cámaras, cableado BNC, fuentes de poder. Ideal para locales pequeños y hogares.', price:'480.000'},
-  {id:4, cat:'camaras', emoji:'💾', name:'Disco Duro para DVR/NVR 1TB', desc:'Disco de vigilancia de larga duración, optimizado para grabación 24/7, compatible con la mayoría de DVRs.', price:'165.000'},
-  {id:5, cat:'camaras', emoji:'📡', name:'Cámara IP WiFi Exterior 2MP con Foco LED', desc:'Detección de movimiento con iluminación LED, sirena integrada, visión nocturna a color. App para ver desde cualquier lugar.', price:'220.000'},
-  {id:6, cat:'camaras', emoji:'🔭', name:'Cámara Zoom Óptico 30X PTZ', desc:'Cámara domo con control de movimiento (pan/tilt/zoom), ideal para vigilancia de grandes áreas como parqueaderos y bodegas.', price:'450.000'},
-  {id:7, cat:'camaras', emoji:'📹', name:'Cámara IP WiFi 5MP Ultra HD', desc:'Resolución 5MP, visión nocturna a color, detección de personas, audio bidireccional, almacenamiento en la nube.', price:'280.000'},
-  {id:8, cat:'camaras', emoji:'🔌', name:'Fuente de Poder 12V 2A para Cámaras', desc:'Fuente de poder para cámaras análogas e IP, protección contra sobrecargas, ideal para reemplazos.', price:'35.000'},
-
-  // ============================================================
-  // 🖥️ COMPUTADORES Y PORTÁTILES
-  // ============================================================
-  {id:9, cat:'computadores', emoji:'🖥️', name:'PC de Escritorio Básico (Oficina/Estudio)', desc:'Procesador Intel/AMD, 8GB RAM, SSD 256GB, Windows 10/11. Ideal para tareas de oficina, navegación y estudio.', price:'950.000'},
-  {id:10, cat:'computadores', emoji:'💻', name:'Portátil Reacondicionado i5 8GB SSD 256GB', desc:'Equipo revisado y garantizado (garantía 3 meses). Ideal para trabajo, estudio y programación. Disponibilidad limitada.', price:'1.100.000'},
-  {id:11, cat:'computadores', emoji:'🖨️', name:'Impresora Multifuncional Inyección de Tinta WiFi', desc:'Imprime, escanea y copia. Conexión WiFi, alimentación continua de tinta para ahorrar en consumibles.', price:'420.000'},
-  {id:12, cat:'computadores', emoji:'🖥️', name:'PC Gamer Básico (Ryzen 5 + GTX 1650)', desc:'AMD Ryzen 5, 16GB RAM, SSD 480GB, GTX 1650 4GB. Ideal para juegos ligeros, edición y diseño.', price:'1.850.000'},
-  {id:13, cat:'computadores', emoji:'💻', name:'Portátil Gamer MSI / ASUS (i7, RTX 3060)', desc:'Procesador i7, 16GB RAM, SSD 1TB, RTX 3060 6GB. Ideal para gamers y creadores de contenido.', price:'3.500.000'},
-  {id:14, cat:'computadores', emoji:'🖥️', name:'All-in-One 24" Touchscreen', desc:'PC todo en uno con pantalla táctil 24", procesador i5, 8GB RAM, SSD 256GB. Ideal para oficinas modernas.', price:'1.650.000'},
-  {id:15, cat:'computadores', emoji:'🖨️', name:'Impresora Láser Monocromática WiFi', desc:'Impresión láser en blanco y negro, alta velocidad, conectividad WiFi y Ethernet. Ideal para oficinas.', price:'380.000'},
-
-  // ============================================================
-  // 🔧 REPUESTOS Y COMPONENTES
-  // ============================================================
-  {id:16, cat:'repuestos', emoji:'🧠', name:'Memoria RAM 8GB DDR4 2666MHz', desc:'Compatible con la mayoría de portátiles y PCs de escritorio recientes. Instalación incluida en servicio técnico.', price:'130.000'},
-  {id:17, cat:'repuestos', emoji:'💽', name:'SSD 480GB SATA III', desc:'Acelera cualquier equipo lento. Incluye clonación de tu disco actual sin perder datos (servicio técnico).', price:'155.000'},
-  {id:18, cat:'repuestos', emoji:'🔋', name:'Fuente de Poder 500W 80 PLUS', desc:'Fuente de poder para PC de escritorio, certificada 80 PLUS, protección contra sobrecargas y cortocircuitos.', price:'110.000'},
-  {id:19, cat:'repuestos', emoji:'🌀', name:'Cooler / Ventilador para CPU', desc:'Reemplazo de ventiladores ruidosos o dañados, mejora la temperatura del equipo. Compatible con Intel y AMD.', price:'45.000'},
-  {id:20, cat:'repuestos', emoji:'🖥️', name:'Tarjeta de Video GTX 1650 4GB', desc:'Ideal para gaming ligero y edición de video. Mejora el rendimiento gráfico de cualquier PC.', price:'420.000'},
-  {id:21, cat:'repuestos', emoji:'🔌', name:'Cable HDMI 2.0 2 Metros', desc:'Cable HDMI de alta velocidad, soporte 4K HDR, ideal para conectar PC, TV o proyectores.', price:'18.000'},
-  {id:22, cat:'repuestos', emoji:'🖱️', name:'Mouse Ergonómico Inalámbrico', desc:'Mouse inalámbrico con diseño ergonómico, sensor óptico de alta precisión, batería de larga duración.', price:'42.000'},
-  {id:23, cat:'repuestos', emoji:'⌨️', name:'Teclado Mecánico Gaming (RGB)', desc:'Teclado mecánico con switches azules, retroiluminación RGB, teclas anti-ghosting. Ideal para gamers.', price:'185.000'},
-
-  // ============================================================
-  // 📡 REDES Y ROUTERS
-  // ============================================================
-  {id:24, cat:'redes', emoji:'📡', name:'Router WiFi Doble Banda AC1200', desc:'Cobertura para casa u oficina pequeña, configuración incluida en servicio técnico. Compatible con todos los operadores.', price:'130.000'},
-  {id:25, cat:'redes', emoji:'📶', name:'Repetidor / Extensor de WiFi', desc:'Elimina zonas muertas de señal en tu casa o negocio. Fácil configuración vía WPS.', price:'75.000'},
-  {id:26, cat:'redes', emoji:'📡', name:'Antena Direccional para Enlace Punto a Punto', desc:'Para conectar internet o red local entre edificios o predios sin cableado físico. Incluye soportes de montaje.', price:'280.000'},
-  {id:27, cat:'redes', emoji:'🔌', name:'Switch de Red 8 Puertos Gigabit', desc:'Para ampliar puntos de red en oficinas o redes domésticas más grandes. Plug-and-play.', price:'90.000'},
-  {id:28, cat:'redes', emoji:'📦', name:'Router WiFi 6 (AX1800) Dual Band', desc:'Tecnología WiFi 6 de última generación, mayor velocidad y cobertura, ideal para múltiples dispositivos.', price:'220.000'},
-  {id:29, cat:'redes', emoji:'🔌', name:'Cable UTP Cat6 20 Metros', desc:'Cable de red categoría 6, soporte Gigabit Ethernet, ideal para conexiones de alta velocidad.', price:'32.000'},
-  {id:30, cat:'redes', emoji:'💻', name:'Adaptador USB WiFi AC600', desc:'Adaptador WiFi USB para PCs sin WiFi, soporte doble banda, ideal para equipos de escritorio.', price:'45.000'},
-
-  // ============================================================
-  // 🎧 ACCESORIOS Y PERIFÉRICOS
-  // ============================================================
-  {id:31, cat:'accesorios', emoji:'⌨️', name:'Combo Teclado + Mouse Inalámbrico', desc:'Conexión USB inalámbrica, ideal para escritorio u oficina. Incluye receptor USB único.', price:'65.000'},
-  {id:32, cat:'accesorios', emoji:'🔌', name:'Regulador de Voltaje / Supresor de Picos', desc:'Protege tus equipos de variaciones eléctricas y descargas. 4 tomas con protección.', price:'70.000'},
-  {id:33, cat:'accesorios', emoji:'🔋', name:'UPS / Batería de Respaldo 600VA', desc:'Mantiene tu PC o router encendido unos minutos durante un corte de luz. Protección contra picos.', price:'185.000'},
-  {id:34, cat:'accesorios', emoji:'🎙️', name:'Webcam HD con Micrófono Integrado', desc:'Cámara web 1080p con micrófono integrado, enfoque automático. Ideal para videollamadas y clases virtuales.', price:'95.000'},
-  {id:35, cat:'accesorios', emoji:'💿', name:'Disco Duro Externo 1TB USB 3.0', desc:'Almacenamiento portátil, compatible con PC y Mac, ideal para respaldos y transferencia de archivos.', price:'180.000'},
-  {id:36, cat:'accesorios', emoji:'🎧', name:'Audífonos Diadema con Micrófono', desc:'Audífonos con diadema ajustable, micrófono con cancelación de ruido, ideal para gaming y llamadas.', price:'72.000'},
-  {id:37, cat:'accesorios', emoji:'🖥️', name:'Soporte para Monitor Ajustable', desc:'Soporte de escritorio para monitor, ajuste de altura y ángulo, libera espacio en tu escritorio.', price:'55.000'},
-  {id:38, cat:'accesorios', emoji:'🔌', name:'Cargador Universal 65W USB-C', desc:'Cargador GaN 65W con puertos USB-C y USB-A, compatible con laptops y dispositivos móviles.', price:'98.000'},
+  {id:1, cat:'camaras', emoji:'📷', name:'Cámara IP WiFi 2MP', desc:'Visión nocturna, audio bidireccional, app móvil.', price:'95.000'},
+  {id:2, cat:'camaras', emoji:'🎥', name:'Cámara IP 4MP Exterior', desc:'Resistente al agua IP66, visión nocturna 30m.', price:'160.000'},
+  {id:3, cat:'camaras', emoji:'📼', name:'Kit 4 Cámaras + DVR', desc:'4 cámaras, DVR, cableado y fuente de poder.', price:'480.000'},
+  {id:4, cat:'computadores', emoji:'🖥️', name:'PC Escritorio Básico', desc:'8GB RAM, SSD 256GB, oficina y estudio.', price:'950.000'},
+  {id:5, cat:'computadores', emoji:'💻', name:'Portátil Reacondicionado i5', desc:'8GB RAM, SSD 256GB, garantía 3 meses.', price:'1.100.000'},
+  {id:6, cat:'repuestos', emoji:'🧠', name:'RAM 8GB DDR4', desc:'Compatible con portátiles y PCs recientes.', price:'130.000'},
+  {id:7, cat:'repuestos', emoji:'💽', name:'SSD 480GB', desc:'Acelera tu equipo lento. Incluye clonación.', price:'155.000'},
+  {id:8, cat:'redes', emoji:'📡', name:'Router WiFi AC1200', desc:'Doble banda, configuración incluida.', price:'130.000'},
+  {id:9, cat:'redes', emoji:'📶', name:'Repetidor WiFi', desc:'Elimina zonas muertas de señal.', price:'75.000'},
+  {id:10, cat:'accesorios', emoji:'⌨️', name:'Combo Teclado + Mouse', desc:'Inalámbrico, USB, oficina.', price:'65.000'},
+  {id:11, cat:'accesorios', emoji:'🔋', name:'UPS 600VA', desc:'Respaldo para PC o router.', price:'185.000'},
 ];
+
 function getShopProducts(){
   try{
     const raw = localStorage.getItem(SHOP_STORAGE_KEY);
     if(!raw) return [...SHOP_DEFAULT_PRODUCTS];
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed : [...SHOP_DEFAULT_PRODUCTS];
-  }catch(e){
-    return [...SHOP_DEFAULT_PRODUCTS];
-  }
+  }catch(e){ return [...SHOP_DEFAULT_PRODUCTS]; }
 }
 function saveShopProducts(list){
   localStorage.setItem(SHOP_STORAGE_KEY, JSON.stringify(list));
@@ -1358,9 +1464,7 @@ function saveShopProducts(list){
 const SHOP_CAT_LABEL = {camaras:'Cámaras', computadores:'Computadores', repuestos:'Repuestos', redes:'Redes / Router', accesorios:'Accesorios'};
 
 function shopCardHtml(p){
-  const imgHtml = p.image
-    ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
-    : (p.emoji||'📦');
+  const imgHtml = p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : (p.emoji||'📦');
   return `<div class="shop-card" data-cat="${p.cat}">
     <div class="shop-card-img">${imgHtml}</div>
     <div class="shop-card-body">
@@ -1368,7 +1472,7 @@ function shopCardHtml(p){
       <h4>${p.name}</h4>
       <p>${p.desc||''}</p>
       <div class="shop-card-foot">
-        <div class="shop-price">$${p.price}<small>COP aprox.</small></div>
+        <div class="shop-price">$${p.price}<small>COP</small></div>
         <button class="shop-quote-btn" onclick="quoteProductById(${p.id})">Cotizar</button>
       </div>
     </div>
@@ -1393,13 +1497,11 @@ function filterShop(cat, btn){
 }
 
 function quoteProduct(name){
-  const msg = encodeURIComponent(`Hola, quiero cotizar: ${name}`);
-  window.open(`https://wa.me/573118184977?text=${msg}`, '_blank');
+  window.open(`https://wa.me/573118184977?text=${encodeURIComponent('Hola, quiero cotizar: ' + name)}`, '_blank');
 }
 function quoteProductById(id){
   const product = getShopProducts().find(p=>p.id===id);
-  if(!product) return;
-  quoteProduct(product.name);
+  if(product) quoteProduct(product.name);
 }
 
 function openShopAdmin(){
@@ -1413,27 +1515,21 @@ function closeShopAdmin(){
   document.getElementById('shop-admin-overlay').style.display = 'none';
 }
 function checkShopAdminPass(){
-  const val = document.getElementById('shop-admin-pass').value;
-  if(val === SHOP_ADMIN_PASS){
+  if(document.getElementById('shop-admin-pass').value === SHOP_ADMIN_PASS){
     document.getElementById('shop-admin-locked').style.display = 'none';
     document.getElementById('shop-admin-unlocked').style.display = 'block';
     renderShopAdminList();
-  } else {
-    alert('Clave incorrecta.');
-  }
+  } else { alert('Clave incorrecta.'); }
 }
 let _pendingProductImage = null;
-
 function handleProductImageSelect(input){
   const file = input.files[0];
-  if(!file) return;
-  if(!file.type.startsWith('image/')){ alert('Selecciona un archivo de imagen.'); return; }
-  if(file.size > 3*1024*1024){ alert('La imagen es muy pesada (máx. 3MB). Intenta con una más liviana.'); input.value=''; return; }
+  if(!file || !file.type.startsWith('image/')) return;
+  if(file.size > 3*1024*1024){ alert('Máx. 3MB.'); input.value=''; return; }
   const reader = new FileReader();
   reader.onload = () => {
     _pendingProductImage = reader.result;
-    const preview = document.getElementById('sa-img-preview');
-    preview.innerHTML = `<img src="${_pendingProductImage}" style="width:100%;height:100%;object-fit:cover">`;
+    document.getElementById('sa-img-preview').innerHTML = `<img src="${_pendingProductImage}" style="width:100%;height:100%;object-fit:cover">`;
     document.getElementById('sa-img-clear').style.display = 'inline';
   };
   reader.readAsDataURL(file);
@@ -1444,70 +1540,29 @@ function clearProductImage(){
   document.getElementById('sa-img-preview').innerHTML = '📦';
   document.getElementById('sa-img-clear').style.display = 'none';
 }
-
-function changeProductImage(id){
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'image/*';
-  input.onchange = () => {
-    const file = input.files[0];
-    if(!file) return;
-    if(!file.type.startsWith('image/')){ alert('Selecciona un archivo de imagen.'); return; }
-    if(file.size > 3*1024*1024){ alert('La imagen es muy pesada (máx. 3MB).'); return; }
-    const reader = new FileReader();
-    reader.onload = () => {
-      const products = getShopProducts();
-      const product = products.find(p=>p.id===id);
-      if(!product) return;
-      product.image = reader.result;
-      saveShopProducts(products);
-      renderShopAdminList();
-      renderShopGrid();
-    };
-    reader.readAsDataURL(file);
-  };
-  input.click();
-}
-function removeProductImage(id){
-  const products = getShopProducts();
-  const product = products.find(p=>p.id===id);
-  if(!product) return;
-  delete product.image;
-  saveShopProducts(products);
-  renderShopAdminList();
-  renderShopGrid();
-}
-
 function renderShopAdminList(){
   const products = getShopProducts();
   document.getElementById('sa-count').textContent = products.length;
   document.getElementById('shop-admin-list').innerHTML = products.map(p => `
-    <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel)">
-      <div style="width:34px;height:34px;border-radius:6px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:16px;overflow:hidden;flex-shrink:0">
-        ${p.image ? `<img src="${p.image}" style="width:100%;height:100%;object-fit:cover">` : (p.emoji||'📦')}
-      </div>
-      <div style="flex:1;min-width:0">
-        <div style="font-size:13px;font-weight:600">${p.name}</div>
-        <div style="font-size:11px;color:var(--muted)">${SHOP_CAT_LABEL[p.cat]||p.cat} · $${p.price}</div>
-      </div>
-      <button onclick="changeProductImage(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px" title="${p.image ? 'Cambiar foto' : 'Agregar foto'}">📷</button>
-      ${p.image ? `<button onclick="removeProductImage(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px" title="Quitar foto">🚫</button>` : ''}
-      <button onclick="adminRemoveProduct(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:15px" title="Quitar producto">🗑️</button>
+    <div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel)">
+      <div style="width:28px;height:28px;border-radius:4px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:14px;overflow:hidden;flex-shrink:0">${p.image ? `<img src="${p.image}" style="width:100%;height:100%;object-fit:cover">` : (p.emoji||'📦')}</div>
+      <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600">${p.name}</div><div style="font-size:10px;color:var(--muted)">${SHOP_CAT_LABEL[p.cat]||p.cat} · $${p.price}</div></div>
+      <button onclick="changeProductImage(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px">📷</button>
+      ${p.image ? `<button onclick="removeProductImage(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px">🚫</button>` : ''}
+      <button onclick="adminRemoveProduct(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px">🗑️</button>
     </div>
-  `).join('') || '<p style="color:var(--muted);font-size:13px">No hay productos en el catálogo.</p>';
+  `).join('') || '<p style="color:var(--muted);font-size:12px">Sin productos.</p>';
 }
 function adminAddProduct(){
   const name = document.getElementById('sa-name').value.trim();
   const price = document.getElementById('sa-price').value.trim();
-  if(!name || !price){ alert('Completa al menos el nombre y el precio.'); return; }
+  if(!name || !price){ alert('Nombre y precio requeridos.'); return; }
   const products = getShopProducts();
   const newProduct = {
     id: Date.now(),
     cat: document.getElementById('sa-cat').value,
     emoji: document.getElementById('sa-emoji').value.trim() || '📦',
-    name,
-    desc: document.getElementById('sa-desc').value.trim(),
-    price
+    name, desc: document.getElementById('sa-desc').value.trim(), price
   };
   if(_pendingProductImage) newProduct.image = _pendingProductImage;
   products.push(newProduct);
@@ -1518,14 +1573,13 @@ function adminAddProduct(){
   renderShopGrid();
 }
 function adminRemoveProduct(id){
-  if(!confirm('¿Quitar este producto del catálogo?')) return;
-  const products = getShopProducts().filter(p=>p.id!==id);
-  saveShopProducts(products);
+  if(!confirm('¿Quitar este producto?')) return;
+  saveShopProducts(getShopProducts().filter(p=>p.id!==id));
   renderShopAdminList();
   renderShopGrid();
 }
 function resetShopCatalog(){
-  if(!confirm('¿Restaurar el catálogo de ejemplo? Esto reemplaza todos los productos actuales.')) return;
+  if(!confirm('¿Restaurar catálogo de ejemplo?')) return;
   saveShopProducts([...SHOP_DEFAULT_PRODUCTS]);
   renderShopAdminList();
   renderShopGrid();
@@ -1619,7 +1673,7 @@ async function runSpeedTest(){
     document.getElementById('sr-down').textContent = '—';
     document.getElementById('sr-up').textContent = '—';
     document.getElementById('sr-ping').textContent = '—';
-    alert('No se pudo completar el test de velocidad. Verifica tu conexión a internet.');
+    alert('No se pudo completar el test de velocidad.');
   }
 
   btn.disabled = false;
