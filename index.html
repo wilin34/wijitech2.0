@@ -851,7 +851,7 @@ footer{
   ============================================================ -->
   <section class="hero">
     <div class="hero-tag"><span class="led"></span>DISPONIBLE PARA SERVICIO A DOMICILIO HOY</div>
-    <h1>Soporte técnico que <span class="accent">llega a tu puerta</span>,<br>no al revés.</h1>
+    <h1>Soporte técnico que <span class="accent">llega a tu puerta</span>
     <p class="hero-sub">Mantenimiento de computadores e impresoras, instalación de cámaras de seguridad, redes punto a punto y soporte técnico — todo en un solo técnico, en tu casa o negocio.</p>
 
     <div class="hero-grid">
@@ -903,8 +903,8 @@ OVERLAY: SERVICIOS
     </div>
   </div>
   <div class="overlay-body">
-    <div class="eyebrow">/ orden de servicio</div>
-    <h2>Lo que reparamos, instalamos y mantenemos</h2>
+    <div class="eyebrow">/ Orden de servicio</div>
+    <h2>Lo que reparamos e instalamos</h2>
     <p class="section-sub">Cada visita incluye diagnóstico, mano de obra y garantía sobre el trabajo realizado. Tú eliges el horario.</p>
 
     <div class="services-grid" id="services-grid"></div>
@@ -966,7 +966,7 @@ OVERLAY: CURSOS
   <div class="overlay-body">
     <div class="eyebrow">/ formación técnica</div>
     <h2>Cursos técnicos especializados</h2>
-    <p class="section-sub">Formación práctica en áreas de alta demanda. <strong>Duración: 40 horas cada curso.</strong></p>
+    <p class="section-sub">Formación práctica en áreas de alta demanda.</p>
 
     <div class="cursos-grid" id="cursos-grid"></div>
 
@@ -1000,9 +1000,9 @@ OVERLAY: COBERTURA
     <h2>Atendemos a domicilio en estas zonas</h2>
     <p class="section-sub">¿No ves tu sector? Escríbenos — muchas veces igual podemos cubrirlo.</p>
     <div class="coverage">
-      <span>📍 Zona urbana</span>
-      <span>📍 Zona rural cercana</span>
-      <span>📍 Conjuntos residenciales</span>
+      <span>📍 Fosca</span>
+      <span>📍 Caqueza</span>
+      <span>📍 Quetame</span>
       <span>📍 Locales comerciales</span>
       <span>📍 Oficinas pequeñas</span>
       <span>📍 Fincas y veredas</span>
@@ -1284,7 +1284,7 @@ const CURSOS = [
     icon: '💻',
     titulo: 'Técnico en Sistemas',
     nivel: 'Básico a Intermedio',
-    duracion: '40 horas',
+    duracion: 'Año y medio',
     descripcion: 'Aprende los fundamentos de hardware, software, redes y mantenimiento de computadores.',
     tags: ['Hardware', 'Software', 'Redes'],
     modulos: [
@@ -1309,51 +1309,9 @@ const CURSOS = [
       {titulo: 'Análisis de Inversiones', semanas: 'Semanas 9-10', lecciones: ['Análisis fundamental', 'Análisis técnico', 'Gestión de riesgos']}
     ]
   },
-  {
-    id: 3,
-    icon: '📊',
-    titulo: 'Contabilidad Básica',
-    nivel: 'Principiante',
-    duracion: '40 horas',
-    descripcion: 'Fundamentos de contabilidad, partida doble, estados financieros y registro de transacciones.',
-    tags: ['Contabilidad', 'Partida Doble', 'Estados Financieros'],
-    modulos: [
-      {titulo: 'Conceptos Básicos', semanas: 'Semanas 1-2', lecciones: ['La contabilidad', 'Partida doble', 'Cuentas básicas']},
-      {titulo: 'Registro de Transacciones', semanas: 'Semanas 3-4', lecciones: ['Libro diario', 'Libro mayor', 'Balance de comprobación']},
-      {titulo: 'Estados Financieros', semanas: 'Semanas 5-6', lecciones: ['Estado de resultados', 'Balance general', 'Flujo de efectivo']},
-      {titulo: 'Contabilidad para Negocios', semanas: 'Semanas 7-8', lecciones: ['Contabilidad de costos', 'IVA', 'Declaraciones fiscales']}
-    ]
-  },
-  {
-    id: 4,
-    icon: '🌎',
-    titulo: 'Inglés Técnico',
-    nivel: 'Intermedio',
-    duracion: '40 horas',
-    descripcion: 'Inglés con enfoque en vocabulario técnico, lectura de documentación y comunicación profesional.',
-    tags: ['Inglés', 'Técnico', 'Vocabulario'],
-    modulos: [
-      {titulo: 'Fundamentos', semanas: 'Semanas 1-3', lecciones: ['Vocabulario técnico', 'Lectura de documentación', 'Comprensión auditiva']},
-      {titulo: 'Comunicación Profesional', semanas: 'Semanas 4-6', lecciones: ['Correos profesionales', 'Presentaciones', 'Reuniones virtuales']},
-      {titulo: 'Gramática Aplicada', semanas: 'Semanas 7-9', lecciones: ['Tiempos verbales', 'Voz pasiva', 'Condicionales']},
-      {titulo: 'Preparación para Exámenes', semanas: 'Semanas 10-12', lecciones: ['IELTS', 'TOEFL', 'Práctica']}
-    ]
-  },
-  {
-    id: 5,
-    icon: '🎮',
-    titulo: 'Desarrollo de Videojuegos',
-    nivel: 'Básico a Intermedio',
-    duracion: '40 horas',
-    descripcion: 'Crea videojuegos desde cero con herramientas profesionales. Diseño, programación y publicación.',
-    tags: ['Videojuegos', 'Programación', 'Unity'],
-    modulos: [
-      {titulo: 'Introducción', semanas: 'Semanas 1-4', lecciones: ['Conceptos básicos', 'Motores de juegos', 'Diseño de juegos']},
-      {titulo: 'Programación', semanas: 'Semanas 5-8', lecciones: ['C# básico', 'Unity', 'Física y colisiones']},
-      {titulo: 'Arte y Animación', semanas: 'Semanas 9-12', lecciones: ['Diseño de personajes', 'Animación 2D', 'Sprites y texturas']},
-      {titulo: 'Publicación', semanas: 'Semanas 13-16', lecciones: ['Publicación en Steam', 'Monetización', 'Marketing']}
-    ]
-  },
+  
+  
+  
   {
     id: 6,
     icon: '🤖',
