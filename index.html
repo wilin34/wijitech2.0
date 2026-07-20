@@ -77,7 +77,6 @@ header{
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .brand small{color:var(--muted);font-weight:500;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-left:2px}
 
-/* Menú hamburguesa */
 .menu-toggle{
   background:none;
   border:none;
@@ -237,7 +236,6 @@ h1 .accent{color:var(--orange)}
 .readout .num{font-family:var(--mono);font-size:22px;font-weight:800;color:var(--orange)}
 .readout .label{font-size:10px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
 
-/* Grid de servicios en el hero */
 .hero-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -310,7 +308,7 @@ h1 .accent{color:var(--orange)}
 .overlay-body{padding:24px 16px 80px;max-width:1180px;margin:0 auto}
 
 /* ============================================================
-   SERVICIOS (overlay)
+   SERVICIOS
    ============================================================ */
 .services-grid{
   margin-top:30px;
@@ -373,7 +371,6 @@ h1 .accent{color:var(--orange)}
   font-size:11px;
   font-weight:700;
   cursor:pointer;
-  letter-spacing:.3px;
   -webkit-tap-highlight-color:transparent;
 }
 .ot-menu-toggle .chev{transition:transform .25s;font-size:10px}
@@ -444,306 +441,264 @@ h1 .accent{color:var(--orange)}
 @media(max-width:500px){.proc-step{padding:14px 12px}.proc-step h4{font-size:13px}.proc-step p{font-size:11px}}
 
 /* ============================================================
-   TIENDA (overlay)
+   TIENDA MEJORADA
    ============================================================ */
-/* ============================================================
-   TIENDA MEJORADA - IMÁGENES Y DISEÑO
-   ============================================================ */
-.shop-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 10px;
+.shop-tabs{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:28px;
+  margin-bottom:24px;
+}
+.shop-tab{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  background:var(--panel);
+  border:1px solid var(--line);
+  padding:8px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  transition:all .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.shop-tab:active{transform:scale(.96)}
+.shop-tab.active{background:var(--orange);color:#0B0F14;border-color:var(--orange);font-weight:700}
+
+.shop-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:20px;
+  margin-top:10px;
 }
 
-.shop-card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all 0.35s ease;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+.shop-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  transition:all .35s ease;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+.shop-card:hover{
+  border-color:var(--orange);
+  transform:translateY(-6px);
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
 }
 
-.shop-card:hover {
-  border-color: var(--orange);
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+.shop-card .badge{
+  position:absolute;
+  top:14px;
+  right:14px;
+  padding:5px 14px;
+  border-radius:20px;
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  z-index:2;
+  background:var(--orange);
+  color:#0B0F14;
+}
+.shop-card .badge.stock{background:var(--green);color:#0B0F14}
+.shop-card .badge.oferta{background:#FF6B35;color:#fff}
+.shop-card .badge.reacondicionado{background:#FFB800;color:#0B0F14}
+.shop-card .badge.nuevo{background:#4F8EF7;color:#fff}
+.shop-card .badge.agotado{background:var(--muted);color:var(--text)}
+.shop-card .badge.encargo{background:#9B59B6;color:#fff}
+
+.shop-card-img{
+  height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--bg2);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+  position:relative;
+  padding:16px;
+}
+.shop-card-img img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  transition:transform .4s ease;
+}
+.shop-card:hover .shop-card-img img{transform:scale(1.05)}
+.shop-card-img .no-image{font-size:64px;opacity:.25}
+
+.shop-card-body{
+  padding:18px 20px 20px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
 }
 
-.shop-card .badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  padding: 5px 14px;
-  border-radius: 20px;
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  z-index: 2;
-  background: var(--orange);
-  color: #0B0F14;
+.shop-card-cat{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--green);
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  margin-bottom:6px;
+}
+.shop-card h4{
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:6px;
+  line-height:1.3;
+  color:var(--text);
+  min-height:42px;
+}
+.shop-card .specs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-bottom:8px;
+}
+.shop-card .specs span{
+  background:var(--bg2);
+  padding:3px 10px;
+  border-radius:5px;
+  border:1px solid var(--line);
+  font-size:10px;
+  font-family:var(--mono);
+  color:var(--muted);
+}
+.shop-card p{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.5;
+  flex:1;
+  margin:4px 0 12px;
+}
+.shop-card .extra-info{
+  display:none;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.6;
+  padding:12px 0 4px;
+  border-top:1px solid var(--line);
+  margin-top:4px;
+}
+.shop-card .extra-info.open{display:block}
+.shop-card .extra-info ul{list-style:none;padding:0;margin:0}
+.shop-card .extra-info ul li{
+  padding:4px 0 4px 22px;
+  position:relative;
+  font-size:12px;
+}
+.shop-card .extra-info ul li::before{
+  content:'▸';
+  position:absolute;
+  left:0;
+  color:var(--orange);
 }
 
-.shop-card .badge.stock { background: var(--green); color: #0B0F14; }
-.shop-card .badge.oferta { background: #FF6B35; color: #fff; }
-.shop-card .badge.reacondicionado { background: #FFB800; color: #0B0F14; }
-.shop-card .badge.nuevo { background: #4F8EF7; color: #fff; }
-.shop-card .badge.agotado { background: var(--muted); color: var(--text); }
-.shop-card .badge.encargo { background: #9B59B6; color: #fff; }
+.shop-card-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:auto;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  flex-wrap:wrap;
+}
+.shop-price{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:20px;
+  color:var(--orange);
+}
+.shop-price small{
+  color:var(--muted);
+  font-weight:400;
+  font-size:10px;
+  display:block;
+  margin-top:1px;
+}
+.shop-actions{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.shop-actions button{
+  padding:8px 14px;
+  border:none;
+  border-radius:8px;
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .2s;
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  -webkit-tap-highlight-color:transparent;
+}
+.shop-actions .btn-detail{
+  background:var(--bg2);
+  color:var(--text);
+  border:1px solid var(--line);
+}
+.shop-actions .btn-detail:hover{background:var(--panel)}
+.shop-actions .btn-buy{
+  background:var(--orange);
+  color:#0B0F14;
+}
+.shop-actions .btn-buy:hover{background:#ff7e3a;transform:scale(.97)}
 
-.shop-card-img {
-  height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg2);
-  border-bottom: 1px solid var(--line);
-  overflow: hidden;
-  position: relative;
-  padding: 16px;
+.shop-footer{
+  margin-top:40px;
+  text-align:center;
+  padding:24px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+}
+.shop-footer .shop-note{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:14px;
+}
+.shop-footer .shop-whatsapp-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 32px;
+  background:#25D366;
+  color:#fff;
+  border-radius:12px;
+  font-weight:700;
+  font-size:16px;
+  text-decoration:none;
+  transition:all .2s;
+}
+.shop-footer .shop-whatsapp-btn:hover{
+  transform:scale(1.04);
+  box-shadow:0 4px 24px rgba(37,211,102,.35);
 }
 
-.shop-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: transform .4s ease;
+/* Responsive tienda */
+@media(max-width:700px){
+  .shop-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .shop-card-img{height:160px}
+  .shop-card h4{font-size:14px;min-height:36px}
+  .shop-price{font-size:17px}
+  .shop-actions button{padding:6px 10px;font-size:10px}
+  .shop-actions .btn-detail span{display:none}
 }
-
-.shop-card:hover .shop-card-img img {
-  transform: scale(1.05);
-}
-
-.shop-card-img .no-image {
-  font-size: 64px;
-  opacity: .25;
-}
-
-.shop-card-body {
-  padding: 18px 20px 20px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.shop-card-cat {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--green);
-  text-transform: uppercase;
-  letter-spacing: .8px;
-  margin-bottom: 6px;
-}
-
-.shop-card h4 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  line-height: 1.3;
-  color: var(--text);
-  min-height: 42px;
-}
-
-.shop-card .specs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-bottom: 8px;
-}
-
-.shop-card .specs span {
-  background: var(--bg2);
-  padding: 3px 10px;
-  border-radius: 5px;
-  border: 1px solid var(--line);
-  font-size: 10px;
-  font-family: var(--mono);
-  color: var(--muted);
-}
-
-.shop-card p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
-  flex: 1;
-  margin: 4px 0 12px;
-}
-
-.shop-card .extra-info {
-  display: none;
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.6;
-  padding: 12px 0 4px;
-  border-top: 1px solid var(--line);
-  margin-top: 4px;
-}
-
-.shop-card .extra-info.open {
-  display: block;
-}
-
-.shop-card .extra-info ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.shop-card .extra-info ul li {
-  padding: 4px 0 4px 22px;
-  position: relative;
-  font-size: 12px;
-}
-
-.shop-card .extra-info ul li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--orange);
-}
-
-.shop-card-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-  flex-wrap: wrap;
-}
-
-.shop-price {
-  font-family: var(--mono);
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--orange);
-}
-
-.shop-price small {
-  color: var(--muted);
-  font-weight: 400;
-  font-size: 10px;
-  display: block;
-  margin-top: 1px;
-}
-
-.shop-actions {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.shop-actions button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 8px;
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all .2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.shop-actions .btn-detail {
-  background: var(--bg2);
-  color: var(--text);
-  border: 1px solid var(--line);
-}
-
-.shop-actions .btn-detail:hover {
-  background: var(--panel);
-}
-
-.shop-actions .btn-buy {
-  background: var(--orange);
-  color: #0B0F14;
-}
-
-.shop-actions .btn-buy:hover {
-  background: #ff7e3a;
-  transform: scale(.97);
-}
-
-.shop-footer {
-  margin-top: 40px;
-  text-align: center;
-  padding: 24px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-}
-
-.shop-footer .shop-note {
-  font-size: 14px;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-
-.shop-footer .shop-whatsapp-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 32px;
-  background: #25D366;
-  color: #fff;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 16px;
-  text-decoration: none;
-  transition: all .2s;
-}
-
-.shop-footer .shop-whatsapp-btn:hover {
-  transform: scale(1.04);
-  box-shadow: 0 4px 24px rgba(37,211,102,.35);
-}
-
-/* Responsive */
-@media(max-width:700px) {
-  .shop-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-  .shop-card-img {
-    height: 160px;
-  }
-  .shop-card h4 {
-    font-size: 14px;
-    min-height: 36px;
-  }
-  .shop-price {
-    font-size: 17px;
-  }
-  .shop-actions button {
-    padding: 6px 10px;
-    font-size: 10px;
-  }
-  .shop-actions .btn-detail span {
-    display: none;
-  }
-}
-
-@media(max-width:450px) {
-  .shop-grid {
-    grid-template-columns: 1fr;
-  }
-  .shop-card-img {
-    height: 200px;
-  }
+@media(max-width:450px){
+  .shop-grid{grid-template-columns:1fr}
+  .shop-card-img{height:200px}
 }
 
 /* ============================================================
-   CURSOS (overlay)
+   CURSOS
    ============================================================ */
 .cursos-grid{
   margin-top:30px;
@@ -844,7 +799,7 @@ h1 .accent{color:var(--orange)}
 .curso-detalle .modulo-item .modulo-lecciones li{line-height:1.4}
 
 /* ============================================================
-   COBERTURA (overlay)
+   COBERTURA
    ============================================================ */
 .coverage{
   margin-top:30px;
@@ -1069,7 +1024,7 @@ footer{
   ============================================================ -->
   <section class="hero">
     <div class="hero-tag"><span class="led"></span>DISPONIBLE PARA SERVICIO A DOMICILIO HOY</div>
-    <h1>Soporte técnico que <span class="accent">llega a tu puerta</span>
+    <h1>Soporte técnico que <span class="accent">llega a tu puerta</span>,<br>no al revés.</h1>
     <p class="hero-sub">Mantenimiento de computadores e impresoras, instalación de cámaras de seguridad, redes punto a punto y soporte técnico — todo en un solo técnico, en tu casa o negocio.</p>
 
     <div class="hero-grid">
@@ -1121,8 +1076,8 @@ OVERLAY: SERVICIOS
     </div>
   </div>
   <div class="overlay-body">
-    <div class="eyebrow">/ Orden de servicio</div>
-    <h2>Lo que reparamos e instalamos</h2>
+    <div class="eyebrow">/ orden de servicio</div>
+    <h2>Lo que reparamos, instalamos y mantenemos</h2>
     <p class="section-sub">Cada visita incluye diagnóstico, mano de obra y garantía sobre el trabajo realizado. Tú eliges el horario.</p>
 
     <div class="services-grid" id="services-grid"></div>
@@ -1139,7 +1094,7 @@ OVERLAY: SERVICIOS
 </div>
 
 <!-- ============================================================
-OVERLAY: TIENDA
+OVERLAY: TIENDA MEJORADA
 ============================================================ -->
 <div class="overlay" id="overlay-tienda">
   <div class="overlay-header">
@@ -1153,21 +1108,28 @@ OVERLAY: TIENDA
   </div>
   <div class="overlay-body">
     <div class="eyebrow">/ catálogo</div>
-    <h2>Cámaras, computadores, repuestos y más</h2>
-    <p class="section-sub">Precios de referencia — cotiza y te confirmamos disponibilidad.</p>
+    <h2>Tienda WijiTech</h2>
+    <p class="section-sub">Precios de referencia — cotiza el tuyo y te confirmamos disponibilidad y precio final por WhatsApp.</p>
 
     <div class="shop-tabs" id="shop-tabs">
-      <button class="shop-tab active" data-cat="todos" onclick="filterShop('todos', this)">Todos</button>
-      <button class="shop-tab" data-cat="camaras" onclick="filterShop('camaras', this)">📷</button>
-      <button class="shop-tab" data-cat="computadores" onclick="filterShop('computadores', this)">🖥️</button>
-      <button class="shop-tab" data-cat="repuestos" onclick="filterShop('repuestos', this)">🔧</button>
-      <button class="shop-tab" data-cat="redes" onclick="filterShop('redes', this)">📡</button>
-      <button class="shop-tab" data-cat="accesorios" onclick="filterShop('accesorios', this)">🎧</button>
+      <button class="shop-tab active" data-cat="todos" onclick="filterShop('todos', this)">📦 Todos</button>
+      <button class="shop-tab" data-cat="camaras" onclick="filterShop('camaras', this)">📷 Cámaras</button>
+      <button class="shop-tab" data-cat="computadores" onclick="filterShop('computadores', this)">🖥️ Computadores</button>
+      <button class="shop-tab" data-cat="repuestos" onclick="filterShop('repuestos', this)">🔧 Repuestos</button>
+      <button class="shop-tab" data-cat="redes" onclick="filterShop('redes', this)">📡 Redes</button>
+      <button class="shop-tab" data-cat="accesorios" onclick="filterShop('accesorios', this)">🎧 Accesorios</button>
     </div>
 
     <div class="shop-grid" id="shop-grid"></div>
-    <div id="shop-empty" style="display:none;text-align:center;padding:40px 20px;color:var(--muted)">No hay productos en esta categoría.</div>
-    <p class="shop-note">💬 ¿No encuentras lo que buscas? Escríbenos por WhatsApp.</p>
+    <div id="shop-empty" style="display:none;text-align:center;padding:60px 20px;color:var(--muted);font-size:15px">
+      <div style="font-size:48px;margin-bottom:12px">🔍</div>
+      No hay productos en esta categoría todavía.
+    </div>
+
+    <div class="shop-footer">
+      <p class="shop-note">💬 ¿No encuentras lo que buscas? <a href="#" onclick="closeOverlay('tienda');openOverlay('contacto');return false;" style="color:var(--orange);font-weight:600">Contáctanos</a> y te ayudamos a conseguirlo.</p>
+      <a href="https://wa.me/573118184977?text=Hola%2C%20quiero%20cotizar%20un%20producto" target="_blank" class="shop-whatsapp-btn">📲 Cotizar por WhatsApp</a>
+    </div>
   </div>
 </div>
 
@@ -1184,7 +1146,7 @@ OVERLAY: CURSOS
   <div class="overlay-body">
     <div class="eyebrow">/ formación técnica</div>
     <h2>Cursos técnicos especializados</h2>
-    <p class="section-sub">Formación práctica en áreas de alta demanda.</p>
+    <p class="section-sub">Formación práctica en áreas de alta demanda. <strong>Duración: 40 horas cada curso.</strong></p>
 
     <div class="cursos-grid" id="cursos-grid"></div>
 
@@ -1218,9 +1180,9 @@ OVERLAY: COBERTURA
     <h2>Atendemos a domicilio en estas zonas</h2>
     <p class="section-sub">¿No ves tu sector? Escríbenos — muchas veces igual podemos cubrirlo.</p>
     <div class="coverage">
-      <span>📍 Fosca</span>
-      <span>📍 Caqueza</span>
-      <span>📍 Quetame</span>
+      <span>📍 Zona urbana</span>
+      <span>📍 Zona rural cercana</span>
+      <span>📍 Conjuntos residenciales</span>
       <span>📍 Locales comerciales</span>
       <span>📍 Oficinas pequeñas</span>
       <span>📍 Fincas y veredas</span>
@@ -1346,7 +1308,6 @@ function toggleMenu(){
 function closeMenu(){
   document.getElementById('navlinks').classList.remove('open');
 }
-// Cerrar menú al hacer clic fuera
 document.addEventListener('click', function(e){
   const nav = document.getElementById('navlinks');
   const toggle = document.querySelector('.menu-toggle');
@@ -1374,89 +1335,17 @@ function closeOverlay(id){
 // SERVICIOS
 // ============================================================
 const SERVICES = [
-  {
-    id: 'ot-01',
-    code: 'OT-01 · HARDWARE',
-    icon: '🖥️',
-    title: 'Computadores',
-    desc: 'Mantenimiento preventivo y correctivo, limpieza interna, cambio de pasta térmica, formateo, instalación de software y recuperación de archivos.',
-    tags: ['Sobremesa', 'Portátiles', 'Diagnóstico'],
-    groups: [
-      {title: 'Mantenimiento preventivo', items: ['<b>Limpieza interna</b> con aire comprimido', '<b>Cambio de pasta térmica</b> del procesador', '<b>Revisión de batería</b> en portátiles', '<b>Actualización de drivers</b> y sistema operativo', '<b>Limpieza de archivos temporales</b>', '<b>Diagnóstico de salud del disco</b>']},
-      {title: 'Mantenimiento correctivo', items: ['<b>Formateo e instalación</b> de sistema operativo', '<b>Eliminación de virus y malware</b>', '<b>Recuperación de archivos</b>', '<b>Reemplazo de componentes</b> dañados', '<b>Reparación de fallas</b> de encendido']},
-      {title: 'Software y configuración', items: ['Instalación de programas de oficina', 'Configuración de respaldo automático', 'Optimización de inicio y rendimiento']}
-    ]
-  },
-  {
-    id: 'ot-02',
-    code: 'OT-02 · PERIFÉRICOS',
-    icon: '🖨️',
-    title: 'Impresoras',
-    desc: 'Mantenimiento de impresoras láser e inyección de tinta, limpieza de cabezales, cambio de tóner/tinta y configuración en red.',
-    tags: ['Láser', 'Inyección', 'Multifuncional'],
-    groups: [
-      {title: 'Impresoras láser', items: ['<b>Limpieza de fusor y rodillos</b>', '<b>Cambio de tóner</b>', '<b>Calibración de calidad</b> de impresión']},
-      {title: 'Inyección de tinta', items: ['<b>Limpieza de cabezales</b> obstruidos', '<b>Cambio de cartuchos</b>', '<b>Purgado de tinta</b>']},
-      {title: 'Configuración y red', items: ['Instalación de drivers', '<b>Configuración WiFi</b> para varios equipos', 'Configuración de escáner', 'Diagnóstico de errores']}
-    ]
-  },
-  {
-    id: 'ot-03',
-    code: 'OT-03 · SEGURIDAD',
-    icon: '📷',
-    title: 'Cámaras IP / análogas',
-    desc: 'Instalación y mantenimiento de sistemas de videovigilancia IP, WiFi y análogas. Configuración de DVR/NVR y acceso remoto.',
-    tags: ['IP', 'WiFi', 'Análogas', 'DVR'],
-    groups: [
-      {title: 'Instalación', items: ['<b>Estudio de puntos ciegos</b>', '<b>Cámaras análogas</b> con cableado', '<b>Cámaras IP/WiFi</b>', 'Fijación de soportes', '<b>Configuración de DVR/NVR</b>']},
-      {title: 'Acceso remoto', items: ['<b>Visualización desde celular</b>', 'Acceso remoto seguro', 'Alertas de movimiento']},
-      {title: 'Mantenimiento', items: ['Limpieza de lentes', 'Revisión de grabación', 'Diagnóstico de cámaras', 'Cambio de fuentes de poder']}
-    ]
-  },
-  {
-    id: 'ot-04',
-    code: 'OT-04 · REDES',
-    icon: '📡',
-    title: 'Conexiones punto a punto',
-    desc: 'Enlaces inalámbricos punto a punto para llevar internet o red local entre edificios, fincas o locales sin cableado físico.',
-    tags: ['Antenas', 'Largo alcance', 'WiFi'],
-    groups: [
-      {title: 'Estudio y diseño', items: ['<b>Verificación de línea de vista</b>', 'Cálculo de distancia', 'Recomendación de torre/mástil']},
-      {title: 'Instalación', items: ['<b>Montaje de antenas direccionales</b>', 'Alineación y ajuste de señal', '<b>Configuración de red</b>', 'Protección contra descargas']},
-      {title: 'Casos de uso', items: ['Internet a caseta/bodega', 'Conectar dos edificios', 'Internet para fincas rurales']}
-    ]
-  },
-  {
-    id: 'ot-05',
-    code: 'OT-05 · SOPORTE',
-    icon: '🛠️',
-    title: 'Soporte técnico general',
-    desc: 'Configuración de redes domésticas, eliminación de virus, respaldo de información y asesoría en compra de equipos.',
-    tags: ['Redes', 'Seguridad', 'Asesoría'],
-    groups: [
-      {title: 'Redes domésticas', items: ['<b>Configuración de router</b>', 'Cambio de contraseñas', 'Diagnóstico de internet lento', 'Configuración de impresoras compartidas']},
-      {title: 'Seguridad y respaldo', items: ['<b>Eliminación de virus</b>', '<b>Respaldo de información</b>', 'Instalación de antivirus']},
-      {title: 'Asesoría', items: ['Recomendación de equipos', 'Acompañamiento en compras', 'Asesoría telefónica']}
-    ]
-  },
-  {
-    id: 'ot-06',
-    code: 'OT-06 · INSTALACIÓN',
-    icon: '🔌',
-    title: 'Cableado estructurado',
-    desc: 'Tendido de cable de red, ponchado de puntos, certificación básica y organización de racks para hogares y oficinas.',
-    tags: ['UTP', 'Racks', 'Puntos de red'],
-    groups: [
-      {title: 'Tendido de cable', items: ['<b>Cableado UTP Cat5e/6</b>', 'Tendido ordenado', 'Etiquetado de puntos']},
-      {title: 'Puntos de red', items: ['<b>Ponchado de conectores RJ45</b>', 'Pruebas de continuidad', 'Reparación de puntos fallados']},
-      {title: 'Racks y organización', items: ['<b>Organización de rack</b>', 'Orden y etiquetado', 'Certificación básica']}
-    ]
-  }
+  {id:'ot-01',code:'OT-01 · HARDWARE',icon:'🖥️',title:'Computadores',desc:'Mantenimiento preventivo y correctivo, limpieza interna, cambio de pasta térmica, formateo, instalación de software y recuperación de archivos.',tags:['Sobremesa','Portátiles','Diagnóstico'],groups:[{title:'Mantenimiento preventivo',items:['<b>Limpieza interna</b> con aire comprimido','<b>Cambio de pasta térmica</b>','<b>Revisión de batería</b>','<b>Actualización de drivers</b>','<b>Limpieza de archivos temporales</b>','<b>Diagnóstico de salud del disco</b>']},{title:'Mantenimiento correctivo',items:['<b>Formateo e instalación</b> de sistema operativo','<b>Eliminación de virus y malware</b>','<b>Recuperación de archivos</b>','<b>Reemplazo de componentes</b>','<b>Reparación de fallas</b>']},{title:'Software y configuración',items:['Instalación de programas de oficina','Configuración de respaldo automático','Optimización de inicio y rendimiento']}]},
+  {id:'ot-02',code:'OT-02 · PERIFÉRICOS',icon:'🖨️',title:'Impresoras',desc:'Mantenimiento de impresoras láser e inyección de tinta, limpieza de cabezales, cambio de tóner/tinta y configuración en red.',tags:['Láser','Inyección','Multifuncional'],groups:[{title:'Impresoras láser',items:['<b>Limpieza de fusor y rodillos</b>','<b>Cambio de tóner</b>','<b>Calibración de calidad</b>']},{title:'Inyección de tinta',items:['<b>Limpieza de cabezales</b>','<b>Cambio de cartuchos</b>','<b>Purgado de tinta</b>']},{title:'Configuración y red',items:['Instalación de drivers','<b>Configuración WiFi</b>','Configuración de escáner','Diagnóstico de errores']}]},
+  {id:'ot-03',code:'OT-03 · SEGURIDAD',icon:'📷',title:'Cámaras IP / análogas',desc:'Instalación y mantenimiento de sistemas de videovigilancia IP, WiFi y análogas. Configuración de DVR/NVR y acceso remoto.',tags:['IP','WiFi','Análogas','DVR'],groups:[{title:'Instalación',items:['<b>Estudio de puntos ciegos</b>','<b>Cámaras análogas</b>','<b>Cámaras IP/WiFi</b>','Fijación de soportes','<b>Configuración de DVR/NVR</b>']},{title:'Acceso remoto',items:['<b>Visualización desde celular</b>','Acceso remoto seguro','Alertas de movimiento']},{title:'Mantenimiento',items:['Limpieza de lentes','Revisión de grabación','Diagnóstico de cámaras','Cambio de fuentes']}]},
+  {id:'ot-04',code:'OT-04 · REDES',icon:'📡',title:'Conexiones punto a punto',desc:'Enlaces inalámbricos punto a punto para llevar internet o red local entre edificios, fincas o locales sin cableado físico.',tags:['Antenas','Largo alcance','WiFi'],groups:[{title:'Estudio y diseño',items:['<b>Verificación de línea de vista</b>','Cálculo de distancia','Recomendación de torre']},{title:'Instalación',items:['<b>Montaje de antenas</b>','Alineación y ajuste','<b>Configuración de red</b>','Protección contra descargas']},{title:'Casos de uso',items:['Internet a caseta/bodega','Conectar dos edificios','Internet para fincas rurales']}]},
+  {id:'ot-05',code:'OT-05 · SOPORTE',icon:'🛠️',title:'Soporte técnico general',desc:'Configuración de redes domésticas, eliminación de virus, respaldo de información y asesoría en compra de equipos.',tags:['Redes','Seguridad','Asesoría'],groups:[{title:'Redes domésticas',items:['<b>Configuración de router</b>','Cambio de contraseñas','Diagnóstico de internet lento','Configuración de impresoras']},{title:'Seguridad y respaldo',items:['<b>Eliminación de virus</b>','<b>Respaldo de información</b>','Instalación de antivirus']},{title:'Asesoría',items:['Recomendación de equipos','Acompañamiento en compras','Asesoría telefónica']}]},
+  {id:'ot-06',code:'OT-06 · INSTALACIÓN',icon:'🔌',title:'Cableado estructurado',desc:'Tendido de cable de red, ponchado de puntos, certificación básica y organización de racks para hogares y oficinas.',tags:['UTP','Racks','Puntos de red'],groups:[{title:'Tendido de cable',items:['<b>Cableado UTP Cat5e/6</b>','Tendido ordenado','Etiquetado de puntos']},{title:'Puntos de red',items:['<b>Ponchado de conectores RJ45</b>','Pruebas de continuidad','Reparación de puntos']},{title:'Racks y organización',items:['<b>Organización de rack</b>','Orden y etiquetado','Certificación básica']}]}
 ];
 
 function renderServices(){
   const grid = document.getElementById('services-grid');
-  grid.innerHTML = SERVICES.map((s, idx) => `
+  grid.innerHTML = SERVICES.map(s => `
     <div class="ot-card" id="card-${s.id}">
       <div class="ot-code">${s.code}<span class="status">● disponible</span></div>
       <span class="ot-icon">${s.icon}</span>
@@ -1497,71 +1386,13 @@ function toggleServiceMenu(id){
 const FORMULARIO_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdYS5pkr1U-aF7SVhIUqjDVMaM_Ky_qvg2ogfilJKW2eFeGCg/viewform';
 
 const CURSOS = [
-  {
-    id: 1,
-    icon: '💻',
-    titulo: 'Técnico en Sistemas',
-    nivel: 'Básico a Intermedio',
-    duracion: 'Año y medio',
-    descripcion: 'Aprende los fundamentos de hardware, software, redes y mantenimiento de computadores.',
-    tags: ['Hardware', 'Software', 'Redes'],
-    modulos: [
-      {titulo: 'Fundamentos de Hardware', semanas: 'Semanas 1-3', lecciones: ['Componentes del PC', 'Ensamblaje básico', 'Diagnóstico de fallas']},
-      {titulo: 'Sistemas Operativos', semanas: 'Semanas 4-6', lecciones: ['Windows', 'Linux básico', 'Instalación y configuración']},
-      {titulo: 'Redes y Conectividad', semanas: 'Semanas 7-9', lecciones: ['TCP/IP básico', 'Configuración de routers', 'Cableado estructurado']},
-      {titulo: 'Mantenimiento y Soporte', semanas: 'Semanas 10-12', lecciones: ['Mantenimiento preventivo', 'Soporte técnico', 'Gestión de incidencias']}
-    ]
-  },
-  {
-    id: 2,
-    icon: '💰',
-    titulo: 'Inversiones y Finanzas',
-    nivel: 'Intermedio',
-    duracion: '40 horas',
-    descripcion: 'Domina los conceptos de inversión, ahorro, presupuestos y planificación financiera.',
-    tags: ['Finanzas', 'Inversiones', 'Ahorro'],
-    modulos: [
-      {titulo: 'Fundamentos Financieros', semanas: 'Semanas 1-3', lecciones: ['Conceptos básicos', 'Presupuestos personales', 'Ahorro e inversión']},
-      {titulo: 'Instrumentos de Inversión', semanas: 'Semanas 4-6', lecciones: ['Acciones', 'Bonos', 'ETF', 'Criptomonedas']},
-      {titulo: 'Planificación Financiera', semanas: 'Semanas 7-8', lecciones: ['Plan de ahorro', 'Retiro', 'Seguros']},
-      {titulo: 'Análisis de Inversiones', semanas: 'Semanas 9-10', lecciones: ['Análisis fundamental', 'Análisis técnico', 'Gestión de riesgos']}
-    ]
-  },
-  
-  
-  
-  {
-    id: 6,
-    icon: '🤖',
-    titulo: 'Inteligencia Artificial',
-    nivel: 'Intermedio',
-    duracion: '40 horas',
-    descripcion: 'Fundamentos de IA, machine learning y deep learning con aplicaciones prácticas.',
-    tags: ['IA', 'Machine Learning', 'Python'],
-    modulos: [
-      {titulo: 'Fundamentos de IA', semanas: 'Semanas 1-3', lecciones: ['Historia de la IA', 'Conceptos básicos', 'Ética en IA']},
-      {titulo: 'Machine Learning', semanas: 'Semanas 4-7', lecciones: ['Regresión', 'Clasificación', 'Clustering']},
-      {titulo: 'Deep Learning', semanas: 'Semanas 8-10', lecciones: ['Redes neuronales', 'CNN', 'RNN']},
-      {titulo: 'Aplicaciones Prácticas', semanas: 'Semanas 11-14', lecciones: ['Visión por computadora', 'NLP', 'Automatización']}
-    ]
-  },
-  {
-    id: 7,
-    icon: '🎓',
-    titulo: 'Validación de Bachillerato',
-    nivel: 'Todos los niveles',
-    duracion: '40 horas por grado',
-    descripcion: 'Programa completo de validación de bachillerato desde 6° hasta 11°. Incluye todas las materias.',
-    tags: ['Bachillerato', 'Validación', 'Certificación'],
-    modulos: [
-      {titulo: '6° Grado', semanas: 'Módulo 1', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']},
-      {titulo: '7° Grado', semanas: 'Módulo 2', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']},
-      {titulo: '8° Grado', semanas: 'Módulo 3', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']},
-      {titulo: '9° Grado', semanas: 'Módulo 4', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']},
-      {titulo: '10° Grado', semanas: 'Módulo 5', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']},
-      {titulo: '11° Grado', semanas: 'Módulo 6', lecciones: ['Matemáticas', 'Lengua Castellana', 'Ciencias Naturales', 'Sociales']}
-    ]
-  }
+  {id:1, icon:'💻', titulo:'Técnico en Sistemas', nivel:'Básico a Intermedio', duracion:'40 horas', descripcion:'Aprende los fundamentos de hardware, software, redes y mantenimiento de computadores.', tags:['Hardware','Software','Redes'], modulos:[{titulo:'Fundamentos de Hardware', semanas:'Semanas 1-3', lecciones:['Componentes del PC','Ensamblaje básico','Diagnóstico de fallas']},{titulo:'Sistemas Operativos', semanas:'Semanas 4-6', lecciones:['Windows','Linux básico','Instalación y configuración']},{titulo:'Redes y Conectividad', semanas:'Semanas 7-9', lecciones:['TCP/IP básico','Configuración de routers','Cableado estructurado']},{titulo:'Mantenimiento y Soporte', semanas:'Semanas 10-12', lecciones:['Mantenimiento preventivo','Soporte técnico','Gestión de incidencias']}]},
+  {id:2, icon:'💰', titulo:'Inversiones y Finanzas', nivel:'Intermedio', duracion:'40 horas', descripcion:'Domina los conceptos de inversión, ahorro, presupuestos y planificación financiera.', tags:['Finanzas','Inversiones','Ahorro'], modulos:[{titulo:'Fundamentos Financieros', semanas:'Semanas 1-3', lecciones:['Conceptos básicos','Presupuestos personales','Ahorro e inversión']},{titulo:'Instrumentos de Inversión', semanas:'Semanas 4-6', lecciones:['Acciones','Bonos','ETF','Criptomonedas']},{titulo:'Planificación Financiera', semanas:'Semanas 7-8', lecciones:['Plan de ahorro','Retiro','Seguros']},{titulo:'Análisis de Inversiones', semanas:'Semanas 9-10', lecciones:['Análisis fundamental','Análisis técnico','Gestión de riesgos']}]},
+  {id:3, icon:'📊', titulo:'Contabilidad Básica', nivel:'Principiante', duracion:'40 horas', descripcion:'Fundamentos de contabilidad, partida doble, estados financieros y registro de transacciones.', tags:['Contabilidad','Partida Doble','Estados Financieros'], modulos:[{titulo:'Conceptos Básicos', semanas:'Semanas 1-2', lecciones:['La contabilidad','Partida doble','Cuentas básicas']},{titulo:'Registro de Transacciones', semanas:'Semanas 3-4', lecciones:['Libro diario','Libro mayor','Balance de comprobación']},{titulo:'Estados Financieros', semanas:'Semanas 5-6', lecciones:['Estado de resultados','Balance general','Flujo de efectivo']},{titulo:'Contabilidad para Negocios', semanas:'Semanas 7-8', lecciones:['Contabilidad de costos','IVA','Declaraciones fiscales']}]},
+  {id:4, icon:'🌎', titulo:'Inglés Técnico', nivel:'Intermedio', duracion:'40 horas', descripcion:'Inglés con enfoque en vocabulario técnico, lectura de documentación y comunicación profesional.', tags:['Inglés','Técnico','Vocabulario'], modulos:[{titulo:'Fundamentos', semanas:'Semanas 1-3', lecciones:['Vocabulario técnico','Lectura de documentación','Comprensión auditiva']},{titulo:'Comunicación Profesional', semanas:'Semanas 4-6', lecciones:['Correos profesionales','Presentaciones','Reuniones virtuales']},{titulo:'Gramática Aplicada', semanas:'Semanas 7-9', lecciones:['Tiempos verbales','Voz pasiva','Condicionales']},{titulo:'Preparación para Exámenes', semanas:'Semanas 10-12', lecciones:['IELTS','TOEFL','Práctica']}]},
+  {id:5, icon:'🎮', titulo:'Desarrollo de Videojuegos', nivel:'Básico a Intermedio', duracion:'40 horas', descripcion:'Crea videojuegos desde cero con herramientas profesionales. Diseño, programación y publicación.', tags:['Videojuegos','Programación','Unity'], modulos:[{titulo:'Introducción', semanas:'Semanas 1-4', lecciones:['Conceptos básicos','Motores de juegos','Diseño de juegos']},{titulo:'Programación', semanas:'Semanas 5-8', lecciones:['C# básico','Unity','Física y colisiones']},{titulo:'Arte y Animación', semanas:'Semanas 9-12', lecciones:['Diseño de personajes','Animación 2D','Sprites y texturas']},{titulo:'Publicación', semanas:'Semanas 13-16', lecciones:['Publicación en Steam','Monetización','Marketing']}]},
+  {id:6, icon:'🤖', titulo:'Inteligencia Artificial', nivel:'Intermedio', duracion:'40 horas', descripcion:'Fundamentos de IA, machine learning y deep learning con aplicaciones prácticas.', tags:['IA','Machine Learning','Python'], modulos:[{titulo:'Fundamentos de IA', semanas:'Semanas 1-3', lecciones:['Historia de la IA','Conceptos básicos','Ética en IA']},{titulo:'Machine Learning', semanas:'Semanas 4-7', lecciones:['Regresión','Clasificación','Clustering']},{titulo:'Deep Learning', semanas:'Semanas 8-10', lecciones:['Redes neuronales','CNN','RNN']},{titulo:'Aplicaciones Prácticas', semanas:'Semanas 11-14', lecciones:['Visión por computadora','NLP','Automatización']}]},
+  {id:7, icon:'🎓', titulo:'Validación de Bachillerato', nivel:'Todos los niveles', duracion:'40 horas por grado', descripcion:'Programa completo de validación de bachillerato desde 6° hasta 11°. Incluye todas las materias.', tags:['Bachillerato','Validación','Certificación'], modulos:[{titulo:'6° Grado', semanas:'Módulo 1', lecciones:['Matemáticas','Lengua Castellana','Ciencias Naturales','Sociales']},{titulo:'7° Grado', semanas:'Módulo 2', lecciones:['Matemáticas','Lengua Castellana','Ciencias Naturales','Sociales']},{titulo:'8° Grado', semanas:'Módulo 3', lecciones:['Matemáticas','Lengua Castellana','Ciencias Naturales','Sociales']},{titulo:'9° Grado', semanas:'Módulo 4', lecciones:['Matemáticas','Lengua Castellana','Ciencias Naturales','Sociales']},{titulo:'10° Grado', semanas:'Módulo 5', lecciones:['Matemáticas','Lengua Castellana','Ciencias Naturales','Sociales']},{titulo:'11° Grado', semanas:'Módulo 6', lecciones:['Matemáticas','Lengua Castellana','Ciencias Naturales','Sociales']}]}
 ];
 
 function renderCursos(){
@@ -1606,20 +1437,17 @@ function mostrarDetalleCurso(id){
 }
 
 // ============================================================
-// TIENDA
+// TIENDA MEJORADA - 3 PRODUCTOS DE EJEMPLO
 // ============================================================
 const SHOP_ADMIN_PASS = 'wijitech2026';
 const SHOP_STORAGE_KEY = 'wijitech_shop_products';
 
 const SHOP_DEFAULT_PRODUCTS = [
-  // ============================================================
-  // 📷 CÁMARAS DE SEGURIDAD
-  // ============================================================
   {
     id: 1,
     cat: 'camaras',
     name: 'Cámara IP WiFi 2MP Interior',
-    desc: 'Visión nocturna infrarroja, audio bidireccional, app móvil, grabación en tarjeta SD o nube.',
+    desc: 'Visión nocturna infrarroja, audio bidireccional, app móvil, grabación en tarjeta SD o nube. Ideal para monitoreo de interiores.',
     price: '95.000',
     image: 'https://http2.mlstatic.com/D_NQ_NP_2X_729045-MCO72437509004_102023-F.webp',
     badge: 'En Stock',
@@ -1630,202 +1458,34 @@ const SHOP_DEFAULT_PRODUCTS = [
       '🌙 Visión nocturna: IR hasta 10m',
       '🎙️ Audio bidireccional integrado',
       '💾 microSD hasta 128GB',
-      '📱 App iOS y Android'
+      '📱 App iOS y Android',
+      '🔔 Alertas de movimiento'
     ]
   },
   {
     id: 2,
-    cat: 'camaras',
-    name: 'Cámara IP 4MP Exterior IP66',
-    desc: 'Resistente al agua, detección de movimiento, visión nocturna hasta 30m. Ideal para fachadas.',
-    price: '160.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_620550-MCO70764034474_072023-F.webp',
-    badge: 'En Stock',
-    specs: ['4MP', 'IP66', '30m Nocturna'],
-    extra: [
-      '📹 Resolución: 2560x1440 (4MP)',
-      '🌧️ Resistencia: IP66 (intemperie)',
-      '🌙 Visión nocturna: hasta 30m',
-      '🎙️ Audio bidireccional',
-      '🔍 Detección: personas y vehículos',
-      '💾 microSD + Nube'
-    ]
-  },
-  {
-    id: 3,
-    cat: 'camaras',
-    name: 'Kit 4 Cámaras + DVR 4 Canales 1TB',
-    desc: 'Incluye DVR de 4 canales, 4 cámaras, cableado BNC, fuentes de poder.',
-    price: '480.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_835654-MCO54849089784_042023-F.webp',
-    badge: 'Oferta',
-    specs: ['4 Cámaras', 'DVR 4CH', '1TB'],
-    extra: [
-      '📼 DVR: 4 canales 1080p',
-      '💾 Almacenamiento: 1TB incluido',
-      '📷 4 cámaras con visión nocturna IR',
-      '🔌 Cableado BNC de 20m',
-      '📱 Acceso remoto vía app',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 4,
-    cat: 'camaras',
-    name: 'Cámara WiFi Exterior con Foco LED',
-    desc: 'Detección de movimiento con iluminación LED, sirena integrada, visión nocturna a color.',
-    price: '220.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_622537-MCO70552851713_072023-F.webp',
-    badge: 'Nuevo',
-    specs: ['2MP', 'Foco LED', 'Sirena'],
-    extra: [
-      '💡 Foco LED: iluminación automática',
-      '🔊 Sirena integrada (disuasiva)',
-      '🌙 Visión nocturna a color',
-      '📡 Conectividad: WiFi 2.4GHz',
-      '💾 microSD hasta 256GB',
-      '🔔 Alertas push personalizables'
-    ]
-  },
-  {
-    id: 5,
-    cat: 'camaras',
-    name: 'Disco Duro para DVR/NVR 1TB',
-    desc: 'Disco de vigilancia optimizado para grabación 24/7, compatible con la mayoría de DVRs.',
-    price: '165.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_628841-MCO48895150353_012022-F.webp',
-    badge: 'En Stock',
-    specs: ['1TB', '3.5"', 'SATA'],
-    extra: [
-      '💾 Capacidad: 1TB (1000GB)',
-      '📐 Formato: 3.5" SATA',
-      '🔄 Velocidad: 5400 RPM',
-      '🛡️ Optimizado para 24/7',
-      '🔇 Operación silenciosa',
-      '🛡️ Garantía: 12 meses'
-    ]
-  },
-
-  // ============================================================
-  // 🖥️ COMPUTADORES Y PORTÁTILES
-  // ============================================================
-  {
-    id: 6,
     cat: 'computadores',
-    name: 'PC Escritorio Básico 8GB SSD 256GB',
-    desc: 'Procesador Intel/AMD, 8GB RAM, SSD 256GB, Windows 10/11. Ideal para oficina y estudio.',
+    name: 'PC de Escritorio Básico (Oficina/Estudio)',
+    desc: 'Procesador Intel/AMD, 8GB RAM, SSD 256GB, Windows 10/11. Ideal para tareas de oficina, navegación y estudio.',
     price: '950.000',
     image: 'https://http2.mlstatic.com/D_NQ_NP_2X_771514-MCO45640974473_042021-F.webp',
     badge: 'En Stock',
     specs: ['8GB RAM', 'SSD 256GB', 'Win 11'],
     extra: [
-      '🖥️ Procesador: Intel Core i3 / AMD Ryzen 3',
-      '🧠 Memoria: 8GB DDR4 (ampliable)',
+      '🖥️ Procesador: Intel Core i3 o AMD Ryzen 3',
+      '🧠 Memoria: 8GB DDR4 (ampliable a 16GB)',
       '💽 Almacenamiento: SSD 256GB M.2',
-      '🖥️ Sistema: Windows 11 Pro',
+      '🖥️ Sistema Operativo: Windows 11 Pro',
       '🖱️ Teclado y mouse incluidos',
+      '🔄 Puertos: USB 3.0, HDMI, VGA, Ethernet',
       '🛡️ Garantía: 6 meses'
     ]
   },
   {
-    id: 7,
-    cat: 'computadores',
-    name: 'Portátil Reacondicionado i5 8GB SSD',
-    desc: 'Equipo revisado y garantizado (garantía 3 meses). Ideal para trabajo, estudio y programación.',
-    price: '1.100.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_789470-MCO47983493563_102021-F.webp',
-    badge: 'Reacondicionado',
-    specs: ['i5', '8GB', 'SSD 256GB'],
-    extra: [
-      '💻 Procesador: Intel Core i5',
-      '🧠 Memoria: 8GB DDR4',
-      '💽 Almacenamiento: SSD 256GB NVMe',
-      '📺 Pantalla: 14" Full HD',
-      '🔋 Batería: 4-6 horas',
-      '🛡️ Garantía: 3 meses'
-    ]
-  },
-  {
-    id: 8,
-    cat: 'computadores',
-    name: 'Impresora Multifuncional WiFi Tinta Continua',
-    desc: 'Imprime, escanea y copia. Conexión WiFi, alimentación continua de tinta para ahorrar.',
-    price: '420.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_980427-MCO72421144829_102023-F.webp',
-    badge: 'En Stock',
-    specs: ['Multifuncional', 'WiFi', 'Tinta Continua'],
-    extra: [
-      '🖨️ Funciones: Imprime, escanea, copia',
-      '📡 Conectividad: WiFi, USB, Ethernet',
-      '💧 Sistema de tinta continua (tanques)',
-      '📄 Tamaño: A4, oficio',
-      '📱 Impresión desde móvil',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 9,
-    cat: 'computadores',
-    name: 'PC Gamer Ryzen 5 + GTX 1650',
-    desc: 'AMD Ryzen 5, 16GB RAM, SSD 480GB, GTX 1650 4GB. Ideal para juegos y edición.',
-    price: '1.850.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_846674-MCO48589181401_122021-F.webp',
-    badge: 'Gamer',
-    specs: ['Ryzen 5', '16GB', 'GTX 1650'],
-    extra: [
-      '🖥️ Procesador: AMD Ryzen 5 5600G',
-      '🧠 Memoria: 16GB DDR4 3200MHz',
-      '💽 Almacenamiento: SSD 480GB M.2',
-      '🎮 Tarjeta: GTX 1650 4GB GDDR6',
-      '🔦 Gabinete gamer con RGB',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 10,
-    cat: 'computadores',
-    name: 'Impresora Láser Monocromática WiFi',
-    desc: 'Impresión láser en blanco y negro, alta velocidad, conectividad WiFi y Ethernet.',
-    price: '380.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_985181-MCO70076054467_062023-F.webp',
-    badge: 'En Stock',
-    specs: ['Láser', 'Monocromática', 'WiFi'],
-    extra: [
-      '🖨️ Tipo: Láser monocromática',
-      '⚡ Velocidad: hasta 22 ppm',
-      '📡 Conectividad: WiFi, Ethernet, USB',
-      '📄 Capacidad: 150 hojas',
-      '📊 Resolución: 1200 x 1200 dpi',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-
-  // ============================================================
-  // 🔧 REPUESTOS Y COMPONENTES
-  // ============================================================
-  {
-    id: 11,
-    cat: 'repuestos',
-    name: 'Memoria RAM 8GB DDR4 2666MHz',
-    desc: 'Compatible con portátiles y PCs de escritorio. Instalación incluida en servicio técnico.',
-    price: '130.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_898098-MCO43452750825_092020-F.webp',
-    badge: 'En Stock',
-    specs: ['8GB', 'DDR4', '2666MHz'],
-    extra: [
-      '🧠 Capacidad: 8GB (1 módulo)',
-      '📊 Tipo: DDR4 SO-DIMM',
-      '⚡ Velocidad: 2666MHz',
-      '🔋 Voltaje: 1.2V (bajo consumo)',
-      '🔄 Compatible: Intel y AMD',
-      '🛡️ Garantía: 12 meses'
-    ]
-  },
-  {
-    id: 12,
+    id: 3,
     cat: 'repuestos',
     name: 'SSD 480GB SATA III',
-    desc: 'Acelera tu equipo lento. Incluye clonación de tu disco actual sin perder datos.',
+    desc: 'Acelera cualquier equipo lento. Incluye clonación de tu disco actual sin perder datos (servicio técnico).',
     price: '155.000',
     image: 'https://http2.mlstatic.com/D_NQ_NP_2X_919808-MCO43383257770_092020-F.webp',
     badge: 'En Stock',
@@ -1835,372 +1495,152 @@ const SHOP_DEFAULT_PRODUCTS = [
       '📊 Interfaz: SATA III (6Gb/s)',
       '⚡ Lectura: 540 MB/s',
       '⚡ Escritura: 500 MB/s',
-      '🔄 Resistente a golpes',
+      '🔋 Consumo: ultra bajo',
+      '🔄 Resistente a golpes y vibraciones',
+      '🛠️ Clonación de disco: incluida',
       '🛡️ Garantía: 12 meses'
     ]
-  },
-  {
-    id: 13,
-    cat: 'repuestos',
-    name: 'Fuente de Poder 500W 80 PLUS',
-    desc: 'Fuente certificada 80 PLUS, protección contra sobrecargas y cortocircuitos.',
-    price: '110.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_697215-MCO43820130610_102020-F.webp',
-    badge: 'En Stock',
-    specs: ['500W', '80 PLUS', 'ATX'],
-    extra: [
-      '⚡ Potencia: 500W reales',
-      '🏅 Certificación: 80 PLUS',
-      '📐 Formato: ATX estándar',
-      '🛡️ Protecciones: OVP, OCP, OPP, SCP',
-      '🔇 Ventilador: 120mm silencioso',
-      '🛡️ Garantía: 12 meses'
-    ]
-  },
-  {
-    id: 14,
-    cat: 'repuestos',
-    name: 'Cooler para CPU Universal',
-    desc: 'Reemplazo de ventiladores ruidosos o dañados. Compatible con Intel y AMD.',
-    price: '45.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_987461-MCO43393009066_092020-F.webp',
-    badge: 'En Stock',
-    specs: ['Universal', '120mm', 'Silencioso'],
-    extra: [
-      '🌀 Compatible: Intel y AMD',
-      '📏 Tamaño: 120mm',
-      '🔇 Nivel de ruido: <25 dB(A)',
-      '⚡ PWM de alta eficiencia',
-      '🛠️ Incluye pasta térmica',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 15,
-    cat: 'repuestos',
-    name: 'Tarjeta de Video GTX 1650 4GB',
-    desc: 'Ideal para gaming ligero y edición de video. Mejora el rendimiento gráfico.',
-    price: '420.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_874069-MCO47784194622_102021-F.webp',
-    badge: 'En Stock',
-    specs: ['GTX 1650', '4GB GDDR6'],
-    extra: [
-      '🎮 Chip: NVIDIA GeForce GTX 1650',
-      '🧠 Memoria: 4GB GDDR6',
-      '📐 Interfaz: PCIe 3.0 x16',
-      '🖥️ Salidas: HDMI, DisplayPort, DVI',
-      '⚡ Consumo: 75W (sin conector)',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
+  }
+];
 
-  // ============================================================
-  // 📡 REDES Y ROUTERS
-  // ============================================================
-  {
-    id: 16,
-    cat: 'redes',
-    name: 'Router WiFi AC1200 Doble Banda',
-    desc: 'Cobertura para casa u oficina pequeña. Configuración incluida en servicio técnico.',
-    price: '130.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_632273-MCO44822470182_012021-F.webp',
-    badge: 'En Stock',
-    specs: ['AC1200', 'Doble Banda', '4 Puertos'],
-    extra: [
-      '📡 WiFi AC1200: 300 + 867 Mbps',
-      '🌐 Doble banda: 2.4GHz y 5GHz',
-      '🔌 Puertos: 4 x Gigabit Ethernet',
-      '📶 Cobertura: hasta 100m²',
-      '🔄 Antenas: 4 externas',
-      '🛡️ Seguridad: WPA/WPA2/WPA3'
-    ]
-  },
-  {
-    id: 17,
-    cat: 'redes',
-    name: 'Repetidor / Extensor de WiFi',
-    desc: 'Elimina zonas muertas de señal en tu casa o negocio. Configuración vía WPS.',
-    price: '75.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_776719-MCO42275167550_062020-F.webp',
-    badge: 'En Stock',
-    specs: ['300Mbps', 'WPS', 'Plug & Play'],
-    extra: [
-      '📶 Velocidad: hasta 300 Mbps',
-      '📡 Banda: 2.4GHz',
-      '🔌 Conexión: enchufe directo',
-      '⚡ Configuración: WPS (botón)',
-      '📱 Compatible: todos los routers',
-      '🔄 Alcance: +50m²'
-    ]
-  },
-  {
-    id: 18,
-    cat: 'redes',
-    name: 'Antena Direccional Punto a Punto',
-    desc: 'Para conectar internet entre edificios sin cableado físico. Incluye soportes.',
-    price: '280.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_692004-MCO41124451670_032020-F.webp',
-    badge: 'Por encargo',
-    specs: ['24dBi', '5km', '2.4GHz'],
-    extra: [
-      '📡 Ganancia: 24dBi',
-      '📏 Alcance: hasta 5km (línea de vista)',
-      '📶 Frecuencia: 2.4GHz',
-      '🔌 Conector: N-female',
-      '🛠️ Incluye: soportes de montaje',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 19,
-    cat: 'redes',
-    name: 'Switch 8 Puertos Gigabit',
-    desc: 'Amplía puntos de red en oficinas o redes domésticas. Plug-and-play.',
-    price: '90.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_643935-MCO41368401478_042020-F.webp',
-    badge: 'En Stock',
-    specs: ['8 Puertos', 'Gigabit', 'Plug & Play'],
-    extra: [
-      '🔌 Puertos: 8 x Gigabit Ethernet',
-      '⚡ Velocidad: 10/100/1000 Mbps',
-      '🔄 Plug-and-play (sin configuración)',
-      '🔋 Consumo: bajo, sin ventilador',
-      '📐 Tamaño: compacto',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 20,
-    cat: 'redes',
-    name: 'Router WiFi 6 (AX1800)',
-    desc: 'Tecnología WiFi 6 de última generación, mayor velocidad y cobertura.',
-    price: '220.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_657818-MCO50299778799_062022-F.webp',
-    badge: 'Nuevo',
-    specs: ['WiFi 6', 'AX1800', 'Doble Banda'],
-    extra: [
-      '📡 Tecnología: WiFi 6 (802.11ax)',
-      '⚡ Velocidad: AX1800 (600 + 1200 Mbps)',
-      '🌐 Doble banda: 2.4GHz y 5GHz',
-      '🔌 Puertos: 4 x Gigabit Ethernet',
-      '📶 Cobertura: hasta 150m²',
-      '🛡️ Seguridad: WPA3'
-    ]
-  },
+const SHOP_CAT_LABEL = {
+  camaras: '📷 Cámaras',
+  computadores: '🖥️ Computadores',
+  repuestos: '🔧 Repuestos',
+  redes: '📡 Redes / Router',
+  accesorios: '🎧 Accesorios'
+};
 
-  // ============================================================
-  // 🎧 ACCESORIOS Y PERIFÉRICOS
-  // ============================================================
-  {
-    id: 21,
-    cat: 'accesorios',
-    name: 'Combo Teclado + Mouse Inalámbrico',
-    desc: 'Conexión USB inalámbrica, ideal para escritorio u oficina. Receptor USB único.',
-    price: '65.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_678239-MCO43382398903_092020-F.webp',
-    badge: 'En Stock',
-    specs: ['Inalámbrico', 'Receptor USB'],
-    extra: [
-      '⌨️ Teclado: 104 teclas (español)',
-      '🖱️ Mouse: óptico, 1000 DPI',
-      '📡 Conexión: 2.4GHz inalámbrica',
-      '🔌 Receptor: USB nano (único)',
-      '🔋 Batería: teclado 6 meses',
-      '🔄 Alcance: hasta 10 metros'
-    ]
-  },
-  {
-    id: 22,
-    cat: 'accesorios',
-    name: 'Regulador de Voltaje 4 Tomas',
-    desc: 'Protege tus equipos de variaciones eléctricas y descargas.',
-    price: '70.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_974817-MCO45707187404_042021-F.webp',
-    badge: 'En Stock',
-    specs: ['4 Tomas', 'Supresor', 'Protección'],
-    extra: [
-      '🔌 Tomas: 4 (estándar colombiano)',
-      '🛡️ Protección: contra picos de voltaje',
-      '⚡ Capacidad: hasta 1500W',
-      '🔄 Tiempo de respuesta: <1ns',
-      '🔋 Indicador: LED de protección activa',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 23,
-    cat: 'accesorios',
-    name: 'UPS 600VA Batería de Respaldo',
-    desc: 'Mantiene tu PC o router encendido durante un corte de luz. Protección contra picos.',
-    price: '185.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_971959-MCO47127326998_082021-F.webp',
-    badge: 'En Stock',
-    specs: ['600VA', '360W', '4 Tomas'],
-    extra: [
-      '🔋 Capacidad: 600VA / 360W',
-      '🔌 Tomas: 4 con protección',
-      '⏱️ Autonomía: 5-10 min',
-      '🔄 Interfaz: USB para monitoreo',
-      '🛡️ Protecciones: sobrecarga, cortocircuito',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 24,
-    cat: 'accesorios',
-    name: 'Webcam HD 1080p con Micrófono',
-    desc: 'Cámara web con micrófono integrado, enfoque automático. Ideal para videollamadas.',
-    price: '95.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_832547-MCO45043417457_032021-F.webp',
-    badge: 'En Stock',
-    specs: ['1080p', 'USB', 'Micrófono'],
-    extra: [
-      '📹 Resolución: Full HD 1080p',
-      '🎙️ Micrófono: integrado, cancelación de ruido',
-      '🔄 Enfoque: automático',
-      '📐 Ángulo: 90° de visión',
-      '🔌 Conexión: USB plug-and-play',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 25,
-    cat: 'accesorios',
-    name: 'Disco Duro Externo 1TB USB 3.0',
-    desc: 'Almacenamiento portátil, compatible con PC y Mac, ideal para respaldos.',
-    price: '180.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_969157-MCO42259785151_062020-F.webp',
-    badge: 'En Stock',
-    specs: ['1TB', 'USB 3.0', 'Portátil'],
-    extra: [
-      '💾 Capacidad: 1TB (1000GB)',
-      '📊 Interfaz: USB 3.0 (5Gbps)',
-      '🔄 Velocidad: hasta 120 MB/s',
-      '📏 Tamaño: 2.5" (portátil)',
-      '🖥️ Compatible: Windows y Mac',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 26,
-    cat: 'accesorios',
-    name: 'Audífonos Diadema con Micrófono',
-    desc: 'Audífonos con diadema ajustable, micrófono con cancelación de ruido, ideal para gaming.',
-    price: '72.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_805328-MCO43745058381_102020-F.webp',
-    badge: 'En Stock',
-    specs: ['Diadema', 'Micrófono', 'Gaming'],
-    extra: [
-      '🎧 Tipo: diadema over-ear',
-      '🎙️ Micrófono: flexible, cancelación de ruido',
-      '🔇 Aislamiento: pasivo de ruido',
-      '📏 Ajuste: diadema y almohadillas',
-      '🎵 Sonido: estéreo, graves potentes',
-      '🛡️ Garantía: 3 meses'
-    ]
-  },
-  {
-    id: 27,
-    cat: 'accesorios',
-    name: 'Soporte para Monitor Ajustable',
-    desc: 'Soporte de escritorio para monitor, ajuste de altura y ángulo, libera espacio.',
-    price: '55.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_886706-MCO42240370503_062020-F.webp',
-    badge: 'En Stock',
-    specs: ['Ajustable', 'Hasta 27"', 'VESA'],
-    extra: [
-      '🖥️ Compatible: 13" a 27"',
-      '🔧 Estándar: VESA 75x75 / 100x100',
-      '🔄 Ajuste: altura, inclinación, rotación',
-      '📏 Altura máxima: 40cm',
-      '⚡ Capacidad: hasta 8kg',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 28,
-    cat: 'accesorios',
-    name: 'Cargador Universal 65W USB-C',
-    desc: 'Cargador GaN 65W con puertos USB-C y USB-A, compatible con laptops y móviles.',
-    price: '98.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_898525-MCO44721645439_012021
-function getShopProducts(){
-  try{
+function getShopProducts() {
+  try {
     const raw = localStorage.getItem(SHOP_STORAGE_KEY);
-    if(!raw) return [...SHOP_DEFAULT_PRODUCTS];
+    if (!raw) return [...SHOP_DEFAULT_PRODUCTS];
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed : [...SHOP_DEFAULT_PRODUCTS];
-  }catch(e){ return [...SHOP_DEFAULT_PRODUCTS]; }
+  } catch (e) {
+    return [...SHOP_DEFAULT_PRODUCTS];
+  }
 }
-function saveShopProducts(list){
+
+function saveShopProducts(list) {
   localStorage.setItem(SHOP_STORAGE_KEY, JSON.stringify(list));
 }
 
-const SHOP_CAT_LABEL = {camaras:'Cámaras', computadores:'Computadores', repuestos:'Repuestos', redes:'Redes / Router', accesorios:'Accesorios'};
-
-function shopCardHtml(p){
-  const imgHtml = p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : (p.emoji||'📦');
+function shopCardHtml(p) {
+  const imgHtml = p.image
+    ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+    : `<div class="no-image">${p.emoji || '📦'}</div>`;
+  
+  const badgeClass = p.badge === 'En Stock' ? 'stock' :
+                     p.badge === 'Oferta' ? 'oferta' :
+                     p.badge === 'Reacondicionado' ? 'reacondicionado' :
+                     p.badge === 'Nuevo' ? 'nuevo' :
+                     p.badge === 'Agotado' ? 'agotado' :
+                     p.badge === 'Por encargo' ? 'encargo' : '';
+  
+  const badge = p.badge ? `<span class="badge ${badgeClass}">${p.badge}</span>` : '';
+  const specsHtml = p.specs ? `<div class="specs">${p.specs.map(s => `<span>${s}</span>`).join('')}</div>` : '';
+  const extraHtml = p.extra ? `
+    <div class="extra-info" id="extra-${p.id}">
+      <ul>${p.extra.map(e => `<li>${e}</li>`).join('')}</ul>
+    </div>
+  ` : '';
+  
   return `<div class="shop-card" data-cat="${p.cat}">
-    <div class="shop-card-img">${imgHtml}</div>
+    <div class="shop-card-img">
+      ${imgHtml}
+      ${badge}
+    </div>
     <div class="shop-card-body">
-      <div class="shop-card-cat">${SHOP_CAT_LABEL[p.cat]||p.cat}</div>
+      <div class="shop-card-cat">${SHOP_CAT_LABEL[p.cat] || p.cat}</div>
       <h4>${p.name}</h4>
-      <p>${p.desc||''}</p>
+      ${specsHtml}
+      <p>${p.desc || ''}</p>
+      ${extraHtml}
       <div class="shop-card-foot">
-        <div class="shop-price">$${p.price}<small>COP</small></div>
-        <button class="shop-quote-btn" onclick="quoteProductById(${p.id})">Cotizar</button>
+        <div class="shop-price">$${p.price}<small>COP aprox.</small></div>
+        <div class="shop-actions">
+          ${p.extra ? `<button class="btn-detail" onclick="toggleExtra(${p.id})">📋 <span>Más</span></button>` : ''}
+          <button class="btn-buy" onclick="comprarProducto(${p.id})">🛒 Comprar</button>
+        </div>
       </div>
     </div>
   </div>`;
 }
 
-function renderShopGrid(activeCat){
+function renderShopGrid(activeCat) {
   const cat = activeCat || (document.querySelector('.shop-tab.active')?.dataset.cat) || 'todos';
   const products = getShopProducts();
-  const filtered = cat==='todos' ? products : products.filter(p=>p.cat===cat);
+  const filtered = cat === 'todos' ? products : products.filter(p => p.cat === cat);
   const grid = document.getElementById('shop-grid');
   const empty = document.getElementById('shop-empty');
-  if(!grid) return;
+  if (!grid) return;
   grid.innerHTML = filtered.map(shopCardHtml).join('');
-  if(empty) empty.style.display = filtered.length ? 'none' : 'block';
+  if (empty) empty.style.display = filtered.length ? 'none' : 'block';
 }
 
-function filterShop(cat, btn){
-  document.querySelectorAll('.shop-tab').forEach(t=>t.classList.remove('active'));
+function filterShop(cat, btn) {
+  document.querySelectorAll('.shop-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
   renderShopGrid(cat);
 }
 
-function quoteProduct(name){
-  window.open(`https://wa.me/573118184977?text=${encodeURIComponent('Hola, quiero cotizar: ' + name)}`, '_blank');
-}
-function quoteProductById(id){
-  const product = getShopProducts().find(p=>p.id===id);
-  if(product) quoteProduct(product.name);
+function toggleExtra(id) {
+  const el = document.getElementById('extra-' + id);
+  if (el) {
+    el.classList.toggle('open');
+    const btn = el.closest('.shop-card').querySelector('.btn-detail');
+    if (btn) {
+      btn.innerHTML = el.classList.contains('open') ? '📋 <span>Menos</span>' : '📋 <span>Más</span>';
+    }
+  }
 }
 
-function openShopAdmin(){
+function comprarProducto(id) {
+  const product = getShopProducts().find(p => p.id === id);
+  if (!product) return;
+  const msg = encodeURIComponent(
+    `Hola, quiero comprar:\n\n` +
+    `📦 *${product.name}*\n` +
+    `💰 Precio: $${product.price} COP\n` +
+    `📝 ${product.desc}\n\n` +
+    `¿Podrían confirmarme disponibilidad y precio final?`
+  );
+  window.open(`https://wa.me/573118184977?text=${msg}`, '_blank');
+}
+
+function openShopAdmin() {
   document.getElementById('shop-admin-overlay').style.display = 'flex';
   document.getElementById('shop-admin-locked').style.display = 'block';
   document.getElementById('shop-admin-unlocked').style.display = 'none';
   document.getElementById('shop-admin-pass').value = '';
   clearProductImage();
 }
-function closeShopAdmin(){
+
+function closeShopAdmin() {
   document.getElementById('shop-admin-overlay').style.display = 'none';
 }
-function checkShopAdminPass(){
-  if(document.getElementById('shop-admin-pass').value === SHOP_ADMIN_PASS){
+
+function checkShopAdminPass() {
+  if (document.getElementById('shop-admin-pass').value === SHOP_ADMIN_PASS) {
     document.getElementById('shop-admin-locked').style.display = 'none';
     document.getElementById('shop-admin-unlocked').style.display = 'block';
     renderShopAdminList();
-  } else { alert('Clave incorrecta.'); }
+  } else {
+    alert('Clave incorrecta.');
+  }
 }
+
 let _pendingProductImage = null;
-function handleProductImageSelect(input){
+
+function handleProductImageSelect(input) {
   const file = input.files[0];
-  if(!file || !file.type.startsWith('image/')) return;
-  if(file.size > 3*1024*1024){ alert('Máx. 3MB.'); input.value=''; return; }
+  if (!file || !file.type.startsWith('image/')) return;
+  if (file.size > 3 * 1024 * 1024) {
+    alert('Máx. 3MB.');
+    input.value = '';
+    return;
+  }
   const reader = new FileReader();
   reader.onload = () => {
     _pendingProductImage = reader.result;
@@ -2209,53 +1649,107 @@ function handleProductImageSelect(input){
   };
   reader.readAsDataURL(file);
 }
-function clearProductImage(){
+
+function clearProductImage() {
   _pendingProductImage = null;
   document.getElementById('sa-image').value = '';
   document.getElementById('sa-img-preview').innerHTML = '📦';
   document.getElementById('sa-img-clear').style.display = 'none';
 }
-function renderShopAdminList(){
+
+function renderShopAdminList() {
   const products = getShopProducts();
   document.getElementById('sa-count').textContent = products.length;
   document.getElementById('shop-admin-list').innerHTML = products.map(p => `
     <div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel)">
-      <div style="width:28px;height:28px;border-radius:4px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:14px;overflow:hidden;flex-shrink:0">${p.image ? `<img src="${p.image}" style="width:100%;height:100%;object-fit:cover">` : (p.emoji||'📦')}</div>
-      <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600">${p.name}</div><div style="font-size:10px;color:var(--muted)">${SHOP_CAT_LABEL[p.cat]||p.cat} · $${p.price}</div></div>
+      <div style="width:28px;height:28px;border-radius:4px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:14px;overflow:hidden;flex-shrink:0">
+        ${p.image ? `<img src="${p.image}" style="width:100%;height:100%;object-fit:cover">` : (p.emoji || '📦')}
+      </div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:600">${p.name}</div>
+        <div style="font-size:10px;color:var(--muted)">${SHOP_CAT_LABEL[p.cat] || p.cat} · $${p.price}</div>
+      </div>
       <button onclick="changeProductImage(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px">📷</button>
       ${p.image ? `<button onclick="removeProductImage(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px">🚫</button>` : ''}
       <button onclick="adminRemoveProduct(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px">🗑️</button>
     </div>
   `).join('') || '<p style="color:var(--muted);font-size:12px">Sin productos.</p>';
 }
-function adminAddProduct(){
+
+function adminAddProduct() {
   const name = document.getElementById('sa-name').value.trim();
   const price = document.getElementById('sa-price').value.trim();
-  if(!name || !price){ alert('Nombre y precio requeridos.'); return; }
+  if (!name || !price) {
+    alert('Nombre y precio requeridos.');
+    return;
+  }
   const products = getShopProducts();
   const newProduct = {
     id: Date.now(),
     cat: document.getElementById('sa-cat').value,
     emoji: document.getElementById('sa-emoji').value.trim() || '📦',
-    name, desc: document.getElementById('sa-desc').value.trim(), price
+    name: name,
+    desc: document.getElementById('sa-desc').value.trim(),
+    price: price,
+    badge: 'En Stock',
+    specs: [],
+    extra: []
   };
-  if(_pendingProductImage) newProduct.image = _pendingProductImage;
+  if (_pendingProductImage) newProduct.image = _pendingProductImage;
   products.push(newProduct);
   saveShopProducts(products);
-  ['sa-name','sa-desc','sa-price','sa-emoji'].forEach(id=>document.getElementById(id).value='');
+  ['sa-name', 'sa-desc', 'sa-price', 'sa-emoji'].forEach(id => document.getElementById(id).value = '');
   clearProductImage();
   renderShopAdminList();
   renderShopGrid();
 }
-function adminRemoveProduct(id){
-  if(!confirm('¿Quitar este producto?')) return;
-  saveShopProducts(getShopProducts().filter(p=>p.id!==id));
+
+function adminRemoveProduct(id) {
+  if (!confirm('¿Quitar este producto?')) return;
+  saveShopProducts(getShopProducts().filter(p => p.id !== id));
   renderShopAdminList();
   renderShopGrid();
 }
-function resetShopCatalog(){
-  if(!confirm('¿Restaurar catálogo de ejemplo?')) return;
+
+function resetShopCatalog() {
+  if (!confirm('¿Restaurar catálogo de ejemplo?')) return;
   saveShopProducts([...SHOP_DEFAULT_PRODUCTS]);
+  renderShopAdminList();
+  renderShopGrid();
+}
+
+function changeProductImage(id) {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.onchange = () => {
+    const file = input.files[0];
+    if (!file || !file.type.startsWith('image/')) return;
+    if (file.size > 3 * 1024 * 1024) {
+      alert('Máx. 3MB.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const products = getShopProducts();
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+      product.image = reader.result;
+      saveShopProducts(products);
+      renderShopAdminList();
+      renderShopGrid();
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
+}
+
+function removeProductImage(id) {
+  const products = getShopProducts();
+  const product = products.find(p => p.id === id);
+  if (!product) return;
+  delete product.image;
+  saveShopProducts(products);
   renderShopAdminList();
   renderShopGrid();
 }
