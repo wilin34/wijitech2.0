@@ -43,9 +43,7 @@ body{
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
 
-/* ============================================================
-   HEADER - MENÚ HAMBURGUESA
-   ============================================================ */
+/* HEADER */
 header{
   position:sticky;top:0;z-index:50;
   background:rgba(11,15,20,.95);
@@ -107,6 +105,7 @@ header{
   border-radius:8px;
   transition:all .2s;
   font-weight:500;
+  cursor:pointer;
 }
 .navlinks a:hover,
 .navlinks a:active{
@@ -156,9 +155,7 @@ header{
   .nav-cta-desktop{display:flex}
 }
 
-/* ============================================================
-   HERO
-   ============================================================ */
+/* HERO */
 .hero{padding:50px 0 40px;position:relative}
 .hero-tag{
   display:inline-flex;
@@ -261,9 +258,7 @@ h1 .accent{color:var(--orange)}
   .hero-grid-item .sub{display:none}
 }
 
-/* ============================================================
-   OVERLAY
-   ============================================================ */
+/* OVERLAY */
 .overlay{
   display:none;
   position:fixed;
@@ -307,9 +302,7 @@ h1 .accent{color:var(--orange)}
 .overlay-close:active{background:var(--bg2)}
 .overlay-body{padding:24px 16px 80px;max-width:1180px;margin:0 auto}
 
-/* ============================================================
-   SERVICIOS
-   ============================================================ */
+/* SERVICIOS */
 .services-grid{
   margin-top:30px;
   display:grid;
@@ -440,9 +433,7 @@ h1 .accent{color:var(--orange)}
 .proc-step p{margin-top:4px;font-size:12px;color:var(--muted);line-height:1.5}
 @media(max-width:500px){.proc-step{padding:14px 12px}.proc-step h4{font-size:13px}.proc-step p{font-size:11px}}
 
-/* ============================================================
-   TIENDA MEJORADA
-   ============================================================ */
+/* TIENDA */
 .shop-tabs{
   display:flex;
   gap:6px;
@@ -683,7 +674,6 @@ h1 .accent{color:var(--orange)}
   box-shadow:0 4px 24px rgba(37,211,102,.35);
 }
 
-/* Responsive tienda */
 @media(max-width:700px){
   .shop-grid{grid-template-columns:1fr 1fr;gap:14px}
   .shop-card-img{height:160px}
@@ -697,9 +687,7 @@ h1 .accent{color:var(--orange)}
   .shop-card-img{height:200px}
 }
 
-/* ============================================================
-   CURSOS
-   ============================================================ */
+/* CURSOS */
 .cursos-grid{
   margin-top:30px;
   display:grid;
@@ -798,9 +786,7 @@ h1 .accent{color:var(--orange)}
 }
 .curso-detalle .modulo-item .modulo-lecciones li{line-height:1.4}
 
-/* ============================================================
-   COBERTURA
-   ============================================================ */
+/* COBERTURA */
 .coverage{
   margin-top:30px;
   display:flex;
@@ -816,9 +802,7 @@ h1 .accent{color:var(--orange)}
   color:var(--muted);
 }
 
-/* ============================================================
-   TEST DE VELOCIDAD
-   ============================================================ */
+/* SPEEDTEST */
 .speedtest-panel{
   margin-top:32px;
   background:var(--panel);
@@ -921,9 +905,7 @@ footer{
 }
 .foot-brand{font-family:var(--mono);color:var(--text);font-weight:700}
 
-/* ============================================================
-   WHATSAPP FLOTANTE
-   ============================================================ */
+/* WHATSAPP FLOTANTE */
 #wa-float{
   position:fixed;
   bottom:20px;
@@ -954,9 +936,7 @@ footer{
 }
 @keyframes wapulse{0%{transform:scale(1);opacity:.5}70%{transform:scale(1.7);opacity:0}100%{transform:scale(1.7);opacity:0}}
 
-/* ============================================================
-   AJUSTES GENERALES MÓVILES
-   ============================================================ */
+/* AJUSTES MÓVILES */
 @media(max-width:480px){
   .brand{font-size:14px}
   .brand small{font-size:9px}
@@ -1006,11 +986,11 @@ footer{
     <div class="brand"><span class="dot"></span>WIJITECH<small>servicios técnicos</small></div>
     <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
     <div class="navlinks" id="navlinks">
-      <a href="#" onclick="openOverlay('servicios');closeMenu();return false;">Servicios</a>
-      <a href="#" onclick="openOverlay('tienda');closeMenu();return false;">Tienda</a>
-      <a href="#" onclick="openOverlay('cursos');closeMenu();return false;">Cursos</a>
-      <a href="#" onclick="openOverlay('cobertura');closeMenu();return false;">Cobertura</a>
-      <a href="#" onclick="openOverlay('contacto');closeMenu();return false;">Contacto</a>
+      <a onclick="openOverlay('servicios');closeMenu();return false;">Servicios</a>
+      <a onclick="openOverlay('tienda');closeMenu();return false;">Tienda</a>
+      <a onclick="openOverlay('cursos');closeMenu();return false;">Cursos</a>
+      <a onclick="openOverlay('cobertura');closeMenu();return false;">Cobertura</a>
+      <a onclick="openOverlay('contacto');closeMenu();return false;">Contacto</a>
       <a class="nav-cta-mobile" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">📲 Agendar visita</a>
     </div>
     <a class="nav-cta-desktop" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">▸ Agendar visita</a>
@@ -1019,9 +999,7 @@ footer{
 
 <main class="wrap">
 
-  <!-- ============================================================
-  HERO
-  ============================================================ -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-tag"><span class="led"></span>DISPONIBLE PARA SERVICIO A DOMICILIO HOY</div>
     <h1>Soporte técnico que <span class="accent">llega a tu puerta</span>,<br>no al revés.</h1>
@@ -1038,7 +1016,7 @@ footer{
 
     <div class="hero-actions">
       <a class="btn btn-primary" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank">📲 WhatsApp</a>
-      <a class="btn btn-ghost" href="#" onclick="openOverlay('servicios');return false;">Ver servicios ↓</a>
+      <a class="btn btn-ghost" onclick="openOverlay('servicios');return false;">Ver servicios ↓</a>
     </div>
 
     <div class="readout">
@@ -1079,9 +1057,7 @@ OVERLAY: SERVICIOS
     <div class="eyebrow">/ orden de servicio</div>
     <h2>Lo que reparamos, instalamos y mantenemos</h2>
     <p class="section-sub">Cada visita incluye diagnóstico, mano de obra y garantía sobre el trabajo realizado. Tú eliges el horario.</p>
-
     <div class="services-grid" id="services-grid"></div>
-
     <div class="eyebrow" style="margin-top:48px">/ proceso de atención</div>
     <h2>Así funciona una visita</h2>
     <div class="process">
@@ -1094,7 +1070,7 @@ OVERLAY: SERVICIOS
 </div>
 
 <!-- ============================================================
-OVERLAY: TIENDA MEJORADA
+OVERLAY: TIENDA
 ============================================================ -->
 <div class="overlay" id="overlay-tienda">
   <div class="overlay-header">
@@ -1110,7 +1086,6 @@ OVERLAY: TIENDA MEJORADA
     <div class="eyebrow">/ catálogo</div>
     <h2>Tienda WijiTech</h2>
     <p class="section-sub">Precios de referencia — cotiza el tuyo y te confirmamos disponibilidad y precio final por WhatsApp.</p>
-
     <div class="shop-tabs" id="shop-tabs">
       <button class="shop-tab active" data-cat="todos" onclick="filterShop('todos', this)">📦 Todos</button>
       <button class="shop-tab" data-cat="camaras" onclick="filterShop('camaras', this)">📷 Cámaras</button>
@@ -1119,15 +1094,13 @@ OVERLAY: TIENDA MEJORADA
       <button class="shop-tab" data-cat="redes" onclick="filterShop('redes', this)">📡 Redes</button>
       <button class="shop-tab" data-cat="accesorios" onclick="filterShop('accesorios', this)">🎧 Accesorios</button>
     </div>
-
     <div class="shop-grid" id="shop-grid"></div>
     <div id="shop-empty" style="display:none;text-align:center;padding:60px 20px;color:var(--muted);font-size:15px">
       <div style="font-size:48px;margin-bottom:12px">🔍</div>
       No hay productos en esta categoría todavía.
     </div>
-
     <div class="shop-footer">
-      <p class="shop-note">💬 ¿No encuentras lo que buscas? <a href="#" onclick="closeOverlay('tienda');openOverlay('contacto');return false;" style="color:var(--orange);font-weight:600">Contáctanos</a> y te ayudamos a conseguirlo.</p>
+      <p class="shop-note">💬 ¿No encuentras lo que buscas? <a onclick="closeOverlay('tienda');openOverlay('contacto');return false;" style="color:var(--orange);font-weight:600;cursor:pointer">Contáctanos</a> y te ayudamos a conseguirlo.</p>
       <a href="https://wa.me/573118184977?text=Hola%2C%20quiero%20cotizar%20un%20producto" target="_blank" class="shop-whatsapp-btn">📲 Cotizar por WhatsApp</a>
     </div>
   </div>
@@ -1147,9 +1120,7 @@ OVERLAY: CURSOS
     <div class="eyebrow">/ formación técnica</div>
     <h2>Cursos técnicos especializados</h2>
     <p class="section-sub">Formación práctica en áreas de alta demanda. <strong>Duración: 40 horas cada curso.</strong></p>
-
     <div class="cursos-grid" id="cursos-grid"></div>
-
     <div class="curso-detalle" id="curso-detalle" style="display:none">
       <div class="detalle-header">
         <span class="icon" id="detalle-icon">📚</span>
@@ -1187,7 +1158,6 @@ OVERLAY: COBERTURA
       <span>📍 Oficinas pequeñas</span>
       <span>📍 Fincas y veredas</span>
     </div>
-
     <div class="speedtest-panel">
       <div style="text-align:center">
         <div class="speedtest-dial" id="sd-dial">
@@ -1227,7 +1197,6 @@ OVERLAY: CONTACTO
       <div class="eyebrow" style="justify-content:center;display:flex">/ contacto directo</div>
       <h2>¿Tu equipo, cámara o red necesita atención?</h2>
       <p class="section-sub">Cuéntanos qué pasa y coordinamos la visita.</p>
-
       <div class="trust" style="border:none;padding:16px 0">
         <div class="trust-row">
           <div><b>Diagnóstico claro</b><br>antes de cobrar</div>
@@ -1236,7 +1205,6 @@ OVERLAY: CONTACTO
           <div><b>Respuesta rápida</b><br>por WhatsApp</div>
         </div>
       </div>
-
       <div class="hero-actions" style="justify-content:center;margin-top:16px">
         <a class="btn btn-primary" href="https://wa.me/573118184977?text=Hola%2C%20necesito%20un%20servicio%20t%C3%A9cnico" target="_blank" style="min-width:200px">📲 311 818 4977</a>
       </div>
@@ -1253,17 +1221,14 @@ SHOP ADMIN
       <h3 style="font-family:var(--mono);font-size:16px">⚙️ Gestionar productos</h3>
       <button onclick="closeShopAdmin()" style="width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--bg2);color:var(--text);cursor:pointer;font-size:16px">✕</button>
     </div>
-
     <div id="shop-admin-locked">
       <p style="color:var(--muted);font-size:12px;margin-bottom:12px">Ingresa la clave de administrador.</p>
       <input type="password" id="shop-admin-pass" placeholder="Clave de administrador" style="width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg2);color:var(--text);font-family:var(--sans);margin-bottom:10px;font-size:14px" onkeydown="if(event.key==='Enter')checkShopAdminPass()">
       <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="checkShopAdminPass()">Entrar</button>
     </div>
-
     <div id="shop-admin-unlocked" style="display:none">
       <div style="border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:16px;background:var(--bg2)">
         <div style="font-family:var(--mono);font-size:10px;color:var(--green);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">+ Agregar producto</div>
-
         <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Foto (opcional)</label>
         <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
           <div id="sa-img-preview" style="width:48px;height:48px;border-radius:8px;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden;flex-shrink:0">📦</div>
@@ -1273,7 +1238,6 @@ SHOP ADMIN
             <button type="button" id="sa-img-clear" onclick="clearProductImage()" style="display:none;background:none;border:none;color:var(--muted);font-size:10px;margin-left:6px;cursor:pointer;text-decoration:underline">quitar</button>
           </div>
         </div>
-
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
           <select id="sa-cat" style="padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:12px">
             <option value="camaras">📷 Cámaras</option>
@@ -1289,10 +1253,8 @@ SHOP ADMIN
         <input id="sa-price" placeholder="Precio (ej: 95.000)" style="width:100%;padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:12px;margin-bottom:10px">
         <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="adminAddProduct()">Agregar</button>
       </div>
-
       <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Productos (<span id="sa-count">0</span>)</div>
       <div id="shop-admin-list" style="display:flex;flex-direction:column;gap:6px"></div>
-
       <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:12px;font-size:12px;color:var(--muted)" onclick="resetShopCatalog()">↺ Restaurar catálogo</button>
     </div>
   </div>
@@ -1320,14 +1282,18 @@ document.addEventListener('click', function(e){
 // OVERLAY
 // ============================================================
 function openOverlay(id){
-  document.getElementById('overlay-' + id).classList.add('open');
+  const el = document.getElementById('overlay-' + id);
+  if(!el) return;
+  el.classList.add('open');
   document.body.style.overflow = 'hidden';
   if(id === 'tienda') renderShopGrid('todos');
   if(id === 'servicios') renderServices();
   if(id === 'cursos') renderCursos();
 }
 function closeOverlay(id){
-  document.getElementById('overlay-' + id).classList.remove('open');
+  const el = document.getElementById('overlay-' + id);
+  if(!el) return;
+  el.classList.remove('open');
   document.body.style.overflow = '';
 }
 
@@ -1345,6 +1311,7 @@ const SERVICES = [
 
 function renderServices(){
   const grid = document.getElementById('services-grid');
+  if(!grid) return;
   grid.innerHTML = SERVICES.map(s => `
     <div class="ot-card" id="card-${s.id}">
       <div class="ot-code">${s.code}<span class="status">● disponible</span></div>
@@ -1375,7 +1342,7 @@ function toggleServiceMenu(id){
   if(!wasOpen){
     card.classList.add('is-open');
     const btn = card.querySelector('.ot-menu-toggle');
-    btn.innerHTML = btn.innerHTML.replace('Ver menú completo', 'Ocultar menú');
+    if(btn) btn.innerHTML = btn.innerHTML.replace('Ver menú completo', 'Ocultar menú');
     setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'center'}), 120);
   }
 }
@@ -1397,6 +1364,7 @@ const CURSOS = [
 
 function renderCursos(){
   const grid = document.getElementById('cursos-grid');
+  if(!grid) return;
   grid.innerHTML = CURSOS.map(c => `
     <div class="curso-card" onclick="mostrarDetalleCurso(${c.id})">
       <span class="curso-icon">${c.icon}</span>
@@ -1418,6 +1386,7 @@ function mostrarDetalleCurso(id){
   const curso = CURSOS.find(c => c.id === id);
   if(!curso) return;
   const detalle = document.getElementById('curso-detalle');
+  if(!detalle) return;
   document.getElementById('detalle-icon').textContent = curso.icon;
   document.getElementById('detalle-titulo').textContent = curso.titulo;
   document.getElementById('detalle-nivel').textContent = curso.nivel + ' · ' + curso.duracion;
@@ -1437,79 +1406,18 @@ function mostrarDetalleCurso(id){
 }
 
 // ============================================================
-// TIENDA MEJORADA - 3 PRODUCTOS DE EJEMPLO
+// TIENDA
 // ============================================================
 const SHOP_ADMIN_PASS = 'wijitech2026';
 const SHOP_STORAGE_KEY = 'wijitech_shop_products';
 
 const SHOP_DEFAULT_PRODUCTS = [
-  {
-    id: 1,
-    cat: 'camaras',
-    name: 'Cámara IP WiFi 2MP Interior',
-    desc: 'Visión nocturna infrarroja, audio bidireccional, app móvil, grabación en tarjeta SD o nube. Ideal para monitoreo de interiores.',
-    price: '95.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_729045-MCO72437509004_102023-F.webp',
-    badge: 'En Stock',
-    specs: ['2MP', 'WiFi', 'Visión Nocturna'],
-    extra: [
-      '📹 Resolución: 1920x1080 (Full HD)',
-      '📡 Conectividad: WiFi 2.4GHz',
-      '🌙 Visión nocturna: IR hasta 10m',
-      '🎙️ Audio bidireccional integrado',
-      '💾 microSD hasta 128GB',
-      '📱 App iOS y Android',
-      '🔔 Alertas de movimiento'
-    ]
-  },
-  {
-    id: 2,
-    cat: 'computadores',
-    name: 'PC de Escritorio Básico (Oficina/Estudio)',
-    desc: 'Procesador Intel/AMD, 8GB RAM, SSD 256GB, Windows 10/11. Ideal para tareas de oficina, navegación y estudio.',
-    price: '950.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_771514-MCO45640974473_042021-F.webp',
-    badge: 'En Stock',
-    specs: ['8GB RAM', 'SSD 256GB', 'Win 11'],
-    extra: [
-      '🖥️ Procesador: Intel Core i3 o AMD Ryzen 3',
-      '🧠 Memoria: 8GB DDR4 (ampliable a 16GB)',
-      '💽 Almacenamiento: SSD 256GB M.2',
-      '🖥️ Sistema Operativo: Windows 11 Pro',
-      '🖱️ Teclado y mouse incluidos',
-      '🔄 Puertos: USB 3.0, HDMI, VGA, Ethernet',
-      '🛡️ Garantía: 6 meses'
-    ]
-  },
-  {
-    id: 3,
-    cat: 'repuestos',
-    name: 'SSD 480GB SATA III',
-    desc: 'Acelera cualquier equipo lento. Incluye clonación de tu disco actual sin perder datos (servicio técnico).',
-    price: '155.000',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_2X_919808-MCO43383257770_092020-F.webp',
-    badge: 'En Stock',
-    specs: ['480GB', 'SATA III', '540MB/s'],
-    extra: [
-      '💽 Capacidad: 480GB',
-      '📊 Interfaz: SATA III (6Gb/s)',
-      '⚡ Lectura: 540 MB/s',
-      '⚡ Escritura: 500 MB/s',
-      '🔋 Consumo: ultra bajo',
-      '🔄 Resistente a golpes y vibraciones',
-      '🛠️ Clonación de disco: incluida',
-      '🛡️ Garantía: 12 meses'
-    ]
-  }
+  {id:1, cat:'camaras', name:'Cámara IP WiFi 2MP Interior', desc:'Visión nocturna infrarroja, audio bidireccional, app móvil, grabación en tarjeta SD o nube. Ideal para monitoreo de interiores.', price:'95.000', image:'https://http2.mlstatic.com/D_NQ_NP_2X_729045-MCO72437509004_102023-F.webp', badge:'En Stock', specs:['2MP','WiFi','Visión Nocturna'], extra:['📹 Resolución: 1920x1080 (Full HD)','📡 Conectividad: WiFi 2.4GHz','🌙 Visión nocturna: IR hasta 10m','🎙️ Audio bidireccional integrado','💾 microSD hasta 128GB','📱 App iOS y Android','🔔 Alertas de movimiento']},
+  {id:2, cat:'computadores', name:'PC de Escritorio Básico (Oficina/Estudio)', desc:'Procesador Intel/AMD, 8GB RAM, SSD 256GB, Windows 10/11. Ideal para tareas de oficina, navegación y estudio.', price:'950.000', image:'https://http2.mlstatic.com/D_NQ_NP_2X_771514-MCO45640974473_042021-F.webp', badge:'En Stock', specs:['8GB RAM','SSD 256GB','Win 11'], extra:['🖥️ Procesador: Intel Core i3 o AMD Ryzen 3','🧠 Memoria: 8GB DDR4 (ampliable a 16GB)','💽 Almacenamiento: SSD 256GB M.2','🖥️ Sistema Operativo: Windows 11 Pro','🖱️ Teclado y mouse incluidos','🔄 Puertos: USB 3.0, HDMI, VGA, Ethernet','🛡️ Garantía: 6 meses']},
+  {id:3, cat:'repuestos', name:'SSD 480GB SATA III', desc:'Acelera cualquier equipo lento. Incluye clonación de tu disco actual sin perder datos (servicio técnico).', price:'155.000', image:'https://http2.mlstatic.com/D_NQ_NP_2X_919808-MCO43383257770_092020-F.webp', badge:'En Stock', specs:['480GB','SATA III','540MB/s'], extra:['💽 Capacidad: 480GB','📊 Interfaz: SATA III (6Gb/s)','⚡ Lectura: 540 MB/s','⚡ Escritura: 500 MB/s','🔋 Consumo: ultra bajo','🔄 Resistente a golpes y vibraciones','🛠️ Clonación de disco: incluida','🛡️ Garantía: 12 meses']}
 ];
 
-const SHOP_CAT_LABEL = {
-  camaras: '📷 Cámaras',
-  computadores: '🖥️ Computadores',
-  repuestos: '🔧 Repuestos',
-  redes: '📡 Redes / Router',
-  accesorios: '🎧 Accesorios'
-};
+const SHOP_CAT_LABEL = {camaras:'📷 Cámaras', computadores:'🖥️ Computadores', repuestos:'🔧 Repuestos', redes:'📡 Redes / Router', accesorios:'🎧 Accesorios'};
 
 function getShopProducts() {
   try {
@@ -1517,9 +1425,7 @@ function getShopProducts() {
     if (!raw) return [...SHOP_DEFAULT_PRODUCTS];
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed : [...SHOP_DEFAULT_PRODUCTS];
-  } catch (e) {
-    return [...SHOP_DEFAULT_PRODUCTS];
-  }
+  } catch (e) { return [...SHOP_DEFAULT_PRODUCTS]; }
 }
 
 function saveShopProducts(list) {
@@ -1527,36 +1433,16 @@ function saveShopProducts(list) {
 }
 
 function shopCardHtml(p) {
-  const imgHtml = p.image
-    ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-    : `<div class="no-image">${p.emoji || '📦'}</div>`;
-  
-  const badgeClass = p.badge === 'En Stock' ? 'stock' :
-                     p.badge === 'Oferta' ? 'oferta' :
-                     p.badge === 'Reacondicionado' ? 'reacondicionado' :
-                     p.badge === 'Nuevo' ? 'nuevo' :
-                     p.badge === 'Agotado' ? 'agotado' :
-                     p.badge === 'Por encargo' ? 'encargo' : '';
-  
+  const imgHtml = p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : `<div class="no-image">📦</div>`;
+  const badgeClass = p.badge === 'En Stock' ? 'stock' : p.badge === 'Oferta' ? 'oferta' : p.badge === 'Reacondicionado' ? 'reacondicionado' : p.badge === 'Nuevo' ? 'nuevo' : p.badge === 'Agotado' ? 'agotado' : p.badge === 'Por encargo' ? 'encargo' : '';
   const badge = p.badge ? `<span class="badge ${badgeClass}">${p.badge}</span>` : '';
   const specsHtml = p.specs ? `<div class="specs">${p.specs.map(s => `<span>${s}</span>`).join('')}</div>` : '';
-  const extraHtml = p.extra ? `
-    <div class="extra-info" id="extra-${p.id}">
-      <ul>${p.extra.map(e => `<li>${e}</li>`).join('')}</ul>
-    </div>
-  ` : '';
-  
+  const extraHtml = p.extra ? `<div class="extra-info" id="extra-${p.id}"><ul>${p.extra.map(e => `<li>${e}</li>`).join('')}</ul></div>` : '';
   return `<div class="shop-card" data-cat="${p.cat}">
-    <div class="shop-card-img">
-      ${imgHtml}
-      ${badge}
-    </div>
+    <div class="shop-card-img">${imgHtml}${badge}</div>
     <div class="shop-card-body">
       <div class="shop-card-cat">${SHOP_CAT_LABEL[p.cat] || p.cat}</div>
-      <h4>${p.name}</h4>
-      ${specsHtml}
-      <p>${p.desc || ''}</p>
-      ${extraHtml}
+      <h4>${p.name}</h4>${specsHtml}<p>${p.desc || ''}</p>${extraHtml}
       <div class="shop-card-foot">
         <div class="shop-price">$${p.price}<small>COP aprox.</small></div>
         <div class="shop-actions">
@@ -1574,9 +1460,9 @@ function renderShopGrid(activeCat) {
   const filtered = cat === 'todos' ? products : products.filter(p => p.cat === cat);
   const grid = document.getElementById('shop-grid');
   const empty = document.getElementById('shop-empty');
-  if (!grid) return;
+  if(!grid) return;
   grid.innerHTML = filtered.map(shopCardHtml).join('');
-  if (empty) empty.style.display = filtered.length ? 'none' : 'block';
+  if(empty) empty.style.display = filtered.length ? 'none' : 'block';
 }
 
 function filterShop(cat, btn) {
@@ -1587,26 +1473,17 @@ function filterShop(cat, btn) {
 
 function toggleExtra(id) {
   const el = document.getElementById('extra-' + id);
-  if (el) {
-    el.classList.toggle('open');
-    const btn = el.closest('.shop-card').querySelector('.btn-detail');
-    if (btn) {
-      btn.innerHTML = el.classList.contains('open') ? '📋 <span>Menos</span>' : '📋 <span>Más</span>';
-    }
-  }
+  if(!el) return;
+  el.classList.toggle('open');
+  const btn = el.closest('.shop-card')?.querySelector('.btn-detail');
+  if(btn) btn.innerHTML = el.classList.contains('open') ? '📋 <span>Menos</span>' : '📋 <span>Más</span>';
 }
 
 function comprarProducto(id) {
   const product = getShopProducts().find(p => p.id === id);
-  if (!product) return;
-  const msg = encodeURIComponent(
-    `Hola, quiero comprar:\n\n` +
-    `📦 *${product.name}*\n` +
-    `💰 Precio: $${product.price} COP\n` +
-    `📝 ${product.desc}\n\n` +
-    `¿Podrían confirmarme disponibilidad y precio final?`
-  );
-  window.open(`https://wa.me/573118184977?text=${msg}`, '_blank');
+  if(!product) return;
+  const msg = encodeURIComponent('Hola, quiero comprar:\n\n📦 *' + product.name + '*\n💰 Precio: $' + product.price + ' COP\n📝 ' + product.desc + '\n\n¿Podrían confirmarme disponibilidad y precio final?');
+  window.open('https://wa.me/573118184977?text=' + msg, '_blank');
 }
 
 function openShopAdmin() {
@@ -1622,29 +1499,23 @@ function closeShopAdmin() {
 }
 
 function checkShopAdminPass() {
-  if (document.getElementById('shop-admin-pass').value === SHOP_ADMIN_PASS) {
+  if(document.getElementById('shop-admin-pass').value === SHOP_ADMIN_PASS) {
     document.getElementById('shop-admin-locked').style.display = 'none';
     document.getElementById('shop-admin-unlocked').style.display = 'block';
     renderShopAdminList();
-  } else {
-    alert('Clave incorrecta.');
-  }
+  } else { alert('Clave incorrecta.'); }
 }
 
 let _pendingProductImage = null;
 
 function handleProductImageSelect(input) {
   const file = input.files[0];
-  if (!file || !file.type.startsWith('image/')) return;
-  if (file.size > 3 * 1024 * 1024) {
-    alert('Máx. 3MB.');
-    input.value = '';
-    return;
-  }
+  if(!file || !file.type.startsWith('image/')) return;
+  if(file.size > 3 * 1024 * 1024) { alert('Máx. 3MB.'); input.value = ''; return; }
   const reader = new FileReader();
   reader.onload = () => {
     _pendingProductImage = reader.result;
-    document.getElementById('sa-img-preview').innerHTML = `<img src="${_pendingProductImage}" style="width:100%;height:100%;object-fit:cover">`;
+    document.getElementById('sa-img-preview').innerHTML = '<img src="' + _pendingProductImage + '" style="width:100%;height:100%;object-fit:cover">';
     document.getElementById('sa-img-clear').style.display = 'inline';
   };
   reader.readAsDataURL(file);
@@ -1662,15 +1533,10 @@ function renderShopAdminList() {
   document.getElementById('sa-count').textContent = products.length;
   document.getElementById('shop-admin-list').innerHTML = products.map(p => `
     <div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel)">
-      <div style="width:28px;height:28px;border-radius:4px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:14px;overflow:hidden;flex-shrink:0">
-        ${p.image ? `<img src="${p.image}" style="width:100%;height:100%;object-fit:cover">` : (p.emoji || '📦')}
-      </div>
-      <div style="flex:1;min-width:0">
-        <div style="font-size:12px;font-weight:600">${p.name}</div>
-        <div style="font-size:10px;color:var(--muted)">${SHOP_CAT_LABEL[p.cat] || p.cat} · $${p.price}</div>
-      </div>
+      <div style="width:28px;height:28px;border-radius:4px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:14px;overflow:hidden;flex-shrink:0">${p.image ? '<img src="'+p.image+'" style="width:100%;height:100%;object-fit:cover">' : '📦'}</div>
+      <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600">${p.name}</div><div style="font-size:10px;color:var(--muted)">${SHOP_CAT_LABEL[p.cat] || p.cat} · $${p.price}</div></div>
       <button onclick="changeProductImage(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px">📷</button>
-      ${p.image ? `<button onclick="removeProductImage(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px">🚫</button>` : ''}
+      ${p.image ? '<button onclick="removeProductImage('+p.id+')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px">🚫</button>' : ''}
       <button onclick="adminRemoveProduct(${p.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px">🗑️</button>
     </div>
   `).join('') || '<p style="color:var(--muted);font-size:12px">Sin productos.</p>';
@@ -1679,40 +1545,27 @@ function renderShopAdminList() {
 function adminAddProduct() {
   const name = document.getElementById('sa-name').value.trim();
   const price = document.getElementById('sa-price').value.trim();
-  if (!name || !price) {
-    alert('Nombre y precio requeridos.');
-    return;
-  }
+  if(!name || !price) { alert('Nombre y precio requeridos.'); return; }
   const products = getShopProducts();
-  const newProduct = {
-    id: Date.now(),
-    cat: document.getElementById('sa-cat').value,
-    emoji: document.getElementById('sa-emoji').value.trim() || '📦',
-    name: name,
-    desc: document.getElementById('sa-desc').value.trim(),
-    price: price,
-    badge: 'En Stock',
-    specs: [],
-    extra: []
-  };
-  if (_pendingProductImage) newProduct.image = _pendingProductImage;
+  const newProduct = { id: Date.now(), cat: document.getElementById('sa-cat').value, emoji: document.getElementById('sa-emoji').value.trim() || '📦', name: name, desc: document.getElementById('sa-desc').value.trim(), price: price, badge: 'En Stock', specs: [], extra: [] };
+  if(_pendingProductImage) newProduct.image = _pendingProductImage;
   products.push(newProduct);
   saveShopProducts(products);
-  ['sa-name', 'sa-desc', 'sa-price', 'sa-emoji'].forEach(id => document.getElementById(id).value = '');
+  ['sa-name','sa-desc','sa-price','sa-emoji'].forEach(id => document.getElementById(id).value = '');
   clearProductImage();
   renderShopAdminList();
   renderShopGrid();
 }
 
 function adminRemoveProduct(id) {
-  if (!confirm('¿Quitar este producto?')) return;
+  if(!confirm('¿Quitar este producto?')) return;
   saveShopProducts(getShopProducts().filter(p => p.id !== id));
   renderShopAdminList();
   renderShopGrid();
 }
 
 function resetShopCatalog() {
-  if (!confirm('¿Restaurar catálogo de ejemplo?')) return;
+  if(!confirm('¿Restaurar catálogo de ejemplo?')) return;
   saveShopProducts([...SHOP_DEFAULT_PRODUCTS]);
   renderShopAdminList();
   renderShopGrid();
@@ -1724,16 +1577,13 @@ function changeProductImage(id) {
   input.accept = 'image/*';
   input.onchange = () => {
     const file = input.files[0];
-    if (!file || !file.type.startsWith('image/')) return;
-    if (file.size > 3 * 1024 * 1024) {
-      alert('Máx. 3MB.');
-      return;
-    }
+    if(!file || !file.type.startsWith('image/')) return;
+    if(file.size > 3 * 1024 * 1024) { alert('Máx. 3MB.'); return; }
     const reader = new FileReader();
     reader.onload = () => {
       const products = getShopProducts();
       const product = products.find(p => p.id === id);
-      if (!product) return;
+      if(!product) return;
       product.image = reader.result;
       saveShopProducts(products);
       renderShopAdminList();
@@ -1747,7 +1597,7 @@ function changeProductImage(id) {
 function removeProductImage(id) {
   const products = getShopProducts();
   const product = products.find(p => p.id === id);
-  if (!product) return;
+  if(!product) return;
   delete product.image;
   saveShopProducts(products);
   renderShopAdminList();
@@ -1770,7 +1620,7 @@ async function measurePing(){
   for(let i=0;i<5;i++){
     const t0 = performance.now();
     try{
-      await fetch(`${CF_DOWN_URL}?bytes=0&i=${Date.now()}_${i}`, {cache:'no-store'});
+      await fetch(CF_DOWN_URL + '?bytes=0&i=' + Date.now() + '_' + i, {cache:'no-store'});
       samples.push(performance.now()-t0);
     }catch(e){}
   }
@@ -1781,7 +1631,7 @@ async function measurePing(){
 
 async function measureDownload(bytes){
   const t0 = performance.now();
-  const res = await fetch(`${CF_DOWN_URL}?bytes=${bytes}&i=${Date.now()}`, {cache:'no-store'});
+  const res = await fetch(CF_DOWN_URL + '?bytes=' + bytes + '&i=' + Date.now(), {cache:'no-store'});
   const buf = await res.arrayBuffer();
   const seconds = (performance.now()-t0)/1000;
   return (buf.byteLength*8)/seconds/1e6;
@@ -1805,15 +1655,13 @@ async function runSpeedTest(){
   document.getElementById('sr-down').textContent = '--';
   document.getElementById('sr-up').textContent = '--';
   document.getElementById('sr-ping').textContent = '--';
-
   try{
     setDialState('Midiendo latencia...', '--');
     const ping = await measurePing();
     document.getElementById('sr-ping').textContent = ping!=null ? ping.toFixed(0) : '—';
-
     setDialState('Midiendo bajada...', '--');
     let bestDown = 0;
-    for(const size of [2_000_000, 10_000_000]){
+    for(const size of [2000000, 10000000]){
       try{
         const mbps = await measureDownload(size);
         if(mbps > bestDown) bestDown = mbps;
@@ -1821,17 +1669,15 @@ async function runSpeedTest(){
       }catch(e){}
     }
     document.getElementById('sr-down').textContent = bestDown ? bestDown.toFixed(1) : '—';
-
     setDialState('Midiendo subida...', bestDown.toFixed(0));
     let bestUp = 0;
-    for(const size of [1_000_000, 4_000_000]){
+    for(const size of [1000000, 4000000]){
       try{
         const mbps = await measureUpload(size);
         if(mbps > bestUp) bestUp = mbps;
       }catch(e){}
     }
     document.getElementById('sr-up').textContent = bestUp ? bestUp.toFixed(1) : '—';
-
     dial.classList.remove('is-testing');
     dial.classList.add('is-done');
     setDialState('Test completado', bestDown ? bestDown.toFixed(0) : '—');
@@ -1844,7 +1690,6 @@ async function runSpeedTest(){
     document.getElementById('sr-ping').textContent = '—';
     alert('No se pudo completar el test de velocidad.');
   }
-
   btn.disabled = false;
   btn.textContent = '▸ Repetir test';
 }
